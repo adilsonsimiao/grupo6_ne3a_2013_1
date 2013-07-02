@@ -89,8 +89,4 @@ public class DaoLivro implements Dao<Livro>{
         pst.setInt(4, l.getQuantidade());
         pst.execute();
     }
-    
-    
-    
-    
 }
