@@ -15,4 +15,5 @@ public interface Dao<E> {
     void delete(E o)  throws Exception;
     E retrieve(int id)  throws Exception;
     List<E> list()  throws Exception;
+    
   }
