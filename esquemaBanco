@@ -1,0 +1,24 @@
+DROP DATABASE IF EXISTS bibliotec;
+CREATE DATABASE IF NOT EXISTS bibliotec;
+USE bibliotec;
+
+DROP TABLE IF EXISTS Endereco;
+CREATE TABLE Endereco
+		(id INT NOT NULL AUTO_INCREMENT,
+		numero INT NOT NULL,
+		complemento VARCHAR(45),
+		cep VARCHAR(8) NOT NULL,
+		pessoa_id INT NOT NULL,
+		logradouro_id INT,
+		municipio_id INT,
+		PRIMARY KEY (id));
+
+DROP TABLE IF EXISTS usuario;
+CREATE TABLE usuario
+		(id INT NOT NULL AUTO_INCREMENT,
+		nome VARCHAR(100) NOT NULL,
+		cpf VARCHAR(11) UNIQUE NOT NULL,
+		idEndereco int NOT NULL,
+		telefone varchar(11) NOT NULL,
+		PRIMARY KEY (id),
+        FOREIGN KEY (idEndereco) REFERENCES Endereco(id) ON DELETE CASCADE);
