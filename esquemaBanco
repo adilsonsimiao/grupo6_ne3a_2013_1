@@ -22,3 +22,18 @@ CREATE TABLE usuario
 		telefone varchar(11) NOT NULL,
 		PRIMARY KEY (id),
         FOREIGN KEY (idEndereco) REFERENCES Endereco(id) ON DELETE CASCADE);
+
+DROP TABLE IF EXISTS Autor;
+CREATE TABLE Autor
+		(id INT NOT NULL AUTO_INCREMENT,
+		nome VARCHAR(100) NOT NULL,
+		isbn INT NOT NULL,		
+		PRIMARY KEY (id));
+
+DROP TABLE IF EXISTS Livro;
+CREATE TABLE Livro
+       (id INT NOT NULL AUTO_INCREMENT,
+        nomeLivro VARCHAR(150) NOT NULL,
+        quantidade INT NOT NULL,
+        autor INT NOT NULL,
+        FOREIGN KEY(autor) REFERENCES Autor(id) ON DELETE CASCADE);
