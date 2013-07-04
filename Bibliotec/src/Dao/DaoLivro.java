@@ -23,7 +23,7 @@ public class DaoLivro implements Dao<Livro>{
         l.setAutor(rs.getString("autor"));
         l.setId(rs.getInt("Id"));
         l.setNomeLivro(rs.getString("nomeLivro"));
-        l.setQuantidade(rs.getInt("nomeLivro"));
+        l.setQuantidade(rs.getInt("quantidade"));
         return l;
     }
 
