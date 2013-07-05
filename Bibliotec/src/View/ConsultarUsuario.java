@@ -4,17 +4,36 @@
  */
 package View;
 
+import Dao.DaoUsuario;
+import entidade.Usuario;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author fabio
  */
 public class ConsultarUsuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ConsultarUsuario
-     */
+    private Usuario usuario = new Usuario();
+    private DaoUsuario daoUsuario = new DaoUsuario();
+    List<Usuario> listaUsuario = new ArrayList<>();
+    DefaultTableModel tableModel;
+
     public ConsultarUsuario() {
         initComponents();
+
+        setTitle("Consulta Cliente");
+
+        jTAreaDadosConsulta.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+            "Id ", "Nome", "Cpf", "Telefone", "idEndereco"
+        }));
     }
 
     /**
@@ -26,7 +45,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        BGConsulta = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -42,7 +61,10 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 51, 153));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setIcon(new javax.swing.ImageIcon("/home/fabio/Documentos/grupo6_ne3a_2013_1/Bibliotec/imagens/consultar.png")); // NOI18N
         jLabel2.setText("Consulta de usuário");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -50,15 +72,12 @@ public class ConsultarUsuario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, Short.MAX_VALUE)
         );
 
         jTAreaDadosConsulta.setModel(new javax.swing.table.DefaultTableModel(
@@ -75,11 +94,11 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jTAreaDadosConsulta.setToolTipText("");
         jScrollPane1.setViewportView(jTAreaDadosConsulta);
 
-        buttonGroup1.add(jRBNome);
+        BGConsulta.add(jRBNome);
         jRBNome.setSelected(true);
         jRBNome.setText("Consulta por nome");
 
-        buttonGroup1.add(jRBCpf);
+        BGConsulta.add(jRBCpf);
         jRBCpf.setText("Consulta por cpf");
 
         jBConsultar.setText("Consultar");
@@ -113,7 +132,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTFCampoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jBConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+                        .addComponent(jBConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jBFechar)))
@@ -131,7 +150,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFCampoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBConsultar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBFechar)
@@ -142,11 +161,17 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
-        // TODO add your handling code here:
+        if (jRBNome.isSelected()) {
+            
+        }else if (jRBCpf.isSelected()){
+            
+        }else{
+        JOptionPane.showMessageDialog(null, "selecione um campo");
+    }
     }//GEN-LAST:event_jBConsultarActionPerformed
 
     private void jBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecharActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jBFecharActionPerformed
 
     /**
@@ -184,7 +209,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup BGConsulta;
     private javax.swing.JButton jBConsultar;
     private javax.swing.JButton jBFechar;
     private javax.swing.JLabel jLabel2;
