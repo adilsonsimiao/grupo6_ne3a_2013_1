@@ -53,6 +53,7 @@ public class DaoUsuario implements Dao<Usuario>{
         Usuario p = converteRsParaUsuario(rs);
        
         return p;
+        
     }
 
     @Override
