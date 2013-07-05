@@ -26,6 +26,7 @@ public class DaoUsuario implements Dao<Usuario>{
         u.setTelefone(rs.getString("telefone"));
         u.setIdEndereco(rs.getInt("idEndereco"));
         return u;
+        
     }
 
     @Override
