@@ -322,7 +322,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFComplementoActionPerformed
 
     private void jBuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuCadastroActionPerformed
-           usu.setNome(jTFNome.getText());
+           try {
+            usu.setNome(jTFNome.getText());
            usu.setCpf(jFORMCPF.getText());
            usu.setTelefone(jTFNome.getText());
            usu.setNome(jTFNome.getText());
@@ -338,9 +339,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         endereco.setUf("");
         endereco.setCep(jTFCep.getText());
          
-         
+         dao.persist(usu);
       
         System.out.println(" ----> "+jTFUF1.getItemAt(jTFUF1.getSelectedIndex()).toString());
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_jBuCadastroActionPerformed
 
     /**
