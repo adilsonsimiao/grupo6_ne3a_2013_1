@@ -70,32 +70,6 @@ public class DaoUsuario implements Dao<Usuario>{
         
         return Usuarios;
     }
-    public List<Usuario> listNome(String nome) throws Exception {
-        List<Usuario> Usuarios = new ArrayList<>();
-        
-        Statement st =  ConnectionFactory.prepareConnection().createStatement();                                
-        ResultSet rs =  st.executeQuery("SELECT * FROM Usuario WHERE nome = '"+nome+"'");
-        
-        while(rs.next()){
-            Usuario p = converteRsParaUsuario(rs);
-            Usuarios.add(p);
-        }
-        
-        return Usuarios;
-    }
-    public List<Usuario> listCpf(String cpf) throws Exception {
-        List<Usuario> Usuarios = new ArrayList<Usuario>();
-        
-        Statement st =  ConnectionFactory.prepareConnection().createStatement();                                
-        ResultSet rs =  st.executeQuery("SELECT * FROM Usuario WHERE cpf = '"+cpf+"'");
-        
-        while(rs.next()){
-            Usuario p = converteRsParaUsuario(rs);
-            Usuarios.add(p);
-        }
-        
-        return Usuarios;
-    }
 
     private void update(Usuario u) throws SQLException {
         PreparedStatement pst =  ConnectionFactory.prepareConnection().prepareStatement("UPDATE INTO Usuario (id, nome, cpf, telefone, idEndereco) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
@@ -124,6 +98,6 @@ public class DaoUsuario implements Dao<Usuario>{
         rs.next();
         u.setId(rs.getInt(1));
     }
-  
+    
     
 }
