@@ -8,10 +8,10 @@ import Dao.DaoUsuario;
 import entidade.Usuario;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -162,35 +162,12 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
         if (jRBNome.isSelected()) {
-
-
-            try {
-                listaUsuario = daoUsuario.list();
-                listaUsuario.add(usuario);
-                tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
-                tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getTelefone(), usuario.getIdEndereco()});
-                this.jTAreaDadosConsulta.setModel(tableModel);
-                
-                
-            } catch (Exception ex) {
-                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-
-
-        } else if (jRBCpf.isSelected()) {
-            try {
-                usuario = (Usuario) daoUsuario.listNome(jRBCpf.getText());
-                tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
-                tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getTelefone(), usuario.getIdEndereco()});
-                jTAreaDadosConsulta.setModel(tableModel);
-                listaUsuario.add(usuario);
-            } catch (Exception ex) {
-                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "selecione um campo");
-        }
+            
+        }else if (jRBCpf.isSelected()){
+            
+        }else{
+        JOptionPane.showMessageDialog(null, "selecione um campo");
+    }
     }//GEN-LAST:event_jBConsultarActionPerformed
 
     private void jBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecharActionPerformed
