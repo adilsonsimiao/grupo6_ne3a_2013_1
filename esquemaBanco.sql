@@ -7,9 +7,8 @@ CREATE TABLE Endereco
 		numero INT NOT NULL,
 		complemento VARCHAR(45),
 		cep VARCHAR(8) NOT NULL,
-		pessoa_id INT NOT NULL,
-		logradouro_id INT,
-		municipio_id INT,
+		logradouro INT,
+		cidade varchar (200),
 		PRIMARY KEY (id));
 
 DROP TABLE IF EXISTS usuario;
