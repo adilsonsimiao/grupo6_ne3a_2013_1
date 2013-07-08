@@ -34,4 +34,5 @@ CREATE TABLE Livro
         nomeLivro VARCHAR(150) NOT NULL,
         quantidade INT NOT NULL,
         autor INT NOT NULL,
+        PRIMARY KEY (id),
         FOREIGN KEY(autor) REFERENCES Autor(id) ON DELETE CASCADE);
