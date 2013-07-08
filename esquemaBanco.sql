@@ -11,12 +11,12 @@ CREATE TABLE Endereco
 		cidade varchar (200),
 		PRIMARY KEY (id));
 
-DROP TABLE IF EXISTS usuario;
-CREATE TABLE usuario
+DROP TABLE IF EXISTS Usuario;
+CREATE TABLE Usuario
 		(id INT NOT NULL AUTO_INCREMENT,
 		nome VARCHAR(100) NOT NULL,
 		cpf VARCHAR(11) UNIQUE NOT NULL,
-		idEndereco int NOT NULL,
+		idEndereco int,
 		telefone varchar(11) NOT NULL,
 		PRIMARY KEY (id),
         FOREIGN KEY (idEndereco) REFERENCES Endereco(id) ON DELETE CASCADE);
@@ -36,3 +36,5 @@ CREATE TABLE Livro
         autor INT NOT NULL,
         PRIMARY KEY (id),
         FOREIGN KEY(autor) REFERENCES Autor(id) ON DELETE CASCADE);
+
+INSERT INTO Usuario (id, nome, cpf, idEndereco, telefone) VALUES(null, 'Eduardo', '0000000011', '0', '4498989898');
