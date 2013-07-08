@@ -19,6 +19,6 @@ public class ConnectionFactory {
         DriverManager.registerDriver(new com.mysql.jdbc.Driver());
         Connection con = DriverManager.getConnection(JDBC_URL);
         con.setAutoCommit(true);
-        return con;
+        return con; // TESTE
     }
 }
