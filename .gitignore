@@ -5,3 +5,4 @@
 *.war
 *.ear
 /Bibliotec/nbproject/private/
+/Bibliotec/dist/

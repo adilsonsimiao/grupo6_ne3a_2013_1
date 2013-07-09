@@ -39,13 +39,13 @@ public class DaoUsuario implements Dao<Usuario>{
 
     @Override
     public void delete(Usuario u) throws Exception {
-        Statement st =  ConnectionFactory.prepareConnection().createStatement();                                
+        Statement st = ConnectionFactory.prepareConnection().createStatement();                                
         st.execute("DELETE FROM Usuario WHERE id = " + u.getId());
     }
 
     @Override
     public Usuario retrieve(int id) throws Exception {
-        Statement st =  ConnectionFactory.prepareConnection().createStatement();                                
+           Statement st = ConnectionFactory.prepareConnection().createStatement();                           
         st.execute("SELECT * FROM Usuario WHERE id = " + id);
         ResultSet rs = st.getResultSet();
         
@@ -60,7 +60,7 @@ public class DaoUsuario implements Dao<Usuario>{
     public List<Usuario> list() throws Exception {
         List<Usuario> Usuarios = new ArrayList<Usuario>();
         
-        Statement st =  ConnectionFactory.prepareConnection().createStatement();                                
+         Statement st = ConnectionFactory.prepareConnection().createStatement();                             
         ResultSet rs =  st.executeQuery("SELECT * FROM Usuario");
         
         while(rs.next()){

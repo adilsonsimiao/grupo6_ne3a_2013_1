@@ -20,8 +20,8 @@ public class ConnectionProvider {
     public static Connection getConection(){ 
         if(currentConnection == null){ 
             try { 
-                currentConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bibliotec", "root", "capoeir0"); 
-                currentConnection.setAutoCommit(false); 
+                currentConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotec", "root", "capoeir0"); 
+               // currentConnection.setAutoCommit(false); 
             } catch (SQLException ex) { 
                 Logger.getLogger(ConnectionProvider.class.getName()).log(Level.SEVERE, null, ex); 
                 throw new RuntimeException("Nao consegui criar uma conexao para o DAO", ex); 

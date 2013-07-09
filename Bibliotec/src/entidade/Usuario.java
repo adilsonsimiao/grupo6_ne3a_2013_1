@@ -13,7 +13,9 @@ public class Usuario {
     private int id;
     private String cpf;
     private int idEndereco;
+    private Endereco endereco;
     private String telefone;
+    private String rg ;
 
     public String getNome() {
         return nome;
@@ -58,6 +60,22 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" + "nome=" + nome + ", id=" + id + ", cpf=" + cpf + ", idEndereco=" + idEndereco + ", telefone=" + telefone + '}';
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
     
     

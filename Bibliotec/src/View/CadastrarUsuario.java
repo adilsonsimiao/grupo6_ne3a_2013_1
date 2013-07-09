@@ -4,6 +4,7 @@
  */
 package View;
 
+
 import Dao.DaoUsuario;
 import entidade.Endereco;
 import entidade.Usuario;
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class CadastrarUsuario extends javax.swing.JFrame {
      Usuario usu;
-     DaoUsuario dao;
+    DaoUsuario dao;
      Endereco  endereco;
      
      
@@ -79,6 +80,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 153));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -92,13 +94,15 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                 .addGap(434, 434, 434))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 764, -1));
 
         jLabel5.setText("Logradouro:");
 
@@ -214,6 +218,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         });
 
         jButton1.setText("Fechar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("DDD:");
 
@@ -297,23 +306,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                     .addComponent(jButton1)))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 79, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -323,30 +316,45 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFComplementoActionPerformed
 
     private void jBuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuCadastroActionPerformed
-          try {
-             usu.setNome(jTFNome.getText());
+           usu.setNome(jTFNome.getText());
            usu.setCpf(jFORMCPF.getText());
            usu.setTelefone(jTFNome.getText());
-           usu.setNome(jTFNome.getText());
-           usu.setNome(jTFNome.getText());
-           usu.setNome(jTFNome.getText());
-       
-   
-         
+           usu.setRg(jTFNome.getText());
+          usu.setIdEndereco(endereco.getId());
         endereco.setLogradouro(jTFLogradouro.getText());
         endereco.setComplemento(jTFComplemento.getText());
         endereco.setNumero(jTFNumero.getText());
         endereco.setCidade(jTFCidade.getText());
         endereco.setUf(jTUF.getItemAt(jTUF.getSelectedIndex()).toString());
-        endereco.setCep(jTFCep.getText());
-         
+        endereco.setCep(jTFCep.getText());  
+        
+        try {
+            dao.persist(usu);
+           
+         JOptionPane.showMessageDialog(null," Cadastro realizada com sucesso!!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null," Não foi possivel realizada com sucesso!!");
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null," Não foi possivel cadastrar!!");
         }
-           JOptionPane.showMessageDialog(null," Cadastro realizada com sucesso!!");
-      
+           
+           
+        jTFLogradouro.setText("");
+        jTFComplemento.setText("");
+        jTFNumero.setText("");
+        jTFCidade.setText("");
+        jTUF.setName("");
+        jTFCep.setText("");
+        jTFNome.setText("");
+        jFORMCPF.setText("");
+        jTFRG.setText("");
+        jTFBairro.setText("");
+ 
   
     }//GEN-LAST:event_jBuCadastroActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

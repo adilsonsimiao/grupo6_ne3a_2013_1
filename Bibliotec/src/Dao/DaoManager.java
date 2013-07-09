@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class DaoManager {
 
-    private static final Map<Class, Dao> daos = new HashMap<Class, Dao>();
+    private static final Map<Class, Dao> daos = new HashMap<>();
 
     static {
         daos.put(Livro.class, new DaoLivro());

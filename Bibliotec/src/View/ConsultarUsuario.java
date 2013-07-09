@@ -55,14 +55,16 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jTFCampoConsulta = new javax.swing.JTextField();
         jBConsultar = new javax.swing.JButton();
         jBFechar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 153));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setIcon(new javax.swing.ImageIcon("/home/fabio/Documentos/grupo6_ne3a_2013_1/Bibliotec/imagens/consultar.png")); // NOI18N
         jLabel2.setText("Consulta de usuário");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
@@ -70,15 +72,14 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 622, -1));
 
         jTAreaDadosConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,12 +95,17 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jTAreaDadosConsulta.setToolTipText("");
         jScrollPane1.setViewportView(jTAreaDadosConsulta);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 201, 598, 264));
+
         BGConsulta.add(jRBNome);
         jRBNome.setSelected(true);
         jRBNome.setText("Consulta por nome");
+        getContentPane().add(jRBNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 112, -1, -1));
 
         BGConsulta.add(jRBCpf);
         jRBCpf.setText("Consulta por cpf");
+        getContentPane().add(jRBCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 112, -1, -1));
+        getContentPane().add(jTFCampoConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 156, 410, 25));
 
         jBConsultar.setText("Consultar");
         jBConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +113,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 jBConsultarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 154, 170, -1));
 
         jBFechar.setText("Fechar");
         jBFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,53 +121,34 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 jBFecharActionPerformed(evt);
             }
         });
+        getContentPane().add(jBFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 477, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRBNome)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRBCpf)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTFCampoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBFechar)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRBNome)
-                    .addComponent(jRBCpf))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFCampoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBConsultar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBFechar)
-                .addGap(8, 8, 8))
-        );
+        jButton1.setText("Excluir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 477, -1, -1));
+
+        jButton2.setText("Alterar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 477, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
+         if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
+            JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
+
+        } else {
+         
+         }
         if (jRBNome.isSelected()) {
             
         }else if (jRBCpf.isSelected()){
@@ -174,6 +162,33 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jBFecharActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
+            JOptionPane.showMessageDialog(null, "Selecione um usuario para alterar" + jTFCampoConsulta.getText());
+
+        } else {
+        
+        AlterarUsuario alt = new AlterarUsuario();
+       alt.preencheTelaCadastro(usuario);
+               
+    }//GEN-LAST:event_jButton2ActionPerformed
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
+            JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos" + jTFCampoConsulta.getText());
+
+        } else {
+       
+  
+        
+        try {
+            
+        } catch (Exception e) {
+            
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    }
     /**
      * @param args the command line arguments
      */
@@ -212,6 +227,8 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     private javax.swing.ButtonGroup BGConsulta;
     private javax.swing.JButton jBConsultar;
     private javax.swing.JButton jBFechar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRBCpf;
