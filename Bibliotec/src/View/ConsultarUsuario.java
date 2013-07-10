@@ -23,8 +23,8 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     private DaoUsuario daoUsuario = new DaoUsuario();
     List<Usuario> usuarios = new ArrayList<>();
     DefaultTableModel tableModel;
-    String vet[] = new String[6];
-    String[] vet2 = new String[vet.length * 2];
+    
+   
 
     public ConsultarUsuario() {
         initComponents();
@@ -149,46 +149,40 @@ public class ConsultarUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Digite um nome para pesquisar" + jTFCampoConsulta.getText());
         } else {
             if (jRBNome.isSelected()) {
-                try {
-
-                    tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
-                    usuarios = daoUsuario.listNome(jTFCampoConsulta.getText());
-                    String aux = usuarios.toString();
-                    vet = aux.split(",");
-
-                    for (int i = 0; i < vet.length; i++) {
-
-                        int aux2 = vet[i].indexOf("=");
-                        vet[i] = vet[i].substring(aux2 + 1);
+                try {                    
+                    usuario = daoUsuario.listNome(jTFCampoConsulta.getText());                   
+                    
+                    if (usuario.getNome().equals(jTFCampoConsulta.getText())) {
+                        
+                        tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
+                        tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getIdEndereco(), usuario.getTelefone()});
+                        jTAreaDadosConsulta.setModel(tableModel);
 
 
+                        usuarios.add(usuario);
+                    } else {
                     }
-                    vet[4] = vet[4].replace("}", "");
-                    vet[4] = vet[4].replace("]", "");
-                    tableModel.addRow(new Object[]{vet[1], vet[0], vet[2], vet[4], vet[3]});
 
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Usuario não existe");
                 }
             } else if (jRBCpf.isSelected()) {
-                try {
-                    tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
-                    usuarios = daoUsuario.listCpf(jTFCampoConsulta.getText());
-                    String aux = usuarios.toString();
-                    vet = aux.split(",");
-
-                    for (int i = 0; i < vet.length; i++) {
-
-                        int aux2 = vet[i].indexOf("=");
-                        vet[i] = vet[i].substring(aux2 + 1);
+                 try {                    
+                    usuario = daoUsuario.listCpf(jTFCampoConsulta.getText());                   
+                    
+                    if (usuario.getCpf().equals(jTFCampoConsulta.getText())) {
+                        
+                        tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
+                        tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getIdEndereco(), usuario.getTelefone()});
+                        jTAreaDadosConsulta.setModel(tableModel);
 
 
+                        usuarios.add(usuario);
+                    } else {
                     }
-                    vet[4] = vet[4].replace("}", "");
-                    vet[4] = vet[4].replace("]", "");
-                    tableModel.addRow(new Object[]{vet[1], vet[0], vet[2], vet[4], vet[3]});
+
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Usuario nao existe");
+                    JOptionPane.showMessageDialog(null, "Usuario não existe");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "selecione um campo");
