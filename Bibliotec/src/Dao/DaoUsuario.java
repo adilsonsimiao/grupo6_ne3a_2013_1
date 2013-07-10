@@ -102,23 +102,21 @@ public class DaoUsuario implements Dao<Usuario> {
 
     private void update(Usuario u) throws SQLException {
         PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("UPDATE INTO Usuario (id, nome, cpf, telefone, idEndereco) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-        pst.setInt(1, u.getId());
-        pst.setString(2, u.getNome());
-        pst.setString(3, u.getCpf());
-        pst.setString(4, u.getTelefone());
-        pst.setInt(5, u.getIdEndereco());
+        pst.setString(1, u.getNome());
+        pst.setString(2, u.getCpf());
+        pst.setString(3, u.getTelefone());
+        pst.setInt(4, u.getIdEndereco());
 
 
         pst.execute();
     }
 
     private void insert(Usuario u) throws SQLException {
-        PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("INSERT INTO Usuario (id, nome, cpf, telefone, idEndereco) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-        pst.setInt(1, u.getId());
-        pst.setString(2, u.getNome());
-        pst.setString(3, u.getCpf());
-        pst.setString(4, u.getTelefone());
-        pst.setInt(5, u.getIdEndereco());
+        PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("INSERT INTO Usuario (id, nome, cpf, telefone, idEndereco) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
+        pst.setString(1, u.getNome());
+        pst.setString(2, u.getCpf());
+        pst.setString(3, u.getTelefone());
+       
 
 
         pst.execute();
@@ -127,9 +125,25 @@ public class DaoUsuario implements Dao<Usuario> {
         rs.next();
         u.setId(rs.getInt(1));
     }
-    public static void main(String[] args) {
+     public static void main(String[] args) throws SQLException, Exception {
+        List ends = new DaoUsuario().list();
         
-    }
+        for(Object e: ends){
+            System.out.println("->" + e);
+        }
+        
 
+
+        Usuario p = new Usuario();
+        p.setCpf("123123654654");
+        p.setNome("Luciooooooooooooo");
+        p.setTelefone("4499999999");
+        
+        
+        new DaoUsuario().persist(p);
+
+        
+         
+    }
     
 }
