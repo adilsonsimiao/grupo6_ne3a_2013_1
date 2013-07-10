@@ -8,10 +8,10 @@ import Dao.DaoUsuario;
 import entidade.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  *
@@ -21,13 +21,15 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
     private Usuario usuario = new Usuario();
     private DaoUsuario daoUsuario = new DaoUsuario();
-    List<Usuario> listaUsuario = new ArrayList<>();
+    List<Usuario> usuarios = new ArrayList<>();
     DefaultTableModel tableModel;
+    String vet[] = new String[6];
+    String[] vet2 = new String[vet.length * 2];
 
     public ConsultarUsuario() {
         initComponents();
 
-        setTitle("Consulta Cliente");
+        setTitle("Consulta Usuario");
 
         jTAreaDadosConsulta.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
@@ -121,7 +123,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 jBFecharActionPerformed(evt);
             }
         });
-        getContentPane().add(jBFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 477, -1, -1));
+        getContentPane().add(jBFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 475, -1, 30));
 
         jButton1.setText("Excluir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -143,19 +145,55 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
-         if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
-
+        if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
+            JOptionPane.showMessageDialog(null, "Digite um nome para pesquisar" + jTFCampoConsulta.getText());
         } else {
-         
-         }
-        if (jRBNome.isSelected()) {
-            
-        }else if (jRBCpf.isSelected()){
-            
-        }else{
-        JOptionPane.showMessageDialog(null, "selecione um campo");
-    }
+            if (jRBNome.isSelected()) {
+                try {
+
+                    tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
+                    usuarios = daoUsuario.listNome(jTFCampoConsulta.getText());
+                    String aux = usuarios.toString();
+                    vet = aux.split(",");
+
+                    for (int i = 0; i < vet.length; i++) {
+
+                        int aux2 = vet[i].indexOf("=");
+                        vet[i] = vet[i].substring(aux2 + 1);
+
+
+                    }
+                    vet[4] = vet[4].replace("}", "");
+                    vet[4] = vet[4].replace("]", "");
+                    tableModel.addRow(new Object[]{vet[1], vet[0], vet[2], vet[4], vet[3]});
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Usuario não existe");
+                }
+            } else if (jRBCpf.isSelected()) {
+                try {
+                    tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
+                    usuarios = daoUsuario.listCpf(jTFCampoConsulta.getText());
+                    String aux = usuarios.toString();
+                    vet = aux.split(",");
+
+                    for (int i = 0; i < vet.length; i++) {
+
+                        int aux2 = vet[i].indexOf("=");
+                        vet[i] = vet[i].substring(aux2 + 1);
+
+
+                    }
+                    vet[4] = vet[4].replace("}", "");
+                    vet[4] = vet[4].replace("]", "");
+                    tableModel.addRow(new Object[]{vet[1], vet[0], vet[2], vet[4], vet[3]});
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Usuario nao existe");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "selecione um campo");
+            }
+        }
     }//GEN-LAST:event_jBConsultarActionPerformed
 
     private void jBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecharActionPerformed
@@ -163,32 +201,44 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jBFecharActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
+        if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
             JOptionPane.showMessageDialog(null, "Selecione um usuario para alterar" + jTFCampoConsulta.getText());
 
         } else {
-        
-        AlterarUsuario alt = new AlterarUsuario();
-       alt.preencheTelaCadastro(usuario);
-               
+
+            AlterarUsuario alt = new AlterarUsuario();
+            alt.preencheTelaCadastro(usuario);
+
     }//GEN-LAST:event_jButton2ActionPerformed
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
+        if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
             JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos" + jTFCampoConsulta.getText());
 
         } else {
-       
-  
-        
-        try {
-            
-        } catch (Exception e) {
-            
-            
+            tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
+
+            for (int i = 0; i < usuarios.size(); i++) {
+                try {
+                    daoUsuario.delete(usuario);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+
+
+            }
+            tableModel.setRowCount(0);
+            JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
+
+
         }
+
+
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
-    }
+
     /**
      * @param args the command line arguments
      */
