@@ -5,8 +5,11 @@
 package View;
 
 
+import Dao.DaoEndereco;
+import Dao.DaoMunicipio;
 import Dao.DaoUsuario;
 import entidade.Endereco;
+import entidade.Municipio;
 import entidade.Usuario;
 import javax.swing.JOptionPane;
 
@@ -16,16 +19,20 @@ import javax.swing.JOptionPane;
  */
 public class CadastrarUsuario extends javax.swing.JFrame {
      Usuario usu;
-    DaoUsuario dao;
+     DaoUsuario dao;
      Endereco  endereco;
-     
-     
-     
-    public CadastrarUsuario() {
+     DaoEndereco daoEnd;
+     DaoMunicipio daoMuni;
+      Municipio muni = new Municipio();
+    
+      public CadastrarUsuario() {
         initComponents();
+        setTitle("Cadastro de Usuario");
         endereco = new Endereco();
         dao = new DaoUsuario();
         usu = new Usuario();
+        daoEnd = new DaoEndereco();
+        daoMuni = new DaoMunicipio();
     }
 
  
@@ -51,9 +58,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jTFCep = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTFCidade = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jTUF = new javax.swing.JComboBox();
+        jTFCidade = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jTFNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -65,7 +72,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTFTelefone = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -126,6 +133,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         jTUF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC", "AL", "AM", "AP", "BA", "CE  ", "DF ", "ES ", "GO ", "MA ", "MG ", "MS ", "MT  ", "PA  ", "PB ", "PE ", "PI ", "PR ", "RJ ", "RN ", "RO ", "RR ", "RS ", "SC", "SE ", "SP ", "TO" }));
 
+        jTFCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alto Paraná", "Amaporã", "Cruzeiro do Sul", "Diamante do Norte", "Guairaçá", "Inajá", "Itaúna do Sul", "Jardim Olinda", "Loanda", "Marilena", "Mirador", "Nova Aliança do Ivaí", "Nova Londrina", "Paraíso do Norte", "Paranacity", "Paranapoema", "Paranavaí", "Planaltina do Paraná", "Porto Rico", "Querência do Norte", "Santa Cruz de Monte Castelo", "Santa Isabel do Ivaí", "Santa Mônica", "Santo Antônio do Caiuá", "São Carlos do Ivaí", "São João do Caiuá", "São Pedro do Paraná", "Tamboara", "Terra Rica", "Altônia", "Alto Paraíso (1)", "Alto Piquiri", "Brasilândia do Sul", "Cafezal do Sul", "Cruzeiro do Oeste", "Douradina", "Esperança Nova", "Francisco Alves", "Icaraíma", "Iporã", "Ivaté", "Maria Helena", "Mariluz", "Nova Olímpia", "Perobal", "Pérola", "São Jorge do Patrocínio", "Tapira", "Umuarama", "Xambrê", "Cianorte", "Cidade Gaúcha", "Guaporema", "Indianópolis", "Japurá", "Jussara", "Rondon", "Campo mourão" }));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -154,7 +163,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTFComplemento))
-                            .addComponent(jTFCidade)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jTFNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -168,7 +176,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jTUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -260,7 +270,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(jFORMCPF))))))
                 .addContainerGap())
@@ -294,7 +304,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,20 +326,36 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFComplementoActionPerformed
 
     private void jBuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuCadastroActionPerformed
-           usu.setNome(jTFNome.getText());
-           usu.setCpf(jFORMCPF.getText());
-           usu.setTelefone(jTFNome.getText());
-           usu.setRg(jTFNome.getText());
-          usu.setIdEndereco(endereco.getId());
+
+         
+       usu.setEndereco(new Endereco());
+      
+        try { 
+       muni.setUf(jTUF.getItemAt(jTUF.getSelectedIndex()).toString());         
+       muni.setNome(jTFCidade.getItemAt(jTFCidade.getSelectedIndex()).toString());
+         
+            daoMuni.persist(muni);
         endereco.setLogradouro(jTFLogradouro.getText());
         endereco.setComplemento(jTFComplemento.getText());
+        endereco.setBairro(jTFBairro.getText());
         endereco.setNumero(jTFNumero.getText());
-        endereco.setCidade(jTFCidade.getText());
-        endereco.setUf(jTUF.getItemAt(jTUF.getSelectedIndex()).toString());
-        endereco.setCep(jTFCep.getText());  
+        endereco.setCep(jTFCep.getText());
+        endereco.setIdMunicipio(muni.getId());
         
-        try {
+            daoEnd.persist(endereco);
+          
+            
+                     
+       usu.setNome(jTFNome.getText());
+       usu.setCpf(jFORMCPF.getText());      
+       usu.setTelefone(jTFTelefone.getText());
+       usu.setIdEndereco(endereco.getId());
+
             dao.persist(usu);
+            
+            
+//            
+           
            
          JOptionPane.showMessageDialog(null," Cadastro realizada com sucesso!!");
         } catch (Exception e) {
@@ -341,7 +367,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jTFLogradouro.setText("");
         jTFComplemento.setText("");
         jTFNumero.setText("");
-        jTFCidade.setText("");
+        jTFCidade.setName("");
         jTUF.setName("");
         jTFCep.setText("");
         jTFNome.setText("");
@@ -415,15 +441,18 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTFBairro;
     private javax.swing.JTextField jTFCep;
-    private javax.swing.JTextField jTFCidade;
+    private javax.swing.JComboBox jTFCidade;
     private javax.swing.JTextField jTFComplemento;
     private javax.swing.JTextField jTFLogradouro;
     private javax.swing.JTextField jTFNome;
     private javax.swing.JTextField jTFNumero;
     private javax.swing.JTextField jTFRG;
+    private javax.swing.JTextField jTFTelefone;
     private javax.swing.JComboBox jTUF;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+
+
 }

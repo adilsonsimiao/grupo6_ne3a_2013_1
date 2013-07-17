@@ -5,6 +5,7 @@
 package Dao;
 
 import entidade.Endereco;
+import entidade.Municipio;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,94 +15,102 @@ import java.util.List;
 
 /**
  *
- * @author fabio
+ * @author adilson
  */
 public class DaoEndereco implements Dao<Endereco>{
-    
-    private static Endereco converteRsParaEndereco(ResultSet rs) throws SQLException {
-        Endereco e = new Endereco();
-        e.setLogradouro(rs.getString("logradouro"));
-        e.setComplemento(rs.getString("complemento"));
-        e.setNumero(rs.getString("numero"));
-        e.setBairro(rs.getString("bairro"));
-        e.setCidade(rs.getInt("cidade"));
-        e.setUf(rs.getNString("uf"));
-        e.setCep(rs.getString("cep"));
-        e.setId(rs.getInt("id"));
+Endereco end;
+Municipio municipio = new Municipio();
+ private static Endereco converteRsParaEndereco(ResultSet rs) throws SQLException {
+        Endereco end = new Endereco();
+        end.setId(rs.getInt("Id"));
+        end.setLogradouro(rs.getString("Logradouro"));
+        end.setComplemento(rs.getString("Complemento"));
+        end.setBairro(rs.getString("Bairro"));
+        end.setNumero(rs.getString("numero"));              
+        end.setCep(rs.getString("CEP"));
+        //end.setIdMunicipio(rs.getInt("IdMunicipio"));
+        return end;
         
-        return e;
     }
 
+
     @Override
-    public void persist(Endereco e) throws SQLException{
-        if(e.getId()==0)
-            insert(e);
+    public void persist(Endereco o) throws Exception {
+            if(o.getId()==0)
+            insert(o);
         else
-            update(e);
+            update(o);
     }
-    
-    private void insert(Endereco e) throws SQLException{
-        PreparedStatement pst =  ConnectionFactory.prepareConnection().prepareStatement("INSERT INTO Endereco (logradouro,  complemento, numero, bairro, cidade, uf, cep) VALUES(?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-        //logradouro,  complemento, numero, bairro, cidade, uf, cep
-        pst.setString(1, e.getLogradouro());
-        pst.setString(2, e.getComplemento());
-        pst.setString(3, e.getNumero());
-        pst.setString(4, e.getBairro());
-        pst.setInt(5, e.getCidade());
-        pst.setString(6, e.getUf());
-        pst.setString(7, e.getCep());
-        
-        pst.execute();
 
-        ResultSet rs = pst.getGeneratedKeys();
-        rs.next();
-        e.setId(rs.getInt(1));
-    }
-    
     @Override
-    public Endereco retrieve(int id) throws SQLException{
-        Statement st =  ConnectionFactory.prepareConnection().createStatement();                                
+    public void delete(Endereco o) throws Exception {
+         Statement st = ConnectionFactory.prepareConnection().createStatement();                                
+        st.execute("DELETE FROM Usuario WHERE id = " + o.getId());
+    }
+
+    @Override
+    public Endereco retrieve(int id) throws Exception {
+       Statement st = ConnectionFactory.prepareConnection().createStatement();                           
         st.execute("SELECT * FROM Endereco WHERE id = " + id);
         ResultSet rs = st.getResultSet();
         
         rs.next();
-        Endereco p = converteRsParaEndereco(rs);
+        Endereco end = converteRsParaEndereco(rs);
        
-        return p;
+        return end;
     }
 
-    public void update(Endereco e) throws SQLException{
-        PreparedStatement pst =  ConnectionFactory.prepareConnection().prepareStatement("UPDATE Endereco SET logradouro = ?, complemento = ?, numero = ?, bairro = ?, cidade = ?, uf = ?, cep = ? WHERE id = ?");
-        pst.setString(1, e.getLogradouro());
-        pst.setString(2, e.getComplemento());
-        pst.setString(3, e.getNumero());
-        pst.setString(4, e.getBairro());
-        pst.setInt(5, e.getCidade());
-        pst.setString(6, e.getUf());
-        pst.setString(7, e.getCep());
-        pst.setInt(8, e.getId());
-        pst.execute();
-    }
-    
     @Override
-    public void delete(Endereco e) throws SQLException{
-        Statement st =  ConnectionFactory.prepareConnection().createStatement();                                
-        st.execute("DELETE FROM Endereco WHERE id = " + e.getId());
-    }
-    
-    @Override
-    public List<Endereco> list() throws SQLException{
-        List<Endereco> Enderecos = new ArrayList<>();
+    public List<Endereco> list() throws Exception {
+                List<Endereco> enderecos = new ArrayList<>();
         
-        Statement st =  ConnectionFactory.prepareConnection().createStatement();                                
-        ResultSet rs =  st.executeQuery("SELECT * FROM Endereco");
+         Statement st = ConnectionFactory.prepareConnection().createStatement();                             
+        ResultSet rs =  st.executeQuery("SELECT * FROM Usuario");
         
         while(rs.next()){
-            Endereco p = converteRsParaEndereco(rs);
-            Enderecos.add(p);
+            Endereco end = converteRsParaEndereco(rs);
+            enderecos.add(end);
         }
         
-        return Enderecos;
+        return enderecos;
+    }
+     private void insert(Endereco end) throws SQLException {
+       
+         PreparedStatement pst =  ConnectionFactory.prepareConnection().prepareStatement("INSERT INTO Endereco ( logradouro, complemento,  bairro, numero, cep, idMunicipio) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+        
+        pst.setString(1, end.getLogradouro());
+        pst.setString(2, end.getComplemento());
+        pst.setString(3, end.getBairro());
+        pst.setString(4, end.getNumero());        
+        pst.setString(5, end.getCep());
+        pst.setInt(6, end.getIdMunicipio());
+        
+        
+        
+        
+        pst.execute();
+
+        ResultSet rs = pst.getGeneratedKeys();
+        while(rs.next()){
+            System.out.println(rs.getInt(1));
+        end.setId(rs.getInt(1));
+        
+        }
+        
+        
+    }
+      private void update(Endereco end) throws SQLException {
+        PreparedStatement pst =  ConnectionFactory.prepareConnection().prepareStatement("UPDATE INTO Endereco (id, logradouro, complemento,  bairro, numero, cep, idmunicipio) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+        pst.setString(1, end.getLogradouro());
+        pst.setString(2, end.getComplemento());
+        pst.setString(3, end.getNumero());
+        pst.setString(4, end.getBairro());
+        pst.setString(5, end.getCep());
+        pst.setString(6, end.getUf());
+        pst.setString(7, municipio.getNome());
+       
+        
+        pst.executeUpdate();
     }
     
 }

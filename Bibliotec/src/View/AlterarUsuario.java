@@ -6,6 +6,7 @@ package View;
 
 import Dao.DaoUsuario;
 import entidade.Endereco;
+import entidade.Municipio;
 import entidade.Usuario;
 import javax.swing.JOptionPane;
 
@@ -15,10 +16,9 @@ import javax.swing.JOptionPane;
  */
 public class AlterarUsuario extends javax.swing.JFrame {
     Usuario usu;
-    Endereco endereco;
-    
+    Endereco endereco;   
     DaoUsuario dao;
-
+    Municipio municipio = new Municipio();
     public void setUsuario(Usuario usuario) {
         this.preencheTelaCadastro(usuario);
         this.usu = usuario;
@@ -69,11 +69,11 @@ public class AlterarUsuario extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTCep = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTFCidade = new javax.swing.JTextField();
         jCombUF = new javax.swing.JComboBox();
         jLabel13 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jTFCidade = new javax.swing.JComboBox();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -131,7 +131,7 @@ public class AlterarUsuario extends javax.swing.JFrame {
 
         jLabel3.setText("RG:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 50, -1, -1));
-        jPanel2.add(jTFRG, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 45, 142, -1));
+        jPanel2.add(jTFRG, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 142, -1));
 
         jLabel4.setText("CPF:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 50, -1, -1));
@@ -175,6 +175,8 @@ public class AlterarUsuario extends javax.swing.JFrame {
             }
         });
 
+        jTFCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -210,8 +212,8 @@ public class AlterarUsuario extends javax.swing.JFrame {
                                     .addComponent(jTCep, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                                     .addComponent(jTFComplemento)))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jTFCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                                .addComponent(jTFCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jCombUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -243,9 +245,9 @@ public class AlterarUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTFCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCombUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel13)
+                    .addComponent(jTFCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -305,7 +307,7 @@ public class AlterarUsuario extends javax.swing.JFrame {
         endereco.setLogradouro(jTFLogradouro.getText());
         endereco.setComplemento(jTFComplemento.getText());
         endereco.setNumero(jTFNumero.getText());
-        endereco.setCidade(jTFCidade.getText());
+        endereco.setMunicipio(new Municipio (jTFCidade.getItemAt(jTFCidade.getSelectedIndex()).toString()));
         endereco.setUf(jCombUF.getItemAt(jCombUF.getSelectedIndex()).toString());
         endereco.setCep(jTCep.getText());  
         
@@ -362,13 +364,13 @@ public class AlterarUsuario extends javax.swing.JFrame {
             jTFRG.setText(usuario.getRg());
             jFormCpf.setText(usuario.getCpf());
              
-            jTFLogradouro.setText(usuario.getEndereco().getLogradouro());
-            jTFComplemento.setText(usuario.getEndereco().getComplemento());
-            jTFNumero.setText(usuario.getEndereco().getNumero());
-            jTFBairro.setText(usuario.getEndereco().getBairro());
-            jTFCidade.setText(usuario.getEndereco().getCidade());
-            jCombUF.setName(usuario.getEndereco().getUf());
-            jTCep.setText(usuario.getEndereco().getCep());
+//            jTFLogradouro.setText(usuario.getEndereco().getLogradouro());
+//            jTFComplemento.setText(usuario.getEndereco().getComplemento());
+//            jTFNumero.setText(usuario.getEndereco().getNumero());
+//            jTFBairro.setText(usuario.getEndereco().getBairro());
+//            //jTFCidade.setText(endereco.getMunicipio().getNome());
+//            jCombUF.setName(usuario.getEndereco().getUf());
+//            jTCep.setText(usuario.getEndereco().getCep());
              
     }
     
@@ -411,7 +413,7 @@ public class AlterarUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField jTCep;
     private javax.swing.JTextField jTFBairro;
-    private javax.swing.JTextField jTFCidade;
+    private javax.swing.JComboBox jTFCidade;
     private javax.swing.JTextField jTFComplemento;
     private javax.swing.JTextField jTFDdd;
     private javax.swing.JTextField jTFLogradouro;

@@ -17,6 +17,9 @@ public class Usuario {
     private String telefone;
     private String rg ;
 
+    public Usuario() {
+    }
+
     public String getNome() {
         return nome;
     }
@@ -57,10 +60,7 @@ public class Usuario {
         this.telefone = telefone;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "nome=" + nome + ", id=" + id + ", cpf=" + cpf + ", idEndereco=" + idEndereco + ", telefone=" + telefone + '}';
-    }
+   
 
     public String getRg() {
         return rg;
@@ -77,6 +77,12 @@ public class Usuario {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "nome=" + nome + ", id=" + id + ", cpf=" + cpf + ", idEndereco=" + idEndereco + ", endereco=" + endereco + ", telefone=" + telefone + ", rg=" + rg + '}';
+    }
+    
     
     
 }

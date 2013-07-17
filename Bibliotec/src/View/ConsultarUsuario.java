@@ -8,8 +8,6 @@ import Dao.DaoUsuario;
 import entidade.Usuario;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,15 +19,13 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
     private Usuario usuario = new Usuario();
     private DaoUsuario daoUsuario = new DaoUsuario();
-    List<Usuario> usuarios = new ArrayList<>();
+    List<Usuario> listaUsuario = new ArrayList<>();
     DefaultTableModel tableModel;
-    
-   
 
     public ConsultarUsuario() {
         initComponents();
 
-        setTitle("Consulta Usuario");
+        setTitle("Consulta Cliente");
 
         jTAreaDadosConsulta.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
@@ -74,7 +70,9 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +121,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 jBFecharActionPerformed(evt);
             }
         });
-        getContentPane().add(jBFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 475, -1, 30));
+        getContentPane().add(jBFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 477, -1, -1));
 
         jButton1.setText("Excluir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -145,49 +143,36 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
+        tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
+
         if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(null, "Digite um nome para pesquisar" + jTFCampoConsulta.getText());
-        } else {
-            if (jRBNome.isSelected()) {
-                try {                    
-                    usuario = daoUsuario.listNome(jTFCampoConsulta.getText());                   
-                    
-                    if (usuario.getNome().equals(jTFCampoConsulta.getText())) {
-                        
-                        tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
-                        tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getIdEndereco(), usuario.getTelefone()});
-                        jTAreaDadosConsulta.setModel(tableModel);
-
-
-                        usuarios.add(usuario);
-                    } else {
-                    }
-
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Usuario não existe");
-                }
-            } else if (jRBCpf.isSelected()) {
-                 try {                    
-                    usuario = daoUsuario.listCpf(jTFCampoConsulta.getText());                   
-                    
-                    if (usuario.getCpf().equals(jTFCampoConsulta.getText())) {
-                        
-                        tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
-                        tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getIdEndereco(), usuario.getTelefone()});
-                        jTAreaDadosConsulta.setModel(tableModel);
-
-
-                        usuarios.add(usuario);
-                    } else {
-                    }
-
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Usuario não existe");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "selecione um campo");
-            }
+            JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
         }
+
+        try {
+            if (jRBNome.isSelected() == true) {
+
+
+                usuario = daoUsuario.buscarNome(jTFCampoConsulta.getText());
+                tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getTelefone(), usuario.getIdEndereco()});
+                jTAreaDadosConsulta.setModel(tableModel);
+            }
+            if (jRBCpf.isSelected() == true) {
+                usuario = daoUsuario.buscarCPF(jTFCampoConsulta.getText());
+
+                tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getTelefone(), usuario.getIdEndereco()});
+                jTAreaDadosConsulta.setModel(tableModel);
+
+            }
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Nao foi possivel localizar o nome " + jTFCampoConsulta.getText());
+        }
+
     }//GEN-LAST:event_jBConsultarActionPerformed
 
     private void jBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecharActionPerformed
@@ -196,42 +181,43 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(null, "Selecione um usuario para alterar" + jTFCampoConsulta.getText());
+           
+                 } else {
 
-        } else {
-
-            AlterarUsuario alt = new AlterarUsuario();
+           JOptionPane.showMessageDialog(null, "Selecione um usuario para alterar" + jTFCampoConsulta.getText());
+             AlterarUsuario alt = new AlterarUsuario();
             alt.preencheTelaCadastro(usuario);
-
+            alt.setVisible(true);
+   
     }//GEN-LAST:event_jButton2ActionPerformed
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
+        int row = jTAreaDadosConsulta.getSelectedRow();
+
         if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
             JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos" + jTFCampoConsulta.getText());
 
         } else {
-            tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
-
-            for (int i = 0; i < usuarios.size(); i++) {
-                try {
-                    daoUsuario.delete(usuario);
-                } catch (Exception ex) {
-                    Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-                }
 
 
 
+            try {
+                
+        
+            if (((int)this.jTAreaDadosConsulta.getValueAt(row, 0))==usuario.getId()) {
+                System.out.println("deu certo");
+                 daoUsuario.delete(usuario);
+                tableModel.removeRow(row);  
+                JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
+               
+                
             }
-            tableModel.setRowCount(0);
-            JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
-
-
-        }
-
-
-
-
+           
+            } catch (Exception e) {
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
     /**
      * @param args the command line arguments

@@ -10,20 +10,42 @@ package entidade;
  */
 public class Endereco {
     private String logradouro;
+
+    public Endereco() {
+    }
     private String complemento;
     private String numero;
     private String bairro;
-    private int cidade; 
+    
     private String uf;
     private String cep;  
     private int id;
+    Municipio municipio;
+    private int idMunicipio;
 
+    public int getIdMunicipio() {
+        return idMunicipio;
+    }
+
+    public void setIdMunicipio(int idMunicipio) {
+        this.idMunicipio = idMunicipio;
+    }
     public int getId() {
         return id;
+        
     }
 
     public void setId(int id) {
         this.id = id;
+        System.out.println(id);
+    }
+
+    public Municipio getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
     }
    
 
@@ -59,13 +81,7 @@ public class Endereco {
         this.bairro = bairro;
     }
 
-    public int getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(int cidade) {
-        this.cidade = cidade;
-    }
+   
 
     public String getUf() {
         return uf;
@@ -83,10 +99,12 @@ public class Endereco {
         this.cep = cep;
     }
 
-    
-     @Override
+    @Override
     public String toString() {
-        return "Endereco{" + "logradouro=" + logradouro + ", complemento=" + complemento + ", numero=" + numero + ", bairro=" + bairro + ", cidade=" + cidade + ", uf=" + uf + ", cep=" + cep + '}';
+        return "Endereco{" + "logradouro=" + logradouro + ", complemento=" + complemento + ", numero=" + numero + ", bairro=" + bairro + ", uf=" + uf + ", cep=" + cep + ", id=" + id + ", municipio=" + municipio + '}';
     }
+
+    
+    
     
 }
