@@ -4,7 +4,34 @@
  */
 package View;
 
-import java.awt.Dimension;
+import Dao.ConnectionFactory;
+import com.mysql.jdbc.ExceptionInterceptor;
+import com.mysql.jdbc.Extension;
+import com.mysql.jdbc.MySQLConnection;
+import com.mysql.jdbc.log.Log;
+import java.sql.Array;
+import java.sql.Blob;
+import java.sql.CallableStatement;
+import java.sql.Clob;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.NClob;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLClientInfoException;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.SQLXML;
+import java.sql.Savepoint;
+import java.sql.Statement;
+import java.sql.Struct;
+import java.util.Map;
+import java.util.Properties;
+import java.util.TimeZone;
+import java.util.concurrent.Executor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,14 +45,10 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         setTitle("Sistema Bibliotec");
-         
-       
+
+
     }
 
-   
-            
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -38,10 +61,10 @@ public class Main extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jBEmprestimo = new javax.swing.JButton();
+        jBCriarSql = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jBDevolucao = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -143,25 +166,25 @@ public class Main extends javax.swing.JFrame {
         jButton2.setBounds(170, 20, 140, 50);
         jLayeredPane1.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Books-icon (1).png"))); // NOI18N
-        jButton3.setText("Empréstimos");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBEmprestimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Books-icon (1).png"))); // NOI18N
+        jBEmprestimo.setText("Empréstimos");
+        jBEmprestimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBEmprestimoActionPerformed(evt);
             }
         });
-        jButton3.setBounds(460, 20, 161, 50);
-        jLayeredPane1.add(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jBEmprestimo.setBounds(460, 20, 161, 50);
+        jLayeredPane1.add(jBEmprestimo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Sql-runner-icon.png"))); // NOI18N
-        jButton5.setText("Criar Banco");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jBCriarSql.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Sql-runner-icon.png"))); // NOI18N
+        jBCriarSql.setText("Criar Banco");
+        jBCriarSql.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jBCriarSqlActionPerformed(evt);
             }
         });
-        jButton5.setBounds(800, 20, 160, 50);
-        jLayeredPane1.add(jButton5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jBCriarSql.setBounds(800, 20, 160, 50);
+        jLayeredPane1.add(jBCriarSql, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/edit1.png"))); // NOI18N
         jButton6.setText("Alterar");
@@ -173,15 +196,15 @@ public class Main extends javax.swing.JFrame {
         jButton6.setBounds(320, 20, 130, 50);
         jLayeredPane1.add(jButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Books-icon.png"))); // NOI18N
-        jButton7.setText("Devoluções");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jBDevolucao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Books-icon.png"))); // NOI18N
+        jBDevolucao.setText("Devoluções");
+        jBDevolucao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jBDevolucaoActionPerformed(evt);
             }
         });
-        jButton7.setBounds(630, 20, 160, 50);
-        jLayeredPane1.add(jButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jBDevolucao.setBounds(630, 20, 160, 50);
+        jLayeredPane1.add(jBDevolucao, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jMenuBar1.setBackground(new java.awt.Color(8, 61, 245));
 
@@ -409,9 +432,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            CadastrarUsuario cad = new CadastrarUsuario();
+        CadastrarUsuario cad = new CadastrarUsuario();
         cad.setVisible(true);
-              
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -420,18 +443,75 @@ public class Main extends javax.swing.JFrame {
         consult.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEmprestimoActionPerformed
         AlterarUsuario alt = new AlterarUsuario();
         alt.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jBEmprestimoActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void jBCriarSqlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarSqlActionPerformed
+        Statement st = null;
+        try {
+            st = ConnectionFactory.prepareConnection().createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            ResultSet rs = st.executeQuery("DROP DATABASE IF EXISTS bibliotec;\n"
+                    + "CREATE DATABASE IF NOT EXISTS bibliotec;\n"
+                    + "USE bibliotec;\n"
+                    + "DROP TABLE IF EXISTS Cidade;\n"
+                    + "\n"
+                    + "CREATE TABLE Cidade(\n"
+                    + "		id int PRIMARY KEY NOT NULL AUTO_INCREMENT,\n"
+                    + "        nome varchar(100) NOT NULL,\n"
+                    + "        uf char(2) NOT NULL);\n"
+                    + "\n"
+                    + "DROP TABLE IF EXISTS Endereco;\n"
+                    + "\n"
+                    + "CREATE TABLE Endereco\n"
+                    + "		(id INT NOT NULL AUTO_INCREMENT,\n"
+                    + "		numero INT NOT NULL,\n"
+                    + "		complemento VARCHAR(45),\n"
+                    + "		cep VARCHAR(8) NOT NULL,\n"
+                    + "		logradouro VARCHAR(200) NOT NULL,\n"
+                    + "		idCidade INT NOT NULL,\n"
+                    + "		PRIMARY KEY (id),\n"
+                    + "		FOREIGN KEY (idCidade) REFERENCES Cidade(id));\n"
+                    + "\n"
+                    + "DROP TABLE IF EXISTS Usuario;\n"
+                    + "CREATE TABLE Usuario\n"
+                    + "		(id INT NOT NULL AUTO_INCREMENT,\n"
+                    + "		nome VARCHAR(100) NOT NULL,\n"
+                    + "		cpf VARCHAR(11) UNIQUE NOT NULL,\n"
+                    + "		idEndereco INT NOT NULL,\n"
+                    + "		telefone varchar(11) NOT NULL,\n"
+                    + "		PRIMARY KEY (id),\n"
+                    + "        	FOREIGN KEY (idEndereco) REFERENCES Endereco(id) ON DELETE CASCADE);\n"
+                    + "\n"
+                    + "DROP TABLE IF EXISTS Autor;\n"
+                    + "CREATE TABLE Autor\n"
+                    + "		(id INT NOT NULL AUTO_INCREMENT,\n"
+                    + "		nome VARCHAR(100) NOT NULL,\n"
+                    + "		isbn INT NOT NULL,		\n"
+                    + "		PRIMARY KEY (id));\n"
+                    + "\n"
+                    + "DROP TABLE IF EXISTS Livro;\n"
+                    + "CREATE TABLE Livro\n"
+                    + "       (id INT NOT NULL AUTO_INCREMENT,\n"
+                    + "        nomeLivro VARCHAR(150) NOT NULL,\n"
+                    + "        quantidade INT NOT NULL,\n"
+                    + "        idAutor INT NOT NULL,\n"
+                    + "        PRIMARY KEY (id),\n"
+                    + "        FOREIGN KEY(idAutor) REFERENCES Autor(id) ON DELETE CASCADE);");
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jBCriarSqlActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
@@ -501,11 +581,10 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem20ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jBDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDevolucaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jBDevolucaoActionPerformed
 
-    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -514,13 +593,13 @@ public class Main extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBCriarSql;
+    private javax.swing.JButton jBDevolucao;
+    private javax.swing.JButton jBEmprestimo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenu jMenu1;
