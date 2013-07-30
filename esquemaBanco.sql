@@ -1,13 +1,14 @@
 DROP DATABASE IF EXISTS bibliotec;
 CREATE DATABASE IF NOT EXISTS bibliotec;
 USE bibliotec;
-DROP TABLE IF EXISTS Endereco;
+DROP TABLE IF EXISTS Cidade;
 
 CREATE TABLE Cidade(
 		id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
         nome varchar(100) NOT NULL,
         uf char(2) NOT NULL);
 
+DROP TABLE IF EXISTS Endereco;
 
 CREATE TABLE Endereco
 		(id INT NOT NULL AUTO_INCREMENT,
