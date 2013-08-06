@@ -4,6 +4,9 @@
  */
 package Dao;
 
+import static Dao.Operator.EQUAL;
+import static Dao.Operator.IS_NULL;
+import static Dao.Operator.LIKE;
 import java.util.List;
 import entidade.Municipio;
 import java.sql.PreparedStatement;
@@ -52,19 +55,57 @@ public class DaoMunicipio implements Dao<Municipio>{
         return municipio;
     }
 
-    @Override
-    public List<Municipio> list() throws Exception {
-               List<Municipio> municipios = new ArrayList<>();
+    public List<Municipio> list(String whereClause, String orderClause) throws SQLException{
+        List<Municipio> enderecos = new ArrayList<Municipio>();
         
-         Statement st = ConnectionFactory.prepareConnection().createStatement();                             
-        ResultSet rs =  st.executeQuery("SELECT * FROM Municipio");
+        Statement st =  ConnectionFactory.prepareConnection().createStatement();                                
+        ResultSet rs =  st.executeQuery("SELECT * FROM Municipio" + 
+                (whereClause==null || whereClause.trim().isEmpty()?"":" WHERE " + whereClause) + 
+                (orderClause==null || orderClause.trim().isEmpty()?"":" ORDER BY " + orderClause));
         
         while(rs.next()){
-            Municipio municipio = converteRsParaMunicipio(rs);
-            municipios.add(municipio);
+            Municipio p = converteRsParaMunicipio(rs);
+            enderecos.add(p);
         }
         
-        return municipios;
+        return enderecos;
+    }
+    
+        public List<Municipio> list(Filter... filters) throws SQLException{
+        
+        List<Municipio> pessoas = new ArrayList<Municipio>();
+        
+        ResultSet rs = null;
+        
+        /* Verifica se algum friltro foi fornecido para o método */
+        if(filters == null || filters.length == 0){
+            Statement st =  ConnectionFactory.prepareConnection().createStatement();
+            rs =  st.executeQuery("SELECT * FROM Municipio");
+        }else{
+            String sql = "SELECT * FROM Municipio WHERE ";
+            
+            for(Filter f : filters){
+                System.out.println(f);
+                switch(f.getOperator()){
+                    case IS_NULL: sql += f.getAttribute() + " IS NULL"; break;
+                    case LIKE: sql += f.getAttribute() + " LIKE '%" + f.getValue()+ "%'"; break;
+                    case EQUAL: sql += f.getAttribute() + "='" + f.getValue()+ "'"; break;
+                    default:
+                        throw new RuntimeException("Tipo de operador não suportado:" + f.getOperator());
+                }
+            }
+            PreparedStatement pst =  ConnectionFactory.prepareConnection().prepareStatement(sql);
+            System.out.println("SQL:" + sql);
+            rs =  pst.executeQuery();
+        }
+        
+        /* Converte o ResultSet da query para uma lista de objetos */
+        while(rs.next()){
+            Municipio p = converteRsParaMunicipio(rs);
+            pessoas.add(p);
+        }
+        
+        return pessoas;
     }
      private void insert(Municipio municipio) throws SQLException {
        
