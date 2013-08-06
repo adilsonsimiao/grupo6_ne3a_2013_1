@@ -14,6 +14,7 @@ public interface Dao<E> {
     void persist(E o)  throws Exception;
     void delete(E o)  throws Exception;
     E retrieve(int id)  throws Exception;
-    List<E> list()  throws Exception;
+    List<E> list(String whereClause, String orderClause)  throws Exception;
+    List<E> list(Filter... filters)  throws Exception;
     
   }
