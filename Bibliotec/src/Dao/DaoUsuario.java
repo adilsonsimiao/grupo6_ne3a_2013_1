@@ -4,6 +4,9 @@
  */
 package Dao;
 
+import static Dao.Operator.EQUAL;
+import static Dao.Operator.IS_NULL;
+import static Dao.Operator.LIKE;
 import entidade.Endereco;
 import entidade.Usuario;
 import java.sql.PreparedStatement;
@@ -85,19 +88,57 @@ public class DaoUsuario implements Dao<Usuario>{
 //                                               
 //} 
 
-    @Override
-    public List<Usuario> list() throws Exception {
-        List<Usuario> Usuarios = new ArrayList<Usuario>();
+    public List<Usuario> list(String whereClause, String orderClause) throws SQLException{
+        List<Usuario> enderecos = new ArrayList<Usuario>();
         
-         Statement st = ConnectionFactory.prepareConnection().createStatement();                             
-        ResultSet rs =  st.executeQuery("SELECT * FROM Usuario");
+        Statement st =  ConnectionFactory.prepareConnection().createStatement();                                
+        ResultSet rs =  st.executeQuery("SELECT * FROM Usuario" + 
+                (whereClause==null || whereClause.trim().isEmpty()?"":" WHERE " + whereClause) + 
+                (orderClause==null || orderClause.trim().isEmpty()?"":" ORDER BY " + orderClause));
         
         while(rs.next()){
             Usuario p = converteRsParaUsuario(rs);
-            Usuarios.add(p);
+            enderecos.add(p);
         }
         
-        return Usuarios;
+        return enderecos;
+    }
+    
+        public List<Usuario> list(Filter... filters) throws SQLException{
+        
+        List<Usuario> pessoas = new ArrayList<Usuario>();
+        
+        ResultSet rs = null;
+        
+        /* Verifica se algum friltro foi fornecido para o método */
+        if(filters == null || filters.length == 0){
+            Statement st =  ConnectionFactory.prepareConnection().createStatement();
+            rs =  st.executeQuery("SELECT * FROM Usuario");
+        }else{
+            String sql = "SELECT * FROM Usuario WHERE ";
+            
+            for(Filter f : filters){
+                System.out.println(f);
+                switch(f.getOperator()){
+                    case IS_NULL: sql += f.getAttribute() + " IS NULL"; break;
+                    case LIKE: sql += f.getAttribute() + " LIKE '%" + f.getValue()+ "%'"; break;
+                    case EQUAL: sql += f.getAttribute() + "='" + f.getValue()+ "'"; break;
+                    default:
+                        throw new RuntimeException("Tipo de operador não suportado:" + f.getOperator());
+                }
+            }
+            PreparedStatement pst =  ConnectionFactory.prepareConnection().prepareStatement(sql);
+            System.out.println("SQL:" + sql);
+            rs =  pst.executeQuery();
+        }
+        
+        /* Converte o ResultSet da query para uma lista de objetos */
+        while(rs.next()){
+            Usuario p = converteRsParaUsuario(rs);
+            pessoas.add(p);
+        }
+        
+        return pessoas;
     }
 
     private void update(Usuario u) throws SQLException {
