@@ -1,37 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Dao.ConnectionFactory;
-import com.mysql.jdbc.ExceptionInterceptor;
-import com.mysql.jdbc.Extension;
-import com.mysql.jdbc.MySQLConnection;
-import com.mysql.jdbc.log.Log;
-import java.sql.Array;
-import java.sql.Blob;
-import java.sql.CallableStatement;
-import java.sql.Clob;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
-import java.sql.NClob;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
-import java.sql.SQLWarning;
-import java.sql.SQLXML;
-import java.sql.Savepoint;
-import java.sql.Statement;
-import java.sql.Struct;
-import java.util.Map;
-import java.util.Properties;
-import java.util.TimeZone;
-import java.util.concurrent.Executor;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -69,19 +40,16 @@ public class Main extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -228,15 +196,6 @@ public class Main extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem5);
 
-        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem6.setText("Autor");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem6);
-
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem7.setText("Editora");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -276,15 +235,6 @@ public class Main extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem9);
 
-        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem10.setText("Autor");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem10);
-
         jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem11.setText("Editora");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
@@ -323,15 +273,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItem13);
-
-        jMenuItem14.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem14.setText("Autor");
-        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem14ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem14);
 
         jMenuItem15.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem15.setText("Editora");
@@ -431,99 +372,13 @@ public class Main extends javax.swing.JFrame {
         alt.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CadastrarUsuario cad = new CadastrarUsuario();
-        cad.setVisible(true);
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ConsultarUsuario consult = new ConsultarUsuario();
-        consult.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jBEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEmprestimoActionPerformed
-        AlterarUsuario alt = new AlterarUsuario();
-        alt.setVisible(true);
-    }//GEN-LAST:event_jBEmprestimoActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jBCriarSqlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarSqlActionPerformed
-        Statement st = null;
-        try {
-            st = ConnectionFactory.prepareConnection().createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            ResultSet rs = st.executeQuery("DROP DATABASE IF EXISTS bibliotec;\n"
-                    + "CREATE DATABASE IF NOT EXISTS bibliotec;\n"
-                    + "USE bibliotec;\n"
-                    + "DROP TABLE IF EXISTS Cidade;\n"
-                    + "\n"
-                    + "CREATE TABLE Cidade(\n"
-                    + "		id int PRIMARY KEY NOT NULL AUTO_INCREMENT,\n"
-                    + "        nome varchar(100) NOT NULL,\n"
-                    + "        uf char(2) NOT NULL);\n"
-                    + "\n"
-                    + "DROP TABLE IF EXISTS Endereco;\n"
-                    + "\n"
-                    + "CREATE TABLE Endereco\n"
-                    + "		(id INT NOT NULL AUTO_INCREMENT,\n"
-                    + "		numero INT NOT NULL,\n"
-                    + "		complemento VARCHAR(45),\n"
-                    + "		cep VARCHAR(8) NOT NULL,\n"
-                    + "		logradouro VARCHAR(200) NOT NULL,\n"
-                    + "		idCidade INT NOT NULL,\n"
-                    + "		PRIMARY KEY (id),\n"
-                    + "		FOREIGN KEY (idCidade) REFERENCES Cidade(id));\n"
-                    + "\n"
-                    + "DROP TABLE IF EXISTS Usuario;\n"
-                    + "CREATE TABLE Usuario\n"
-                    + "		(id INT NOT NULL AUTO_INCREMENT,\n"
-                    + "		nome VARCHAR(100) NOT NULL,\n"
-                    + "		cpf VARCHAR(11) UNIQUE NOT NULL,\n"
-                    + "		idEndereco INT NOT NULL,\n"
-                    + "		telefone varchar(11) NOT NULL,\n"
-                    + "		PRIMARY KEY (id),\n"
-                    + "        	FOREIGN KEY (idEndereco) REFERENCES Endereco(id) ON DELETE CASCADE);\n"
-                    + "\n"
-                    + "DROP TABLE IF EXISTS Autor;\n"
-                    + "CREATE TABLE Autor\n"
-                    + "		(id INT NOT NULL AUTO_INCREMENT,\n"
-                    + "		nome VARCHAR(100) NOT NULL,\n"
-                    + "		isbn INT NOT NULL,		\n"
-                    + "		PRIMARY KEY (id));\n"
-                    + "\n"
-                    + "DROP TABLE IF EXISTS Livro;\n"
-                    + "CREATE TABLE Livro\n"
-                    + "       (id INT NOT NULL AUTO_INCREMENT,\n"
-                    + "        nomeLivro VARCHAR(150) NOT NULL,\n"
-                    + "        quantidade INT NOT NULL,\n"
-                    + "        idAutor INT NOT NULL,\n"
-                    + "        PRIMARY KEY (id),\n"
-                    + "        FOREIGN KEY(idAutor) REFERENCES Autor(id) ON DELETE CASCADE);");
-        } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_jBCriarSqlActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
@@ -537,10 +392,6 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
-
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11ActionPerformed
@@ -552,10 +403,6 @@ public class Main extends javax.swing.JFrame {
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem13ActionPerformed
-
-    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         // TODO add your handling code here:
@@ -585,10 +432,72 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBDevolucaoActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jBCriarSqlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarSqlActionPerformed
+        try {
+            
+            PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("DROP DATABASE IF EXISTS bibliotec;\\n\"\n"
+                    + "CREATE DATABASE IF NOT EXISTS bibliotec;\\n\"\n"
+                    + "USE bibliotec;"
+                    +"DROP TABLE IF EXISTS Cidade"
+                    + "CREATE TABLE Cidade(\n"
+                    + "		id int PRIMARY KEY NOT NULL AUTO_INCREMENT,\n"
+                    + "        nome varchar(100) NOT NULL,\n"
+                    + "        uf char(2) NOT NULL);\n"
+                    +"DROP TABLE IF EXISTS Endereco;\n"
+                    + "CREATE TABLE Endereco\n"
+                    + "		(id INT NOT NULL AUTO_INCREMENT,\n"
+                    + "		numero INT NOT NULL,\n"
+                    + "		complemento VARCHAR(45),\n"
+                    + "		cep VARCHAR(8) NOT NULL,\n"
+                    + "		logradouro VARCHAR(200) NOT NULL,\n"
+                    + "		idCidade INT NOT NULL,\n"
+                    + "		PRIMARY KEY (id),\n"
+                    + "		FOREIGN KEY (idCidade) REFERENCES Cidade(id));"
+                    +"DROP TABLE IF EXISTS Usuario;\n"
+                    + "CREATE TABLE Usuario\n"
+                    + "		(id INT NOT NULL AUTO_INCREMENT,\n"
+                    + "		nome VARCHAR(100) NOT NULL,\n"
+                    + "		cpf VARCHAR(11) UNIQUE NOT NULL,\n"
+                    + "		idEndereco INT NOT NULL,\n"
+                    + "		telefone varchar(11) NOT NULL,\n"
+                    + "		PRIMARY KEY (id),\n"
+                    + "        	FOREIGN KEY (idEndereco) REFERENCES Endereco(id) ON DELETE CASCADE);");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+
+
+
+    }//GEN-LAST:event_jBCriarSqlActionPerformed
+
+    private void jBEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEmprestimoActionPerformed
+        AlterarUsuario alt = new AlterarUsuario();
+        alt.setVisible(true);
+    }//GEN-LAST:event_jBEmprestimoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ConsultarUsuario consult = new ConsultarUsuario();
+        consult.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CadastrarUsuario cad = new CadastrarUsuario();
+        cad.setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Main().setVisible(true);
+
             }
         });
     }
@@ -609,11 +518,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
@@ -624,7 +531,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
