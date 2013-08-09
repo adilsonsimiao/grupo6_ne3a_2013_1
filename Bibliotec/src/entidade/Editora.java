@@ -4,14 +4,30 @@
  */
 package entidade;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author a1294016
  */
+
+@Entity
+@Table(name = "Endereco")
 public class Editora {
+    @Id
+    @GeneratedValue
     private int id;
+    @Column (name = "nome")
     private String nome;
+    @Column (name = "email")
     private String email;
+    
+    @OneToOne
     private Endereco endereco;
    
     public Editora(){
