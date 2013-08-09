@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "Usuario")
+@Table(name = "USUARIO")
 public class Usuario implements Serializable {
     
     
@@ -30,19 +30,19 @@ public class Usuario implements Serializable {
     private int id;
    
    
-   @Column(name ="Nome", nullable = false)  
+   @Column(name ="NOME", nullable = false)  
     private String nome;
    
-   @Column(name ="Cpf", nullable = false)
+   @Column(name ="CPF", nullable = false)
     private String cpf;
 
     @OneToOne(cascade = CascadeType.ALL)   
     private Endereco endereco;
    
-    @Column(name ="Telefone", nullable = false)
+    @Column(name ="TELEFONE", nullable = false)
     private String telefone;
     
-    @Column(name ="Rg", nullable = false)
+    @Column(name ="RG", nullable = false)
     private String rg;
 
     public Usuario() {
