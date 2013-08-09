@@ -11,7 +11,7 @@ package entidade;
 public class Livro {
     private int id;
     private String nomeLivro;
-    private String Autor;
+    private Autor Autor;
     private int quantidade;
 
     public int getId() {
@@ -30,11 +30,11 @@ public class Livro {
         this.nomeLivro = nomeLivro;
     }
 
-    public String getAutor() {
+    public Autor getAutor() {
         return Autor;
     }
 
-    public void setAutor(String Autor) {
+    public void setAutor(Autor Autor) {
         this.Autor = Autor;
     }
 
