@@ -153,14 +153,14 @@ public class ConsultarUsuario extends javax.swing.JFrame {
             if (jRBNome.isSelected() == true) {
 
 
-                usuario = daoUsuario.buscarNome(jTFCampoConsulta.getText());
-                tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getTelefone(), usuario.getIdEndereco()});
+           //     usuario = daoUsuario.buscarNome(jTFCampoConsulta.getText());
+ //               tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getTelefone(), usuario.getIdEndereco()});
                 jTAreaDadosConsulta.setModel(tableModel);
             }
             if (jRBCpf.isSelected() == true) {
-                usuario = daoUsuario.buscarCPF(jTFCampoConsulta.getText());
+         //                usuario = daoUsuario.buscarCPF(jTFCampoConsulta.getText());
 
-                tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getTelefone(), usuario.getIdEndereco()});
+   //             tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getTelefone(), usuario.getIdEndereco()});
                 jTAreaDadosConsulta.setModel(tableModel);
 
             }

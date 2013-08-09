@@ -169,7 +169,7 @@ public class DaoUsuario implements Dao<Usuario> {
         pst.setString(1, u.getNome());
         pst.setString(2, u.getCpf());
         pst.setString(3, u.getTelefone());
-        pst.setInt(4, u.getIdEndereco());
+//        pst.setInt(4, u.getIdEndereco());
 
         pst.execute();
 

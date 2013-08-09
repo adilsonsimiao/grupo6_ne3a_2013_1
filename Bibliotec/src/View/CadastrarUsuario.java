@@ -349,7 +349,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
        usu.setNome(jTFNome.getText());
        usu.setCpf(jFORMCPF.getText());      
        usu.setTelefone(jTFTelefone.getText());
-       usu.setIdEndereco(endereco.getId());
+       
 
             dao.persist(usu);
             

@@ -3,19 +3,47 @@
  * and open the template in the editor.
  */
 package entidade;
+import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 
 /**
  *
  * @author a1294016
  */
-public class Usuario {
-    private String nome;
+
+@Entity
+@Table(name = "USUARIO")
+public class Usuario implements Serializable {
+    
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name ="id", nullable = false)
     private int id;
+   
+   
+   @Column(name ="NOME", nullable = false)  
+    private String nome;
+   
+   @Column(name ="CPF", nullable = false)
     private String cpf;
-    private int idEndereco;
+
+    @OneToOne(cascade = CascadeType.ALL)   
     private Endereco endereco;
+   
+    @Column(name ="TELEFONE", nullable = false)
     private String telefone;
-    private String rg ;
+    
+    @Column(name ="RG", nullable = false)
+    private String rg;
 
     public Usuario() {
     }
@@ -44,13 +72,6 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public int getIdEndereco() {
-        return idEndereco;
-    }
-
-    public void setIdEndereco(int idEndereco) {
-        this.idEndereco = idEndereco;
-    }
 
     public String getTelefone() {
         return telefone;
@@ -80,9 +101,10 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "nome=" + nome + ", id=" + id + ", cpf=" + cpf + ", idEndereco=" + idEndereco + ", endereco=" + endereco + ", telefone=" + telefone + ", rg=" + rg + '}';
+        return "Usuario{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + ", rg=" + rg + '}';
     }
-    
+
+   
     
     
 }
