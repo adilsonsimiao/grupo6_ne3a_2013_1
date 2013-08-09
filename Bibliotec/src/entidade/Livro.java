@@ -4,14 +4,29 @@
  */
 package entidade;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author a1294016
  */
+@Entity
+@Table(name = "Livro")
 public class Livro {
+
+    @Id
+    @GeneratedValue
     private int id;
+    @Column(name = "nomeLivro")
     private String nomeLivro;
+    @OneToOne
     private Autor Autor;
+    @Column(name = "quantidade")
     private int quantidade;
 
     public int getId() {
@@ -45,10 +60,9 @@ public class Livro {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    
+
     @Override
-     public String toString(){
-        return "livro{"+"id="+id+", nomeLivro="+nomeLivro+", autor"+Autor+ ", quantidade"+quantidade +"}";
+    public String toString() {
+        return "livro{" + "id=" + id + ", nomeLivro=" + nomeLivro + ", autor" + Autor + ", quantidade" + quantidade + "}";
     }
-    
 }
