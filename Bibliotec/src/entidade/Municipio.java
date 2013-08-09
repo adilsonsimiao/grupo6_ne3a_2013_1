@@ -4,22 +4,34 @@
  */
 package entidade;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author adilson
  */
+@Entity
+@Table(name = "Municipio")
 public class Municipio {
-      private int  id;
-      private String nome;
-      private String uf;
+
+    @Id
+    @GeneratedValue
+    private int id;
+    @Column (name = "nome")
+    private String nome;
+    @Column (name = "uf")
+    private String uf;
+
     public Municipio(String nome) {
         this.nome = nome;
     }
 
     public Municipio() {
     }
-    
- 
 
     public int getId() {
         return id;
@@ -37,8 +49,6 @@ public class Municipio {
         this.nome = nome;
     }
 
-    
-
     public String getUf() {
         return uf;
     }
@@ -51,9 +61,4 @@ public class Municipio {
     public String toString() {
         return "Municipio{" + "id=" + id + ", nome=" + nome + ", uf=" + uf + '}';
     }
-    
-    
-    
-    
-    
 }
