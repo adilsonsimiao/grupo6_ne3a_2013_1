@@ -4,16 +4,29 @@
  */
 package entidade;
 
+import java.io.Serializable;
 import java.util.Calendar;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author fabio
  */
-public class Devolucao {
+
+@Entity
+@Table(name = "Livro")
+public class Devolucao implements Serializable {
+    @Id
+    @GeneratedValue
     private int id;
-    private int idEmprestimo;
+    @ManyToMany
     private Emprestimo emprestimo;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataDevolução;
     
     public Devolucao(){
@@ -28,13 +41,7 @@ public class Devolucao {
         this.id = id;
     }
 
-    public int getIdEmprestimo() {
-        return idEmprestimo;
-    }
-
-    public void setIdEmprestimo(int idEmprestimo) {
-        this.idEmprestimo = idEmprestimo;
-    }
+  
 
     public Emprestimo getEmprestimo() {
         return emprestimo;
@@ -54,6 +61,6 @@ public class Devolucao {
     
     @Override
     public String toString() {
-        return "Devolução{" + ", id=" + id +  ", idEmprestimo=" + idEmprestimo + ", emprestimo=" + emprestimo + ", dataDevolução=" + dataDevolução +  '}';
+        return "Devolução{" + ", id=" + id + ", emprestimo=" + emprestimo + ", dataDevolução=" + dataDevolução +  '}';
     }
 }
