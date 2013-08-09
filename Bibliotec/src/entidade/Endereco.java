@@ -11,8 +11,6 @@ package entidade;
 public class Endereco {
     private String logradouro;
 
-    public Endereco() {
-    }
     private String complemento;
     private String numero;
     private String bairro;
@@ -21,15 +19,10 @@ public class Endereco {
     private String cep;  
     private int id;
     Municipio municipio;
-    private int idMunicipio;
 
-    public int getIdMunicipio() {
-        return idMunicipio;
+    public Endereco() {
     }
-
-    public void setIdMunicipio(int idMunicipio) {
-        this.idMunicipio = idMunicipio;
-    }
+    
     public int getId() {
         return id;
         
