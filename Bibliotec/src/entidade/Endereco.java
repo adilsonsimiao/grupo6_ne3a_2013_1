@@ -4,20 +4,35 @@
  */
 package entidade;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author adilson
  */
-public class Endereco {
-    private String logradouro;
 
-    private String complemento;
-    private String numero;
-    private String bairro;
-    
-    private String uf;
-    private String cep;  
+@Entity
+@Table(name = "Endereco")
+public class Endereco {
+    @Id
+    @GeneratedValue
     private int id;
+    @Column (name = "logradouro")
+    private String logradouro;
+    @Column (name = "complemento")
+    private String complemento;
+    @Column (name = "numero")
+    private String numero;
+    @Column (name = "bairro")
+    private String bairro;
+    @Column (name = "cep")
+    private String cep;  
+    @OneToOne
     Municipio municipio;
 
     public Endereco() {
@@ -76,13 +91,7 @@ public class Endereco {
 
    
 
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
+   
 
     public String getCep() {
         return cep;
@@ -94,7 +103,7 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco{" + "logradouro=" + logradouro + ", complemento=" + complemento + ", numero=" + numero + ", bairro=" + bairro + ", uf=" + uf + ", cep=" + cep + ", id=" + id + ", municipio=" + municipio + '}';
+        return "Endereco{" + "logradouro=" + logradouro + ", complemento=" + complemento + ", numero=" + numero + ", bairro=" + bairro + ", cep=" + cep + ", id=" + id + ", municipio=" + municipio + '}';
     }
 
     
