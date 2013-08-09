@@ -23,7 +23,6 @@ public class DaoLivro implements Dao<Livro>{
     
     private static Livro converteRsParaLivro(ResultSet rs) throws SQLException {
         Livro l = new Livro();
-        l.setAutor(rs.getString("autor"));
         l.setId(rs.getInt("Id"));
         l.setNomeLivro(rs.getString("nomeLivro"));
         l.setQuantidade(rs.getInt("quantidade"));
@@ -114,7 +113,6 @@ public class DaoLivro implements Dao<Livro>{
         PreparedStatement pst =  ConnectionFactory.prepareConnection().prepareStatement("INSERT INTO Livro (id, nomeLivro, autor,quantidade) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         pst.setInt(1, l.getId());
         pst.setString(2, l.getNomeLivro());
-        pst.setString(3, l.getAutor());
         pst.setInt(4, l.getQuantidade());
         pst.execute();
 
@@ -126,7 +124,6 @@ public class DaoLivro implements Dao<Livro>{
         PreparedStatement pst =  ConnectionFactory.prepareConnection().prepareStatement("UPDATE Livro SET nomeLivro = ?, autor = ?, quantidade = ? WHERE id = ?");
         pst.setInt(1, l.getId());
         pst.setString(2, l.getNomeLivro());
-        pst.setString(3, l.getAutor());
         pst.setInt(4, l.getQuantidade());
         pst.execute();
     }

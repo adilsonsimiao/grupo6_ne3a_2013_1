@@ -130,7 +130,6 @@ public class DaoEndereco implements Dao<Endereco> {
         pst.setString(3, end.getBairro());
         pst.setString(4, end.getNumero());
         pst.setString(5, end.getCep());
-        pst.setInt(6, end.getIdMunicipio());
 
 
 
@@ -154,7 +153,6 @@ public class DaoEndereco implements Dao<Endereco> {
         pst.setString(3, end.getNumero());
         pst.setString(4, end.getBairro());
         pst.setString(5, end.getCep());
-        pst.setString(6, end.getUf());
         pst.setString(7, municipio.getNome());
 
 
