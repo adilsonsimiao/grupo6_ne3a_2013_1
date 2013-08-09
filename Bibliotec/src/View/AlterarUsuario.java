@@ -308,7 +308,6 @@ public class AlterarUsuario extends javax.swing.JFrame {
         endereco.setComplemento(jTFComplemento.getText());
         endereco.setNumero(jTFNumero.getText());
         endereco.setMunicipio(new Municipio (jTFCidade.getItemAt(jTFCidade.getSelectedIndex()).toString()));
-        endereco.setUf(jCombUF.getItemAt(jCombUF.getSelectedIndex()).toString());
         endereco.setCep(jTCep.getText());  
         
         try {

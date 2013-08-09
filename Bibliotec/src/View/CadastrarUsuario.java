@@ -340,7 +340,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         endereco.setBairro(jTFBairro.getText());
         endereco.setNumero(jTFNumero.getText());
         endereco.setCep(jTFCep.getText());
-        endereco.setIdMunicipio(muni.getId());
         
             daoEnd.persist(endereco);
           
