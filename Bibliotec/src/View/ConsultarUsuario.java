@@ -45,7 +45,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
         BGConsulta = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTAreaDadosConsulta = new javax.swing.JTable();
         jRBNome = new javax.swing.JRadioButton();
@@ -61,25 +61,25 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 153));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Consulta de usuário");
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/1cadastro.png"))); // NOI18N
+        jLabel1.setText("Alterar Usuário");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 622, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, -1));
 
         jTAreaDadosConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,17 +95,17 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jTAreaDadosConsulta.setToolTipText("");
         jScrollPane1.setViewportView(jTAreaDadosConsulta);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 201, 598, 264));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 598, 264));
 
         BGConsulta.add(jRBNome);
         jRBNome.setSelected(true);
         jRBNome.setText("Consulta por nome");
-        getContentPane().add(jRBNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 112, -1, -1));
+        getContentPane().add(jRBNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         BGConsulta.add(jRBCpf);
         jRBCpf.setText("Consulta por cpf");
-        getContentPane().add(jRBCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 112, -1, -1));
-        getContentPane().add(jTFCampoConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 156, 410, 25));
+        getContentPane().add(jRBCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, -1, -1));
+        getContentPane().add(jTFCampoConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 410, 25));
 
         jBConsultar.setText("Consultar");
         jBConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +113,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 jBConsultarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 154, 170, -1));
+        getContentPane().add(jBConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 170, -1));
 
         jBFechar.setText("Fechar");
         jBFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +121,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 jBFecharActionPerformed(evt);
             }
         });
-        getContentPane().add(jBFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 477, -1, -1));
+        getContentPane().add(jBFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, -1, -1));
 
         jButton1.setText("Excluir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +129,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 477, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, -1, -1));
 
         jButton2.setText("Alterar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +137,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 477, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,7 +259,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jBFechar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRBCpf;
     private javax.swing.JRadioButton jRBNome;
