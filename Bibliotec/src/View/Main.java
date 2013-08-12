@@ -34,29 +34,31 @@ public class Main extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jBEmprestimo = new javax.swing.JButton();
         jBCriarSql = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jBAlterar = new javax.swing.JButton();
         jBDevolucao = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        jMUsuario = new javax.swing.JMenuItem();
+        jMLivro = new javax.swing.JMenuItem();
+        jMEditora = new javax.swing.JMenuItem();
+        jMFuncionario = new javax.swing.JMenuItem();
+        jMAutor = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
+        jMConsultaUsuario = new javax.swing.JMenuItem();
+        jMConsultaLivro = new javax.swing.JMenuItem();
+        jMConsultaEditora = new javax.swing.JMenuItem();
+        jMConsultaFuncionário = new javax.swing.JMenuItem();
+        jMConsultaAutor = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
+        jMAlterarUsuario = new javax.swing.JMenuItem();
+        jMAlterarLivro = new javax.swing.JMenuItem();
+        jMAlterarEditora = new javax.swing.JMenuItem();
+        jMAlterarFuncionario = new javax.swing.JMenuItem();
+        jMAlterarAutor = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
+        jMEmprestimos = new javax.swing.JMenuItem();
+        jMDevolução = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem19 = new javax.swing.JMenuItem();
         jMenuItem20 = new javax.swing.JMenuItem();
@@ -68,7 +70,7 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 100)); // NOI18N
         jLabel1.setText("Bibliotec");
 
-        jPanel2.setBackground(new java.awt.Color(9, 38, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 51, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -156,15 +158,15 @@ public class Main extends javax.swing.JFrame {
         jBCriarSql.setBounds(800, 20, 160, 50);
         jLayeredPane1.add(jBCriarSql, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/edit1.png"))); // NOI18N
-        jButton6.setText("Alterar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jBAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/edit1.png"))); // NOI18N
+        jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jBAlterarActionPerformed(evt);
             }
         });
-        jButton6.setBounds(320, 20, 130, 50);
-        jLayeredPane1.add(jButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jBAlterar.setBounds(320, 20, 130, 50);
+        jLayeredPane1.add(jBAlterar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jBDevolucao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Books-icon.png"))); // NOI18N
         jBDevolucao.setText("Devoluções");
@@ -176,162 +178,175 @@ public class Main extends javax.swing.JFrame {
         jBDevolucao.setBounds(630, 20, 160, 50);
         jLayeredPane1.add(jBDevolucao, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jMenuBar1.setBackground(new java.awt.Color(8, 61, 245));
+        jLabel2.setText("Usuário");
+        jLabel2.setBounds(190, 0, 60, 15);
+        jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jMenuBar1.setBackground(new java.awt.Color(0, 51, 153));
 
         jMenu1.setText("Cadastro");
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setText("Usuário");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMUsuario.setText("Usuário");
+        jMUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMUsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(jMUsuario);
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem5.setText("Livro");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jMLivro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMLivro.setText("Livro");
+        jMLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jMLivroActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem5);
+        jMenu1.add(jMLivro);
 
-        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem7.setText("Editora");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        jMEditora.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMEditora.setText("Editora");
+        jMEditora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                jMEditoraActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem7);
+        jMenu1.add(jMEditora);
 
-        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem8.setText("Funcionário");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        jMFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMFuncionario.setText("Funcionário");
+        jMFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                jMFuncionarioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem8);
+        jMenu1.add(jMFuncionario);
 
-        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem10.setText("Auto");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+        jMAutor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMAutor.setText("Autor");
+        jMAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
+                jMAutorActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem10);
+        jMenu1.add(jMAutor);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Consulta");
 
-        jMenuItem3.setText("Usuário");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMConsultaUsuario.setText("Usuário");
+        jMConsultaUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMConsultaUsuarioActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        jMenu2.add(jMConsultaUsuario);
 
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem9.setText("Livro");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        jMConsultaLivro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMConsultaLivro.setText("Livro");
+        jMConsultaLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                jMConsultaLivroActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem9);
+        jMenu2.add(jMConsultaLivro);
 
-        jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem11.setText("Editora");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        jMConsultaEditora.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMConsultaEditora.setText("Editora");
+        jMConsultaEditora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                jMConsultaEditoraActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem11);
+        jMenu2.add(jMConsultaEditora);
 
-        jMenuItem12.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem12.setText("Funcionário");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+        jMConsultaFuncionário.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMConsultaFuncionário.setText("Funcionário");
+        jMConsultaFuncionário.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
+                jMConsultaFuncionárioActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem12);
+        jMenu2.add(jMConsultaFuncionário);
 
-        jMenuItem14.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem14.setText("Autor");
-        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+        jMConsultaAutor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMConsultaAutor.setText("Autor");
+        jMConsultaAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem14ActionPerformed(evt);
+                jMConsultaAutorActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem14);
+        jMenu2.add(jMConsultaAutor);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Alterar");
 
-        jMenuItem4.setText("Usuário");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jMAlterarUsuario.setText("Usuário");
+        jMAlterarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMAlterarUsuarioActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem4);
+        jMenu3.add(jMAlterarUsuario);
 
-        jMenuItem13.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem13.setText("Livro");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+        jMAlterarLivro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMAlterarLivro.setText("Livro");
+        jMAlterarLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
+                jMAlterarLivroActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem13);
+        jMenu3.add(jMAlterarLivro);
 
-        jMenuItem15.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem15.setText("Editora");
-        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+        jMAlterarEditora.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMAlterarEditora.setText("Editora");
+        jMAlterarEditora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem15ActionPerformed(evt);
+                jMAlterarEditoraActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem15);
+        jMenu3.add(jMAlterarEditora);
 
-        jMenuItem16.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem16.setText("Funcionário");
-        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+        jMAlterarFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMAlterarFuncionario.setText("Funcionário");
+        jMAlterarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem16ActionPerformed(evt);
+                jMAlterarFuncionarioActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem16);
+        jMenu3.add(jMAlterarFuncionario);
+
+        jMAlterarAutor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMAlterarAutor.setText("Autor");
+        jMAlterarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAlterarAutorActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMAlterarAutor);
 
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Empréstimos");
 
-        jMenuItem17.setText("Emprestimos");
-        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+        jMEmprestimos.setText("Emprestimos");
+        jMEmprestimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem17ActionPerformed(evt);
+                jMEmprestimosActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem17);
+        jMenu4.add(jMEmprestimos);
 
-        jMenuItem18.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem18.setText("Devoluções");
-        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+        jMDevolução.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMDevolução.setText("Devoluções");
+        jMDevolução.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem18ActionPerformed(evt);
+                jMDevoluçãoActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem18);
+        jMenu4.add(jMDevolução);
 
         jMenuBar1.add(jMenu4);
 
@@ -377,68 +392,80 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMUsuarioActionPerformed
         CadastrarUsuario cad = new CadastrarUsuario();
         cad.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMUsuarioActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMConsultaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMConsultaUsuarioActionPerformed
         ConsultarUsuario consult = new ConsultarUsuario();
         consult.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMConsultaUsuarioActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMAlterarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarUsuarioActionPerformed
         AlterarUsuario alt = new AlterarUsuario();
         alt.setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jMAlterarUsuarioActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    private void jMLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMLivroActionPerformed
+        CadastroLivros cadastrarLivro = new CadastroLivros();
+        cadastrarLivro.setVisible(true);
+    }//GEN-LAST:event_jMLivroActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    private void jMEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMEditoraActionPerformed
+        CadastrarEditora cadastrarEditora = new CadastrarEditora();
+        cadastrarEditora.setVisible(true);
+    }//GEN-LAST:event_jMEditoraActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    private void jMFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFuncionarioActionPerformed
+        CadastrarFuncionario cadastrarFuncionario = new CadastrarFuncionario();
+        cadastrarFuncionario.setVisible(true);
+    }//GEN-LAST:event_jMFuncionarioActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    private void jMConsultaLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMConsultaLivroActionPerformed
+        ConsultaLivro consultaLivro = new ConsultaLivro();
+        consultaLivro.setVisible(true);
+    }//GEN-LAST:event_jMConsultaLivroActionPerformed
 
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
+    private void jMConsultaEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMConsultaEditoraActionPerformed
+        ConsultaEditora consultaEditora = new ConsultaEditora();
+        consultaEditora.setVisible(true);
+    }//GEN-LAST:event_jMConsultaEditoraActionPerformed
 
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
+    private void jMConsultaFuncionárioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMConsultaFuncionárioActionPerformed
+        ConsultaFuncionario consultaFuncionario = new ConsultaFuncionario();
+        consultaFuncionario.setVisible(true);
+    }//GEN-LAST:event_jMConsultaFuncionárioActionPerformed
 
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
+    private void jMAlterarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarLivroActionPerformed
+        AlterarLivro alterarLivro = new AlterarLivro();
+        alterarLivro.setVisible(true);
+        
+    }//GEN-LAST:event_jMAlterarLivroActionPerformed
 
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem15ActionPerformed
+    private void jMAlterarEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarEditoraActionPerformed
+        AlterarEditora alterarEditora = new AlterarEditora();
+        alterarEditora.setVisible(true);
+    }//GEN-LAST:event_jMAlterarEditoraActionPerformed
 
-    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem16ActionPerformed
+    private void jMAlterarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarFuncionarioActionPerformed
+        AlterarFuncionario alterarFuncionario = new AlterarFuncionario();
+        alterarFuncionario.setVisible(true);
+    }//GEN-LAST:event_jMAlterarFuncionarioActionPerformed
 
-    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem17ActionPerformed
+    private void jMEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMEmprestimosActionPerformed
+        EmprestarLivro emprestarLivro = new EmprestarLivro();
+        emprestarLivro.setVisible(true);
+    }//GEN-LAST:event_jMEmprestimosActionPerformed
 
-    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem18ActionPerformed
+    private void jMDevoluçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMDevoluçãoActionPerformed
+        DevolverLivro devolverLivro = new DevolverLivro();
+        devolverLivro.setVisible(true);
+    }//GEN-LAST:event_jMDevoluçãoActionPerformed
 
     private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
         // TODO add your handling code here:
@@ -449,12 +476,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem20ActionPerformed
 
     private void jBDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDevolucaoActionPerformed
-        // TODO add your handling code here:
+       DevolverLivro devolucao = new DevolverLivro();
+       devolucao.setVisible(true);
     }//GEN-LAST:event_jBDevolucaoActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+        AlterarUsuario alterarUsuario = new AlterarUsuario();
+        alterarUsuario.setVisible(true);
+    }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jBCriarSqlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarSqlActionPerformed
         try {
@@ -512,13 +541,20 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
+    private void jMAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAutorActionPerformed
+        CadastrarAutor cadastrarAutor = new CadastrarAutor();
+        cadastrarAutor.setVisible(true);
+    }//GEN-LAST:event_jMAutorActionPerformed
 
-    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem14ActionPerformed
+    private void jMConsultaAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMConsultaAutorActionPerformed
+        ConsultaAutor consultaAutor = new ConsultaAutor();
+        consultaAutor.setVisible(true);
+    }//GEN-LAST:event_jMConsultaAutorActionPerformed
+
+    private void jMAlterarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarAutorActionPerformed
+        AlterarAutor alterarAutor = new AlterarAutor();
+        alterarAutor.setVisible(true);
+    }//GEN-LAST:event_jMAlterarAutorActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -530,15 +566,33 @@ public class Main extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBCriarSql;
     private javax.swing.JButton jBDevolucao;
     private javax.swing.JButton jBEmprestimo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JMenuItem jMAlterarAutor;
+    private javax.swing.JMenuItem jMAlterarEditora;
+    private javax.swing.JMenuItem jMAlterarFuncionario;
+    private javax.swing.JMenuItem jMAlterarLivro;
+    private javax.swing.JMenuItem jMAlterarUsuario;
+    private javax.swing.JMenuItem jMAutor;
+    private javax.swing.JMenuItem jMConsultaAutor;
+    private javax.swing.JMenuItem jMConsultaEditora;
+    private javax.swing.JMenuItem jMConsultaFuncionário;
+    private javax.swing.JMenuItem jMConsultaLivro;
+    private javax.swing.JMenuItem jMConsultaUsuario;
+    private javax.swing.JMenuItem jMDevolução;
+    private javax.swing.JMenuItem jMEditora;
+    private javax.swing.JMenuItem jMEmprestimos;
+    private javax.swing.JMenuItem jMFuncionario;
+    private javax.swing.JMenuItem jMLivro;
+    private javax.swing.JMenuItem jMUsuario;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -546,24 +600,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
