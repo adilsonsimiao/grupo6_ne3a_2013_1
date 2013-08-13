@@ -401,7 +401,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jMLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMLivroActionPerformed
-        CadastroLivros cadastrarLivro = new CadastroLivros();
+        CadastrarLivros cadastrarLivro = new CadastrarLivros();
         cadastrarLivro.setVisible(true);
     }//GEN-LAST:event_jMLivroActionPerformed
 
@@ -514,13 +514,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jBEmprestimoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ConsultarUsuario consult = new ConsultarUsuario();
-        consult.setVisible(true);
+        OpcoesConsultar opcoesConsultar = new OpcoesConsultar();
+        opcoesConsultar.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CadastrarUsuario cad = new CadastrarUsuario();
-        cad.setVisible(true);
+        OpcoesCadastrar opcoesCadastrar = new OpcoesCadastrar();
+        opcoesCadastrar.setVisible(true);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
