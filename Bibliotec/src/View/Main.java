@@ -35,7 +35,6 @@ public class Main extends javax.swing.JFrame {
         jBEmprestimo = new javax.swing.JButton();
         jBCriarSql = new javax.swing.JButton();
         jBDevolucao = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMUsuario = new javax.swing.JMenuItem();
@@ -166,10 +165,6 @@ public class Main extends javax.swing.JFrame {
         });
         jBDevolucao.setBounds(490, 20, 160, 50);
         jLayeredPane1.add(jBDevolucao, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jLabel2.setText("Usuário");
-        jLabel2.setBounds(190, 0, 60, 15);
-        jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jMenuBar1.setBackground(new java.awt.Color(0, 51, 153));
 
@@ -557,7 +552,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenuItem jMAlterarAutor;
     private javax.swing.JMenuItem jMAlterarEditora;
