@@ -34,7 +34,6 @@ public class Main extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jBEmprestimo = new javax.swing.JButton();
         jBCriarSql = new javax.swing.JButton();
-        jBAlterar = new javax.swing.JButton();
         jBDevolucao = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -99,7 +98,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(264, 264, 264)
                 .addComponent(jLabel1)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
@@ -145,7 +144,7 @@ public class Main extends javax.swing.JFrame {
                 jBEmprestimoActionPerformed(evt);
             }
         });
-        jBEmprestimo.setBounds(460, 20, 161, 50);
+        jBEmprestimo.setBounds(320, 20, 161, 50);
         jLayeredPane1.add(jBEmprestimo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jBCriarSql.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Sql-runner-icon.png"))); // NOI18N
@@ -155,18 +154,8 @@ public class Main extends javax.swing.JFrame {
                 jBCriarSqlActionPerformed(evt);
             }
         });
-        jBCriarSql.setBounds(800, 20, 160, 50);
+        jBCriarSql.setBounds(660, 20, 160, 50);
         jLayeredPane1.add(jBCriarSql, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jBAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/edit1.png"))); // NOI18N
-        jBAlterar.setText("Alterar");
-        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAlterarActionPerformed(evt);
-            }
-        });
-        jBAlterar.setBounds(320, 20, 130, 50);
-        jLayeredPane1.add(jBAlterar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jBDevolucao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Books-icon.png"))); // NOI18N
         jBDevolucao.setText("Devoluções");
@@ -175,7 +164,7 @@ public class Main extends javax.swing.JFrame {
                 jBDevolucaoActionPerformed(evt);
             }
         });
-        jBDevolucao.setBounds(630, 20, 160, 50);
+        jBDevolucao.setBounds(490, 20, 160, 50);
         jLayeredPane1.add(jBDevolucao, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setText("Usuário");
@@ -480,11 +469,6 @@ public class Main extends javax.swing.JFrame {
        devolucao.setVisible(true);
     }//GEN-LAST:event_jBDevolucaoActionPerformed
 
-    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
-        AlterarUsuario alterarUsuario = new AlterarUsuario();
-        alterarUsuario.setVisible(true);
-    }//GEN-LAST:event_jBAlterarActionPerformed
-
     private void jBCriarSqlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarSqlActionPerformed
         try {
             
@@ -566,7 +550,6 @@ public class Main extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBCriarSql;
     private javax.swing.JButton jBDevolucao;
     private javax.swing.JButton jBEmprestimo;
