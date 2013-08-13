@@ -99,7 +99,7 @@ public class ConsultaEditora extends javax.swing.JFrame {
             }
         });
 
-        jBFechar.setText("Fechar");
+        jBFechar.setText("Cancelar");
         jBFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBFecharActionPerformed(evt);
@@ -143,7 +143,7 @@ public class ConsultaEditora extends javax.swing.JFrame {
                         .addComponent(jRBNome)
                         .addGap(17, 17, 17)
                         .addComponent(jRBCpf)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

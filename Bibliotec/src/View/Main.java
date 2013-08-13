@@ -118,6 +118,7 @@ public class Main extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         jButton1.setText("Cadastrar");
+        jButton1.setToolTipText("opcões de cadastros");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -504,8 +505,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCriarSqlActionPerformed
 
     private void jBEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEmprestimoActionPerformed
-        AlterarUsuario alt = new AlterarUsuario();
-        alt.setVisible(true);
+        EmprestarLivro emprestarLivro = new EmprestarLivro();
+        emprestarLivro.setVisible(true);
     }//GEN-LAST:event_jBEmprestimoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -115,7 +115,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         });
         getContentPane().add(jBConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 170, -1));
 
-        jBFechar.setText("Fechar");
+        jBFechar.setText("Cancelar");
         jBFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBFecharActionPerformed(evt);

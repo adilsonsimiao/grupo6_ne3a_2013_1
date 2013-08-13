@@ -75,7 +75,7 @@ public class AlterarEditora extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, Short.MAX_VALUE)
         );
 
-        jBFechar.setText("Fechar");
+        jBFechar.setText("Cancelar");
         jBFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBFecharActionPerformed(evt);
