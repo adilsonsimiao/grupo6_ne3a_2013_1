@@ -8,22 +8,20 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author adilson
  */
 @Entity
-@Table(name = "Municipio")
 public class Municipio {
 
     @Id
     @GeneratedValue
     private int id;
-    @Column (name = "nome")
+    @Column (length = 200)
     private String nome;
-    @Column (name = "uf")
+    @Column (length = 2)
     private String uf;
 
     public Municipio(String nome) {
