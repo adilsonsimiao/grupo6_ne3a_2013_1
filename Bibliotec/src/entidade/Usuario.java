@@ -8,10 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 
 /**
@@ -20,29 +18,27 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "USUARIO")
 public class Usuario implements Serializable {
     
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="id", nullable = false)
+    @GeneratedValue
     private int id;
    
    
-   @Column(name ="NOME", nullable = false)  
+   @Column(length = 200)  
     private String nome;
    
-   @Column(name ="CPF", nullable = false)
+   @Column(length = 11)
     private String cpf;
 
     @OneToOne(cascade = CascadeType.ALL)   
     private Endereco endereco;
    
-    @Column(name ="TELEFONE", nullable = false)
+    @Column(length = 9)
     private String telefone;
     
-    @Column(name ="RG", nullable = false)
+    @Column(length = 9)
     private String rg;
 
     public Usuario() {
