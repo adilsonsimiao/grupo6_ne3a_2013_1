@@ -4,12 +4,12 @@
  */
 package entidade;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 /**
  *
@@ -17,7 +17,6 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "Endereco")
 public class Editora {
     @Id
     @GeneratedValue
@@ -27,7 +26,7 @@ public class Editora {
     @Column (name = "email")
     private String email;
     
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
    
     public Editora(){
