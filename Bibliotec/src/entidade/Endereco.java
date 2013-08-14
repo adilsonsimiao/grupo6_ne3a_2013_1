@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 /**
  *
@@ -17,20 +16,19 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "Endereco")
 public class Endereco {
     @Id
     @GeneratedValue
     private int id;
-    @Column (name = "logradouro")
+    @Column (length = 200)
     private String logradouro;
-    @Column (name = "complemento")
+    @Column (length = 20)
     private String complemento;
-    @Column (name = "numero")
+    @Column (length = 5)
     private String numero;
-    @Column (name = "bairro")
+    @Column (length = 100)
     private String bairro;
-    @Column (name = "cep")
+    @Column (length = 8)
     private String cep;  
     @OneToOne
     Municipio municipio;
