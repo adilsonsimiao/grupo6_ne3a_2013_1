@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -19,11 +18,11 @@ import javax.persistence.Temporal;
  */
 
 @Entity
-@Table(name = "Livro")
 public class Devolucao implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+    
     @ManyToMany
     private Emprestimo emprestimo;
     @Temporal(javax.persistence.TemporalType.DATE)
