@@ -4,29 +4,35 @@
  */
 package entidade;
 
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.ManyToMany;
 
 /**
  *
  * @author a1294016
  */
 @Entity
-@Table(name = "Livro")
 public class Livro {
 
     @Id
     @GeneratedValue
     private int id;
-    @Column(name = "nomeLivro")
+    @Column(length = 200)
     private String nomeLivro;
-    @OneToOne
-    private Autor Autor;
-    @Column(name = "quantidade")
+    @ManyToMany(mappedBy = "livros")
+    private Set<Autor> autores;
+
+    public Set<Autor> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(Set<Autor> autores) {
+        this.autores = autores;
+    }
     private int quantidade;
 
     public int getId() {
@@ -45,13 +51,7 @@ public class Livro {
         this.nomeLivro = nomeLivro;
     }
 
-    public Autor getAutor() {
-        return Autor;
-    }
-
-    public void setAutor(Autor Autor) {
-        this.Autor = Autor;
-    }
+  
 
     public int getQuantidade() {
         return quantidade;
@@ -63,6 +63,6 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "livro{" + "id=" + id + ", nomeLivro=" + nomeLivro + ", autor" + Autor + ", quantidade" + quantidade + "}";
+        return "livro{" + "id=" + id + ", nomeLivro=" + nomeLivro + ", autor" + autores + ", quantidade" + quantidade + "}";
     }
 }
