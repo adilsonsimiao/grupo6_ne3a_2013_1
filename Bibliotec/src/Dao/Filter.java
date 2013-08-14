@@ -8,7 +8,7 @@ package Dao;
  *
  * @author fabio
  */
-class Filter {
+public class Filter {
     private String attribute;
     private Operator operator;
     private Object value;
