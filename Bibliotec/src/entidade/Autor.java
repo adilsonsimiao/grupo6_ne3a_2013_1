@@ -4,30 +4,40 @@
  */
 package entidade;
 
+import java.util.List;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.ManyToMany;
 
 /**
  *
  * @author fabio
  */
 @Entity
-@Table(name = "Autor")  
 public class Autor {
     @Id
     @GeneratedValue
     private int id;
-    @Column(name = "Nome")
+    @Column(length = 200)
     private String Nome;
-    @Column(name = "ISBN")
+    @Column(length = 20)
     private String ISBN;
-    @OneToMany
-    private Livro livro;
+    
+    @ManyToMany
+    
+    private Set<Livro> livros;
+
+    public Set<Livro> getLivros() {
+        return livros;
+    }
+
+    public void setLivros(Set<Livro> livros) {
+        this.livros = livros;
+    }
+
     public Autor(){
         
     }
