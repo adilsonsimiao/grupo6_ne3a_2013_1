@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -19,7 +18,6 @@ import javax.persistence.Temporal;
  * @author fabio
  */
 @Entity
-@Table(name = "Livro")
 public class Emprestimo implements Serializable {
     @Id
     @GeneratedValue
@@ -29,9 +27,9 @@ public class Emprestimo implements Serializable {
     @ManyToOne
     private Livro livro;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataEmprestimo;
+    private Calendar dataDoEmprestimo;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataDevolucao;
+    private Calendar dataPrevistaDevolucao;
     
     public Emprestimo(){
         
@@ -61,22 +59,22 @@ public class Emprestimo implements Serializable {
     }
 
     public Calendar getDataEmprestimo() {
-        return dataEmprestimo;
+        return dataDoEmprestimo;
     }
 
     public void setDataEmprestimo(Calendar dataEmprestimo) {
-        this.dataEmprestimo = dataEmprestimo;
+        this.dataDoEmprestimo = dataEmprestimo;
     }
 
     public Calendar getDataDevolucao() {
-        return dataDevolucao;
+        return dataPrevistaDevolucao;
     }
 
     public void setDataDevolucao(Calendar dataDevolucao) {
-        this.dataDevolucao = dataDevolucao;
+        this.dataPrevistaDevolucao = dataDevolucao;
     }
     @Override
     public String toString() {
-        return "Emprestimo{" + "livro=" + livro + ", id=" + id + ", usuario=" + usuario + ", dataEmprestimo=" + dataEmprestimo + ", dataDevolução=" + dataDevolucao + '}';
+        return "Emprestimo{" + "livro=" + livro + ", id=" + id + ", usuario=" + usuario + ", dataEmprestimo=" + dataDoEmprestimo + ", dataDevolução=" + dataPrevistaDevolucao + '}';
     }
 }
