@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dao;
+package web;
 
 /**
  *
  * @author fabio
  */
-public class DaoAutor {
+public class HTTPServlet {
     
 }

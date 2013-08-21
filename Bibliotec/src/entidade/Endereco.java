@@ -4,6 +4,7 @@
  */
 package entidade;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,17 +21,23 @@ public class Endereco {
     @Id
     @GeneratedValue
     private int id;
+    
     @Column (length = 200)
     private String logradouro;
+    
     @Column (length = 20)
     private String complemento;
+    
     @Column (length = 5)
     private String numero;
+    
     @Column (length = 100)
     private String bairro;
-    @Column (length = 8)
+    
+    @Column (length = 9)
     private String cep;  
-    @OneToOne
+    
+    @OneToOne(cascade = CascadeType.PERSIST)
     Municipio municipio;
 
     public Endereco() {
@@ -87,10 +94,6 @@ public class Endereco {
         this.bairro = bairro;
     }
 
-   
-
-   
-
     public String getCep() {
         return cep;
     }
@@ -103,6 +106,8 @@ public class Endereco {
     public String toString() {
         return "Endereco{" + "logradouro=" + logradouro + ", complemento=" + complemento + ", numero=" + numero + ", bairro=" + bairro + ", cep=" + cep + ", id=" + id + ", municipio=" + municipio + '}';
     }
+
+    
 
     
     

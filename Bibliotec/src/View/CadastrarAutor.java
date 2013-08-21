@@ -4,6 +4,10 @@
  */
 package View;
 
+import entidade.Autor;
+import hibernate.HibernateDao;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author fabio
@@ -14,6 +18,7 @@ public class CadastrarAutor extends javax.swing.JFrame {
      * Creates new form CadastrarAutor
      */
     public CadastrarAutor() {
+        setTitle("Cadastrar Autor");
         initComponents();
     }
 
@@ -74,6 +79,11 @@ public class CadastrarAutor extends javax.swing.JFrame {
         jLabel2.setText("ISBN:");
 
         jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +143,25 @@ public class CadastrarAutor extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            Autor autor = new Autor();
+            
+            autor.setNome(jTFNomeAutor.getText());
+            autor.setISBN(jTFIsbn.getText());
+            
+            
+            
+            
+            new HibernateDao().persist(autor);
+
+            JOptionPane.showMessageDialog(null, " Cadastro realizada com sucesso!!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, " Não foi possivel cadastrar!!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

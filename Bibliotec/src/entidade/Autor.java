@@ -4,8 +4,9 @@
  */
 package entidade;
 
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,9 +27,8 @@ public class Autor {
     @Column(length = 20)
     private String ISBN;
     
-    @ManyToMany
-    
-    private Set<Livro> livros;
+    @ManyToMany(mappedBy = "autores", cascade = CascadeType.PERSIST)    
+    private Set<Livro> livros = new HashSet<Livro>();
 
     public Set<Livro> getLivros() {
         return livros;

@@ -27,13 +27,10 @@ public class Main extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jBEmprestimo = new javax.swing.JButton();
-        jBCriarSql = new javax.swing.JButton();
         jBDevolucao = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -68,20 +65,6 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 100)); // NOI18N
         jLabel1.setText("Bibliotec");
 
-        jPanel2.setBackground(new java.awt.Color(0, 51, 153));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 19, Short.MAX_VALUE)
-        );
-
         jButton4.setText("Fechar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,14 +76,15 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(264, 264, 264)
-                .addComponent(jLabel1)
-                .addContainerGap(138, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(264, 264, 264)
+                        .addComponent(jLabel1)
+                        .addGap(0, 242, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -108,10 +92,10 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 159, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4))
         );
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -129,6 +113,7 @@ public class Main extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/consult.png"))); // NOI18N
         jButton2.setText("Consultar");
+        jButton2.setToolTipText("Opções de consulta");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -137,38 +122,22 @@ public class Main extends javax.swing.JFrame {
         jButton2.setBounds(170, 20, 140, 50);
         jLayeredPane1.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jBEmprestimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Books-icon (1).png"))); // NOI18N
-        jBEmprestimo.setText("Empréstimos");
-        jBEmprestimo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBEmprestimoActionPerformed(evt);
-            }
-        });
-        jBEmprestimo.setBounds(320, 20, 161, 50);
-        jLayeredPane1.add(jBEmprestimo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jBCriarSql.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Sql-runner-icon.png"))); // NOI18N
-        jBCriarSql.setText("Criar Banco");
-        jBCriarSql.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCriarSqlActionPerformed(evt);
-            }
-        });
-        jBCriarSql.setBounds(660, 20, 160, 50);
-        jLayeredPane1.add(jBCriarSql, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         jBDevolucao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Books-icon.png"))); // NOI18N
         jBDevolucao.setText("Devoluções");
+        jBDevolucao.setToolTipText("Devolver Livros");
         jBDevolucao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBDevolucaoActionPerformed(evt);
             }
         });
-        jBDevolucao.setBounds(490, 20, 160, 50);
+        jBDevolucao.setBounds(320, 20, 160, 50);
         jLayeredPane1.add(jBDevolucao, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jMenuBar1.setBackground(new java.awt.Color(0, 51, 153));
 
+        jMenu1.setBackground(new java.awt.Color(153, 153, 153));
+        jMenu1.setBorder(null);
+        jMenu1.setForeground(new java.awt.Color(0, 0, 0));
         jMenu1.setText("Cadastro");
 
         jMUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
@@ -218,6 +187,7 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setForeground(new java.awt.Color(0, 0, 0));
         jMenu2.setText("Consulta");
 
         jMConsultaUsuario.setText("Usuário");
@@ -266,6 +236,7 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setForeground(new java.awt.Color(0, 0, 0));
         jMenu3.setText("Alterar");
 
         jMAlterarUsuario.setText("Usuário");
@@ -314,6 +285,7 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setForeground(new java.awt.Color(0, 0, 0));
         jMenu4.setText("Empréstimos");
 
         jMEmprestimos.setText("Emprestimos");
@@ -335,6 +307,7 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setForeground(new java.awt.Color(0, 0, 0));
         jMenu5.setText("Ajuda");
 
         jMenuItem19.setText("Conteúdo de Ajuda");
@@ -465,50 +438,6 @@ public class Main extends javax.swing.JFrame {
        devolucao.setVisible(true);
     }//GEN-LAST:event_jBDevolucaoActionPerformed
 
-    private void jBCriarSqlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarSqlActionPerformed
-        try {
-            
-            PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("DROP DATABASE IF EXISTS bibliotec;\\n\"\n"
-                    + "CREATE DATABASE IF NOT EXISTS bibliotec;\\n\"\n"
-                    + "USE bibliotec;"
-                    +"DROP TABLE IF EXISTS Cidade"
-                    + "CREATE TABLE Cidade(\n"
-                    + "		id int PRIMARY KEY NOT NULL AUTO_INCREMENT,\n"
-                    + "        nome varchar(100) NOT NULL,\n"
-                    + "        uf char(2) NOT NULL);\n"
-                    +"DROP TABLE IF EXISTS Endereco;\n"
-                    + "CREATE TABLE Endereco\n"
-                    + "		(id INT NOT NULL AUTO_INCREMENT,\n"
-                    + "		numero INT NOT NULL,\n"
-                    + "		complemento VARCHAR(45),\n"
-                    + "		cep VARCHAR(8) NOT NULL,\n"
-                    + "		logradouro VARCHAR(200) NOT NULL,\n"
-                    + "		idCidade INT NOT NULL,\n"
-                    + "		PRIMARY KEY (id),\n"
-                    + "		FOREIGN KEY (idCidade) REFERENCES Cidade(id));"
-                    +"DROP TABLE IF EXISTS Usuario;\n"
-                    + "CREATE TABLE Usuario\n"
-                    + "		(id INT NOT NULL AUTO_INCREMENT,\n"
-                    + "		nome VARCHAR(100) NOT NULL,\n"
-                    + "		cpf VARCHAR(11) UNIQUE NOT NULL,\n"
-                    + "		idEndereco INT NOT NULL,\n"
-                    + "		telefone varchar(11) NOT NULL,\n"
-                    + "		PRIMARY KEY (id),\n"
-                    + "        	FOREIGN KEY (idEndereco) REFERENCES Endereco(id) ON DELETE CASCADE);");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-
-
-
-    }//GEN-LAST:event_jBCriarSqlActionPerformed
-
-    private void jBEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEmprestimoActionPerformed
-        EmprestarLivro emprestarLivro = new EmprestarLivro();
-        emprestarLivro.setVisible(true);
-    }//GEN-LAST:event_jBEmprestimoActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         OpcoesConsultar opcoesConsultar = new OpcoesConsultar();
         opcoesConsultar.setVisible(true);
@@ -546,9 +475,7 @@ public class Main extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBCriarSql;
     private javax.swing.JButton jBDevolucao;
-    private javax.swing.JButton jBEmprestimo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
@@ -581,6 +508,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

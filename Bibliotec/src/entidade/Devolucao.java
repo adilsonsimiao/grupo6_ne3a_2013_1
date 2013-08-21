@@ -23,8 +23,8 @@ public class Devolucao implements Serializable {
     @GeneratedValue
     private int id;
     
-    @ManyToMany
-    private Emprestimo emprestimo;
+//    @ManyToMany
+//    private Emprestimo emprestimo;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataDevolução;
     
@@ -41,14 +41,14 @@ public class Devolucao implements Serializable {
     }
 
   
-
-    public Emprestimo getEmprestimo() {
-        return emprestimo;
-    }
-
-    public void setEmprestimo(Emprestimo emprestimo) {
-        this.emprestimo = emprestimo;
-    }
+//
+//    public Emprestimo getEmprestimo() {
+//        return emprestimo;
+//    }
+//
+//    public void setEmprestimo(Emprestimo emprestimo) {
+//        this.emprestimo = emprestimo;
+//    }
 
     public Calendar getDataDevolução() {
         return dataDevolução;
@@ -60,6 +60,6 @@ public class Devolucao implements Serializable {
     
     @Override
     public String toString() {
-        return "Devolução{" + ", id=" + id + ", emprestimo=" + emprestimo + ", dataDevolução=" + dataDevolução +  '}';
+        return "Devolução{" + ", id=" + id + /*", emprestimo=" + emprestimo + */", dataDevolução=" + dataDevolução +  '}';
     }
 }

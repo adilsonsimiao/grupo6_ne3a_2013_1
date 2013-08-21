@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package entidade;
-import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,25 +11,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-
 /**
  *
- * @author a1294016
+ * @author fabio
  */
-
 @Entity
-public class Usuario implements Serializable {
-    
-    
+public class Funcionario {
     @Id
     @GeneratedValue
     private int id;
-   
-   
-   @Column(length = 200)  
+    @Column(length = 200)  
     private String nome;
    
-   @Column(length = 12)
+   @Column(length = 11)
     private String cpf;
 
     @OneToOne(cascade = CascadeType.PERSIST)   
@@ -43,8 +37,19 @@ public class Usuario implements Serializable {
     
     @Column(length = 9)
     private String rg;
+    
+    @Column(length = 100)
+    private String Funcao;
+    
+    @Column(length = 20)
+    private String pis;
 
-    public Usuario() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -55,46 +60,12 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getCpf() {
         return cpf;
     }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getDDD() {
-        return DDD;
-    }
-
-    public void setDDD(String DDD) {
-        this.DDD = DDD;
-    }
-
-   
-    public String getRg() {
-        return rg;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
     }
 
     public Endereco getEndereco() {
@@ -105,14 +76,49 @@ public class Usuario implements Serializable {
         this.endereco = endereco;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf+ ", telefone=" + telefone  + ", endereco=" + endereco  + ", rg=" + rg + '}';
+    public String getDDD() {
+        return DDD;
     }
 
-    
+    public void setDDD(String DDD) {
+        this.DDD = DDD;
+    }
 
-   
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getFuncao() {
+        return Funcao;
+    }
+
+    public void setFuncao(String Funcao) {
+        this.Funcao = Funcao;
+    }
+
+    public String getPis() {
+        return pis;
+    }
+
+    public void setPis(String pis) {
+        this.pis = pis;
+    }
     
+     @Override
+    public String toString() {
+        return "Funcionario{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + ", rg=" + rg + ", pis="+pis+ ", Funcao="+Funcao+ '}';
+    }
     
 }

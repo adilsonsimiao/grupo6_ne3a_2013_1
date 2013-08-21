@@ -6,16 +6,17 @@ package hibernate;
 
 import Dao.Dao;
 import Dao.Filter;
-import entidade.Autor;
-import entidade.Editora;
-import entidade.Emprestimo;
+import static Dao.Operator.EQUAL;
+import static Dao.Operator.IS_NULL;
+import static Dao.Operator.LIKE;
 import entidade.Endereco;
-import entidade.Livro;
 import entidade.Municipio;
 import entidade.Usuario;
 import java.util.List;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -26,49 +27,117 @@ public class HibernateDao implements Dao<Object> {
     @Override
     public void persist(Object o) throws Exception {
 
-        AnnotationConfiguration cfg = new AnnotationConfiguration();
-        cfg.setProperty("hibernate.dialect", org.hibernate.dialect.MySQL5InnoDBDialect.class.getName());
-        cfg.setProperty("hibernate.show_sql", "true");
-        cfg.setProperty("hibernate.format_sql", "true");
-        cfg.setProperty("hibernate.connection.driver", "com.mysql.jdbc.Driver");
-        cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/aluno");
-        cfg.setProperty("hibernate.connection.user", "aluno");
-        cfg.setProperty("hibernate.connection.password", "aluno");
-        cfg.setProperty("hibernate.connection.autocommit", "true");
+        SessionFactory sessionFactory = HibernateConnection.HibernateConnection().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction().begin();
+        session.persist(o);
+        session.beginTransaction().commit();
 
-        cfg.addAnnotatedClass(Livro.class);
-        cfg.addAnnotatedClass(Autor.class);
-        cfg.addAnnotatedClass(Usuario.class);
-        cfg.addAnnotatedClass(Editora.class);
-        cfg.addAnnotatedClass(Endereco.class);
-        cfg.addAnnotatedClass(Municipio.class);
-        cfg.addAnnotatedClass(Emprestimo.class);
+        session.flush();
+        session.close();
+        sessionFactory.close();
 
-        SchemaExport se = new SchemaExport(cfg);
-
-        se.setOutputFile("Bibliotec.sql");
-        se.execute(true, false, false, true);
 
 
     }
 
     @Override
     public void delete(Object o) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+
+        SessionFactory sessionFactory = HibernateConnection.HibernateConnection().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction().begin();
+        session.delete(o);
+        session.beginTransaction().commit();
+
+        session.flush();
+        session.close();
+        sessionFactory.close();
+
     }
 
     @Override
-    public Object retrieve(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object retrieve(Class tipoObjeto, int id) throws Exception {
+        SessionFactory sessionFactory = HibernateConnection.HibernateConnection().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Object aux = session.createCriteria(tipoObjeto).add(Restrictions.idEq(id)).uniqueResult();
+        session.close();
+        sessionFactory.close();
+
+
+        return aux;
+
     }
 
     @Override
-    public List<Object> list(String whereClause, String orderClause) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Object> list(String campoUnico, Class tipoObjeto, String nome, String whereClause) throws Exception {
+        SessionFactory sessionFactory = HibernateConnection.HibernateConnection().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        List list = null;
+        if (campoUnico.length() > 0) {
+            session.beginTransaction().begin();
+            System.out.println("---");
+            list = session.createSQLQuery("SELECT " +campoUnico+ " FROM "+tipoObjeto.getSimpleName()).list();
+            session.beginTransaction().commit();
+            session.close();
+            sessionFactory.close();
+
+        } else {
+            session.beginTransaction().begin();
+            list = session.createCriteria(tipoObjeto).add(Restrictions.like(whereClause, nome, MatchMode.EXACT)).list();
+            session.beginTransaction().commit();
+            session.close();
+            sessionFactory.close();
+        }
+        return list;
     }
 
     @Override
-    public List<Object> list(Filter... filters) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Object> list(Class classe, Filter... filters) throws Exception {
+        SessionFactory sessionFactory = HibernateConnection.HibernateConnection().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction().commit();
+        List list = null;
+
+        if (filters == null || filters.length == 0) {
+            list = session.createCriteria(classe).add(Restrictions.like(null, classe)).list();
+            return list;
+
+
+        } else {
+            String sql = "SELECT * FROM " + classe.getSimpleName() + " WHERE ";
+            for (Filter f : filters) {
+                System.out.println(f);
+                switch (f.getOperator()) {
+                    case IS_NULL:
+                        list = session.createCriteria(classe).add(Restrictions.like(f.getAttribute(), f.getValue().toString(), MatchMode.EXACT)).list();
+
+                        sql += f.getAttribute() + " IS NULL";
+                        break;
+                    case LIKE:
+                        list = session.createCriteria(classe).add(Restrictions.like(f.getAttribute(), f.getValue().toString(), MatchMode.EXACT)).list();
+                        sql += f.getAttribute() + " LIKE '%" + f.getValue() + "%'";
+                        break;
+                    case EQUAL:
+                        list = session.createCriteria(classe).add(Restrictions.like(f.getAttribute(), f.getValue().toString(), MatchMode.EXACT)).list();
+
+                        sql += f.getAttribute() + "='" + f.getValue() + "'";
+                        break;
+                    default:
+                        throw new RuntimeException("Tipo de operador não suportado:" + f.getOperator());
+                }
+            }
+
+        }
+        session.close();
+
+        return list;
+
+
+
     }
+    
+    
 }

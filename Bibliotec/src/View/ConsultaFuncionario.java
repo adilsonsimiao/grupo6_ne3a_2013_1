@@ -4,17 +4,36 @@
  */
 package View;
 
+import entidade.Funcionario;
+import entidade.Usuario;
+import hibernate.HibernateDao;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author fabio
  */
 public class ConsultaFuncionario extends javax.swing.JFrame {
-
+    private String[] s ;
+    private String[] result;
+    private Funcionario funcionario = new Funcionario();
+    List<Object> listaUsuario = new ArrayList<>();
+    DefaultTableModel tableModel;
     /**
      * Creates new form ConsultaFuncionario
      */
     public ConsultaFuncionario() {
         initComponents();
+        setTitle("Consulta de Funcionário");
+        
+        jTAreaDadosConsulta.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+            "Id ", "Nome", "Cpf", "Telefone"
+        }));
     }
 
     /**
@@ -170,7 +189,56 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
-        
+        tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
+        System.out.println("::>> " + funcionario.getNome());
+        if (jTFCampoConsulta.getText().trim().equals(" ")) {
+            JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
+        }
+
+        try {
+            if (jRBNome.isSelected() == true) {
+                listaUsuario.add(new HibernateDao().list("", funcionario.getClass(), jTFCampoConsulta.getText(), "nome"));
+                int al = listaUsuario.size();
+                s = listaUsuario.toString().split(",");
+                result = new String[4];
+                for (int i = 0; i < al; i++) {
+                    
+                    for (int y = 0; y < 4; y++) {
+                        int a = s[y].indexOf("=");
+                        String s1 = s[y].substring(a, s[y].length());
+                        result[y] = s1.replace("=", "");
+                    }
+                        tableModel.addRow(new Object[]{result[0],result[1],result[2],result[3]});
+                    
+                }
+                
+            }
+            if (jRBCpf.isSelected() == true) {
+                listaUsuario.add(new HibernateDao().list("", funcionario.getClass(), jTFCampoConsulta.getText(), "cpf"));
+                int al = listaUsuario.size();
+                String[] s = listaUsuario.toString().split(",");
+                String[] result = new String[4];
+                for (int i = 0; i < al; i++) {
+                    
+                    for (int y = 0; y < 4; y++) {
+                        int a = s[y].indexOf("=");
+                        String s1 = s[y].substring(a, s[y].length());
+                        result[y] = s1.replace("=", "");
+                    }
+                        tableModel.addRow(new Object[]{result[0],result[1],result[2],result[3]});
+                    
+                }
+
+            }
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Nao foi possivel localizar o cpf " + jTFCampoConsulta.getText());
+        }
+
     }//GEN-LAST:event_jBConsultarActionPerformed
 
     private void jBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecharActionPerformed

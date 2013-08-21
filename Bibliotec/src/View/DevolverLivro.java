@@ -15,6 +15,7 @@ public class DevolverLivro extends javax.swing.JFrame {
      */
     public DevolverLivro() {
         initComponents();
+        setTitle("Devolução de Livros");
     }
 
     /**
