@@ -4,14 +4,11 @@
  */
 package entidade;
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -28,9 +25,6 @@ public class Editora {
     private String nome;
     @Column (length = 100)
     private String email;
-    
-    @ManyToMany(mappedBy = "editoras", cascade = CascadeType.PERSIST)
-    private Set<Livro> livros  = new HashSet<Livro>();
     
     @OneToOne(cascade = CascadeType.PERSIST)
     private Endereco endereco ;

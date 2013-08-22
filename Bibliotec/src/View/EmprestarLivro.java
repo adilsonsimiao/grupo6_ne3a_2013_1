@@ -15,7 +15,6 @@ public class EmprestarLivro extends javax.swing.JFrame {
      */
     public EmprestarLivro() {
         initComponents();
-        setTitle("Emprestimos de Livros");
     }
 
     /**

@@ -14,7 +14,6 @@ public class AlterarFuncionario extends javax.swing.JFrame {
      * Creates new form AlterarFuncionario
      */
     public AlterarFuncionario() {
-        setTitle("Alterar Funcionário");
         initComponents();
     }
 

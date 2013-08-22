@@ -9,7 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -34,10 +34,10 @@ public class Endereco {
     @Column (length = 100)
     private String bairro;
     
-    @Column (length = 9)
+    @Column (length = 8)
     private String cep;  
     
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     Municipio municipio;
 
     public Endereco() {
@@ -106,8 +106,6 @@ public class Endereco {
     public String toString() {
         return "Endereco{" + "logradouro=" + logradouro + ", complemento=" + complemento + ", numero=" + numero + ", bairro=" + bairro + ", cep=" + cep + ", id=" + id + ", municipio=" + municipio + '}';
     }
-
-    
 
     
     

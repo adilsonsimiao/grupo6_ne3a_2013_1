@@ -14,7 +14,6 @@ public class OpcoesConsultar extends javax.swing.JFrame {
      * Creates new form OpcoesConsultar
      */
     public OpcoesConsultar() {
-        setTitle("Opçoes de Consulta");
         initComponents();
     }
 

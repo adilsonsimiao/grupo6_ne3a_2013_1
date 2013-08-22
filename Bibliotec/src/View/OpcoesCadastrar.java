@@ -14,7 +14,6 @@ public class OpcoesCadastrar extends javax.swing.JFrame {
      * Creates new form OpcoesCadastrar
      */
     public OpcoesCadastrar() {
-        setTitle("Opções de cadastros");
         initComponents();
     }
 

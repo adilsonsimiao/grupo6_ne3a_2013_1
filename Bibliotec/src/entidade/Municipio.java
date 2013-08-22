@@ -19,10 +19,8 @@ public class Municipio {
     @Id
     @GeneratedValue
     private int id;
-    
     @Column (length = 200)
     private String nome;
-    
     @Column (length = 2)
     private String uf;
 

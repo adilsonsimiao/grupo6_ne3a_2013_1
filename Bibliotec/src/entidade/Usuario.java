@@ -29,14 +29,11 @@ public class Usuario implements Serializable {
    @Column(length = 200)  
     private String nome;
    
-   @Column(length = 12)
+   @Column(length = 11)
     private String cpf;
 
     @OneToOne(cascade = CascadeType.PERSIST)   
     private Endereco endereco;
-   
-    @Column(length = 2)
-    private String DDD;
    
     @Column(length = 9)
     private String telefone;
@@ -80,15 +77,8 @@ public class Usuario implements Serializable {
         this.telefone = telefone;
     }
 
-    public String getDDD() {
-        return DDD;
-    }
-
-    public void setDDD(String DDD) {
-        this.DDD = DDD;
-    }
-
    
+
     public String getRg() {
         return rg;
     }
@@ -107,10 +97,8 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf+ ", telefone=" + telefone  + ", endereco=" + endereco  + ", rg=" + rg + '}';
+        return "Usuario{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + ", rg=" + rg + '}';
     }
-
-    
 
    
     

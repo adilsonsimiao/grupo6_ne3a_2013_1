@@ -8,10 +8,10 @@ import entidade.Autor;
 import entidade.Editora;
 import entidade.Emprestimo;
 import entidade.Endereco;
-import entidade.Genero;
 import entidade.Livro;
 import entidade.Municipio;
 import entidade.Usuario;
+import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
@@ -40,7 +40,6 @@ public class HibernateConnection {
         cfg.addAnnotatedClass(Livro.class);
         cfg.addAnnotatedClass(Editora.class);
         cfg.addAnnotatedClass(Emprestimo.class);
-        cfg.addAnnotatedClass(Genero.class);
 
         SchemaExport se = new SchemaExport(cfg);
 
