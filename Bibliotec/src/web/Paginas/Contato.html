@@ -8,6 +8,47 @@ and open the template in the editor.
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="../Css/ajuda.css"/>
+  <script>
+            function valida(form) {
+                if (form.nome.value == "") {
+                    alert("Preencha o nome corretamente.");
+                    form.nome.focus();
+                    return false;
+                }
+                var filtro_mail = /^.@.\..{2,3}$/
+                if (!filtro_mail.test(form.email.value) || form.email.value == "") {
+                    alert("Preencha o e-mail corretamente.");
+                    form.email.focus();
+                    return false;
+                }
+                if (form.tel.value == "") {
+                    alert("Preencha o telefone corretamente.");
+                    form.tel.focus();
+                    return false;
+                }
+ 
+            }
+            function telefone(f) {
+                if (f.tel.value.length < 10 || f.tel.value.length > 11) {
+                    alert("Preencha o telefone corretamente.");
+                    f.tel.focus();
+                } else {
+                    ddd = f.tel.value.substring(0, 2);
+                    if (f.tel.value.length == 10) {
+                        part1 = f.tel.value.substring(2, 5);
+                        part2 = f.tel.value.substring(5, 9);
+                    }
+                    if (f.tel.value.length == 11) {
+                        part1 = f.tel.value.substring(2, 6);
+                        part2 = f.tel.value.substring(6, 10);
+                    }
+                    f.tel.value = "("+ddd+") "+part1+"-"+part2
+
+                }
+            }
+
+
+        </script>
 
     </head>
     <body>
@@ -22,5 +63,26 @@ and open the template in the editor.
 		<li><a href="../Paginas/MapaDoSite.html">Mapa do Site</a></li>
 		</ul>
         </div>
+        <div>
+            <form id="formulario" onsubmit="return valida(this);" action="mailto:fabio.darks@gmail.com">
+                <fieldset>
+                    <legend> Fomulário para Contato</legend>
+                    <p><label>Nome*: <input type="text" name="nome" size="30"><br><br></label></p>
+                    <p><label>E-mail*: <input type="text" name="email" size="30"><br><br></label></p>
+                    <p><label>Telefone*: <input type="text" name="tel" onblur="telefone(this.form);" maxlength="10" size="30"><br><br></label></p>
+                    <p><label>Assunto: <input type="text" size="30"/></label></p>
+                    <p><label>Mensagem:</label></p>
+                    <p><textarea rows="6" cols="40" ></textarea></p>
+
+
+
+                </fieldset>
+                <p>
+                    <input type="submit" name="botão" value="Enviar"/>
+                    <input type="reset" name="botão" value="Limpar"/>
+
+            </form>
+
+         </div>
     </body>
 </html>
