@@ -164,7 +164,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel8)
                                 .addGap(6, 6, 6)
-                                .addComponent(jTFCep, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)))
+                                .addComponent(jTFCep, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -199,7 +199,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jTUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(80, 80, 80))
         );
@@ -269,7 +269,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                                 .addComponent(jButton1))
                             .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -353,17 +353,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         }
 
 
-        jTFLogradouro.setText("");
-        jTFComplemento.setText("");
-        jTFNumero.setText("");
-        jTFCidade.setName("");
-        jTUF.setName("");
-        jTFCep.setText("");
-        jTFNome.setText("");
-        jFORMCPF.setText("");
-        jTFRG.setText("");
-        jTFBairro.setText("");
-
+        
 
     }//GEN-LAST:event_jBuCadastroActionPerformed
 

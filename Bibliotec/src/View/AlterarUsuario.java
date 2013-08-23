@@ -4,10 +4,10 @@
  */
 package View;
 
-import Dao.DaoUsuario;
 import entidade.Endereco;
 import entidade.Municipio;
 import entidade.Usuario;
+import hibernate.HibernateDao;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class AlterarUsuario extends javax.swing.JFrame {
     Usuario usu;
     Endereco endereco;   
-    DaoUsuario dao;
+    HibernateDao dao = new HibernateDao();
     Municipio municipio = new Municipio();
     public void setUsuario(Usuario usuario) {
         this.preencheTelaCadastro(usuario);
@@ -25,7 +25,6 @@ public class AlterarUsuario extends javax.swing.JFrame {
     }
    
     public AlterarUsuario() {
-        dao = new DaoUsuario();
         usu = new Usuario();
         initComponents();
     }

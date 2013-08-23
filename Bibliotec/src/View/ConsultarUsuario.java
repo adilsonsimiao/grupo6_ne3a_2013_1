@@ -4,8 +4,8 @@
  */
 package View;
 
-import Dao.DaoUsuario;
 import entidade.Usuario;
+import hibernate.HibernateDao;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -17,9 +17,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConsultarUsuario extends javax.swing.JFrame {
 
+    private String[] s;
+    private String[] result;
     private Usuario usuario = new Usuario();
-    private DaoUsuario daoUsuario = new DaoUsuario();
-    List<Usuario> listaUsuario = new ArrayList<>();
+    List<Object> listaUsuario = new ArrayList<>();
     DefaultTableModel tableModel;
 
     public ConsultarUsuario() {
@@ -30,7 +31,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jTAreaDadosConsulta.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-            "Id ", "Nome", "Cpf", "Telefone", "idEndereco"
+            "Id ", "Nome", "Cpf", 
         }));
     }
 
@@ -144,24 +145,44 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
         tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
-
-        if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
+        System.out.println("::>> " + usuario.getNome());
+        if (jTFCampoConsulta.getText().trim().equals(" ")) {
             JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
         }
 
         try {
             if (jRBNome.isSelected() == true) {
+                listaUsuario.add(new HibernateDao().list("", usuario.getClass(), jTFCampoConsulta.getText(), "nome"));
+                int al = listaUsuario.size();
+                s = listaUsuario.toString().split(",");
+                result = new String[4];
+                for (int i = 0; i < al; i++) {
+                    
+                    for (int y = 0; y < 4; y++) {
+                        int a = s[y].indexOf("=");
+                        String s1 = s[y].substring(a, s[y].length());
+                        result[y] = s1.replace("=", "");
+                    }
+                        tableModel.addRow(new Object[]{result[0],result[1],result[2],result[3]});
+                    
+                }
 
-
-           //     usuario = daoUsuario.buscarNome(jTFCampoConsulta.getText());
- //               tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getTelefone(), usuario.getIdEndereco()});
-                jTAreaDadosConsulta.setModel(tableModel);
             }
             if (jRBCpf.isSelected() == true) {
-         //                usuario = daoUsuario.buscarCPF(jTFCampoConsulta.getText());
+                listaUsuario.add( new HibernateDao().list("", usuario.getClass(), jTFCampoConsulta.getText(), "livros"));
+                int al = listaUsuario.size();
+                String[] s = listaUsuario.toString().split(",");
+                String[] result = new String[4];
+                for (int i = 0; i < al; i++) {
 
-   //             tableModel.addRow(new Object[]{usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getTelefone(), usuario.getIdEndereco()});
-                jTAreaDadosConsulta.setModel(tableModel);
+                    for (int y = 0; y < 4; y++) {
+                        int a = s[y].indexOf("=");
+                        String s1 = s[y].substring(a, s[y].length());
+                        result[y] = s1.replace("=", "");
+                    }
+                    tableModel.addRow(new Object[]{result[0], result[1], result[2], result[3]});
+
+                }
 
             }
 
@@ -170,7 +191,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Nao foi possivel localizar o nome " + jTFCampoConsulta.getText());
+            JOptionPane.showMessageDialog(null, "Nao foi possivel localizar o cpf " + jTFCampoConsulta.getText());
         }
 
     }//GEN-LAST:event_jBConsultarActionPerformed
@@ -181,14 +202,13 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
-           
-                 } else {
+        } else {
 
-           JOptionPane.showMessageDialog(null, "Selecione um usuario para alterar" + jTFCampoConsulta.getText());
-             AlterarUsuario alt = new AlterarUsuario();
+            JOptionPane.showMessageDialog(null, "Selecione um usuario para alterar" + jTFCampoConsulta.getText());
+            AlterarUsuario alt = new AlterarUsuario();
             alt.preencheTelaCadastro(usuario);
             alt.setVisible(true);
-   
+
     }//GEN-LAST:event_jButton2ActionPerformed
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -203,17 +223,16 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
 
             try {
-                
-        
-            if (((int)this.jTAreaDadosConsulta.getValueAt(row, 0))==usuario.getId()) {
-                System.out.println("deu certo");
-                 daoUsuario.delete(usuario);
-                tableModel.removeRow(row);  
-                JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
-               
-                
-            }
-           
+
+
+                if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == usuario.getId()) {
+                    System.out.println("deu certo");
+                    tableModel.removeRow(row);
+                    JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
+
+
+                }
+
             } catch (Exception e) {
             }
     }//GEN-LAST:event_jButton1ActionPerformed
