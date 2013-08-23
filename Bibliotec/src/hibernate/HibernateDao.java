@@ -71,15 +71,25 @@ public class HibernateDao implements Dao<Object> {
     }
 
     @Override
-    public List<Object> list(Class tipoObjeto, String nome, String whereClause) throws Exception {
+    public List<Object> list(String campoUnico, Class tipoObjeto, String nome, String whereClause) throws Exception {
         SessionFactory sessionFactory = HibernateConnection.HibernateConnection().buildSessionFactory();
         Session session = sessionFactory.openSession();
+        List list = null;
+        if (campoUnico.length() > 0) {
+            session.beginTransaction().begin();
+            System.out.println("---");
+            list = session.createSQLQuery("SELECT " +campoUnico+ " FROM "+tipoObjeto.getSimpleName()).list();
+            session.beginTransaction().commit();
+            session.close();
+            sessionFactory.close();
 
-        session.beginTransaction().begin();
-        List list = session.createCriteria(tipoObjeto).add(Restrictions.like(whereClause, nome, MatchMode.EXACT)).list();
-        session.beginTransaction().commit();
-        session.close();
-        sessionFactory.close();
+        } else {
+            session.beginTransaction().begin();
+            list = session.createCriteria(tipoObjeto).add(Restrictions.like(whereClause, nome, MatchMode.EXACT)).list();
+            session.beginTransaction().commit();
+            session.close();
+            sessionFactory.close();
+        }
         return list;
     }
 
@@ -128,26 +138,5 @@ public class HibernateDao implements Dao<Object> {
 
     }
 
-    public static void main(String[] args) throws Exception {
-        Autor p = new Autor();
-//        p.setId(10);
-        p.setNome("Hiber1");
-//        p.setISBN("0000000000");
-        System.out.println(":+ " + new HibernateDao().list(p.getClass(), new Filter("Nome", Operator.IS_NULL, p.getNome())));
-//        System.out.println("++ "+new HibernateDao().list(p.getClass(), p.getNome(), "Nome"));
-
-//        System.out.println(": "+new HibernateDao().retrieve(p.getClass(),27));
-
-
-
-//        Autor a = new Autor();
-//        Livro l = new Livro();
-//
-//
-//        a.getLivros().add(l);
-//        l.getAutores().add(null);
-//
-//        new HibernateDao().delete(a);
-
-    }
+  
 }
