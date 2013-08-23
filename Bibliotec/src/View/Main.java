@@ -159,8 +159,7 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.setBackground(new java.awt.Color(0, 51, 153));
 
         jMenu1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu1.setBorder(null);
-        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu1.setForeground(new java.awt.Color(1, 1, 1));
         jMenu1.setText("Cadastro");
 
         jMUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
@@ -210,7 +209,7 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu2.setForeground(new java.awt.Color(1, 1, 1));
         jMenu2.setText("Consulta");
 
         jMConsultaUsuario.setText("Usuário");
@@ -259,7 +258,7 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu3.setForeground(new java.awt.Color(1, 1, 1));
         jMenu3.setText("Alterar");
 
         jMAlterarUsuario.setText("Usuário");
@@ -308,7 +307,7 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu4.setForeground(new java.awt.Color(1, 1, 1));
         jMenu4.setText("Empréstimos");
 
         jMEmprestimos.setText("Emprestimos");
@@ -330,7 +329,7 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu5.setForeground(new java.awt.Color(1, 1, 1));
         jMenu5.setText("Ajuda");
 
         jMenuItem19.setText("Conteúdo de Ajuda");
