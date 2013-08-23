@@ -4,6 +4,12 @@
  */
 package View;
 
+import entidade.Endereco;
+import entidade.Funcionario;
+import entidade.Municipio;
+import hibernate.HibernateDao;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author fabio
@@ -13,6 +19,10 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     /**
      * Creates new form CadastrarFuncionario
      */
+    private Municipio municipio = new Municipio();
+    private Endereco endereco = new Endereco();
+    private Funcionario funcionario = new Funcionario();
+    
     public CadastrarFuncionario() {
         initComponents();
     }
@@ -328,7 +338,35 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFComplementoActionPerformed
 
     private void jBuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuCadastroActionPerformed
+        try {
+            municipio.setUf(jTUF.getItemAt(jTUF.getSelectedIndex()).toString());
+            municipio.setNome(jTFCidade.getItemAt(jTFCidade.getSelectedIndex()).toString());
+            new HibernateDao().persist(municipio);
+            
+            endereco.setLogradouro(jTFLogradouro.getText());
+            endereco.setComplemento(jTFComplemento.getText());
+            endereco.setNumero(jTFNumero.getText());
+            endereco.setBairro(jTFBairro.getText());
+            endereco.setCep(jTFCep.getText());
+            new HibernateDao().persist(endereco);
 
+
+
+            funcionario.setNome(jTFNome.getText());
+            funcionario.setCpf(jFORMCPF.getText());
+            funcionario.setTelefone(jTFTelefone.getText());
+            new HibernateDao().persist(funcionario);
+            
+
+
+//            
+
+
+            JOptionPane.showMessageDialog(null, " Cadastro realizada com sucesso!!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, " Não foi possivel cadastrar!!");
+        }
         
 
     }//GEN-LAST:event_jBuCadastroActionPerformed
