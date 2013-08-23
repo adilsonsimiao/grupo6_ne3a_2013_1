@@ -11,7 +11,6 @@ import entidade.Endereco;
 import entidade.Livro;
 import entidade.Municipio;
 import entidade.Usuario;
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
@@ -30,7 +29,7 @@ public class HibernateConnection {
         cfg.setProperty("hibernate.connection.driver", "com.mysql.jdbc.Driver");
         cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/bibliotec");
         cfg.setProperty("hibernate.connection.user", "root");
-        cfg.setProperty("hibernate.connection.password", "megans");
+        cfg.setProperty("hibernate.connection.password", "root");
         cfg.setProperty("hibernate.connection.autocommit", "true");
 
         cfg.addAnnotatedClass(Municipio.class);
