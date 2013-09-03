@@ -152,7 +152,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
         try {
             if (jRBNome.isSelected() == true) {
-                listaUsuario.add(new HibernateDao().list("", usuario.getClass(), jTFCampoConsulta.getText(), "nome"));
+                listaUsuario.add(new HibernateDao().list("", usuario.getClass(), jTFCampoConsulta.getText(), "nome",""));
                 int al = listaUsuario.size();
                 s = listaUsuario.toString().split(",");
                 result = new String[4];
@@ -169,7 +169,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
             }
             if (jRBCpf.isSelected() == true) {
-                listaUsuario.add( new HibernateDao().list("", usuario.getClass(), jTFCampoConsulta.getText(), "livros"));
+                listaUsuario.add( new HibernateDao().list("", usuario.getClass(), jTFCampoConsulta.getText(), "livros",""));
                 int al = listaUsuario.size();
                 String[] s = listaUsuario.toString().split(",");
                 String[] result = new String[4];
