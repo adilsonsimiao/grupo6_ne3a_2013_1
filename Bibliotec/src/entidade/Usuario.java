@@ -24,8 +24,8 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue
     private int id;
-   
-   
+   @Column(length = 50)
+   private String email;
    @Column(length = 200)  
     private String nome;
    
@@ -77,6 +77,14 @@ public class Usuario implements Serializable {
         this.telefone = telefone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
    
 
     public String getRg() {
@@ -97,8 +105,10 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + ", rg=" + rg + '}';
+        return "Usuario{" + "id=" + id + ", email=" + email + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + ", rg=" + rg + '}';
     }
+
+    
 
    
     
