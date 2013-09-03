@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -39,15 +39,16 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTEmail" max="32767" attributes="0"/>
+                                  <Component id="jTFEmail" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jLInfo" min="-2" pref="271" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jBFechar" min="-2" max="-2" attributes="0"/>
@@ -69,16 +70,22 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTEmail" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="jTFEmail" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jTabbedPane2" min="-2" pref="256" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBFechar" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBFechar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jLInfo" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -137,9 +144,10 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTNome">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTEmail">
+    <Component class="javax.swing.JTextField" name="jTFEmail">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTEmailActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFEmailActionPerformed"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTFEmailFocusLost"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
@@ -196,36 +204,36 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTUF" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTFCidade" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jTFLogradouro1" min="-2" pref="281" max="-2" attributes="0"/>
+                                      <Component id="jTFLogradouro" min="-2" pref="281" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jTFNumero1" min="-2" pref="65" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jTFNumero" min="-2" pref="68" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTFBairro1" min="-2" pref="187" max="-2" attributes="0"/>
+                                      <Component id="jTFBairro" min="-2" pref="187" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTFComplemento1" pref="109" max="32767" attributes="0"/>
-                                  <Component id="jTFCep1" max="32767" attributes="0"/>
+                                  <Component id="jTFComplemento" pref="148" max="32767" attributes="0"/>
+                                  <Component id="jFTFCep" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTUF1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTFCidade1" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -237,32 +245,32 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="jTFComplemento1" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jTFComplemento" alignment="3" max="32767" attributes="0"/>
                               <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTFLogradouro1" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jTFLogradouro" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jLabel13" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTFNumero1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTFBairro1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTFBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTFCep1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFTFCep" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTFNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTFCidade1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTFCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTUF1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTUF" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="15" max="32767" attributes="0"/>
                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
@@ -275,7 +283,7 @@
                 <Property name="text" type="java.lang.String" value="Logradouro:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTFLogradouro1">
+            <Component class="javax.swing.JTextField" name="jTFLogradouro">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
             </Component>
@@ -284,9 +292,9 @@
                 <Property name="text" type="java.lang.String" value="N:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTFComplemento1">
+            <Component class="javax.swing.JTextField" name="jTFComplemento">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFComplemento1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFComplementoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel17">
@@ -294,9 +302,7 @@
                 <Property name="text" type="java.lang.String" value="Cep:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTFNumero1">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTFBairro1">
+            <Component class="javax.swing.JTextField" name="jTFBairro">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
@@ -308,8 +314,6 @@
                 <Property name="text" type="java.lang.String" value="Complemento:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTFCep1">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel20">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cidade:"/>
@@ -320,7 +324,7 @@
                 <Property name="text" type="java.lang.String" value="UF:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jTUF1">
+            <Component class="javax.swing.JComboBox" name="jTUF">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="27">
@@ -355,7 +359,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jTFCidade1">
+            <Component class="javax.swing.JComboBox" name="jTFCidade">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="58">
@@ -421,9 +425,25 @@
                 </Property>
               </Properties>
             </Component>
+            <Component class="javax.swing.JFormattedTextField" name="jFTFCep">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="##-###-###" subtype="-1" type="5"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="jTFNumero">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+                  <Format format="#0" subtype="-1" type="0"/>
+                </Property>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="jLInfo">
+    </Component>
   </SubComponents>
 </Form>
