@@ -6,12 +6,12 @@ package hibernate;
 
 import Dao.Dao;
 import Dao.Filter;
-import Dao.Operator;
 import static Dao.Operator.EQUAL;
 import static Dao.Operator.IS_NULL;
 import static Dao.Operator.LIKE;
-import entidade.Autor;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
@@ -21,80 +21,69 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author fabio
  */
-public class HibernateDao implements Dao<Object> {
+public class HibernateDao<E> implements Dao<E> {
 
     @Override
-    public void persist(Object o) throws Exception {
+    public void persist(E o) throws Exception {
 
-        SessionFactory sessionFactory = HibernateConnection.HibernateConnection().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction().begin();
-        session.persist(o);
-        session.beginTransaction().commit();
-
-        session.flush();
-        session.close();
-        sessionFactory.close();
+        EntityManager em = HibernateFactory.getEntityManager();
+        em.getTransaction().begin();
+        em.persist(o);
+        em.getTransaction().commit();
 
 
 
     }
 
     @Override
-    public void delete(Object o) throws Exception {
+    public void delete(E o) throws Exception {
 
 
-        SessionFactory sessionFactory = HibernateConnection.HibernateConnection().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction().begin();
-        session.delete(o);
-        session.beginTransaction().commit();
-
-        session.flush();
-        session.close();
-        sessionFactory.close();
+        EntityManager em = HibernateFactory.getEntityManager();
+        em.getTransaction().begin();
+        em.remove(o);
+        em.getTransaction().commit();
 
     }
 
     @Override
-    public Object retrieve(Class tipoObjeto, int id) throws Exception {
-        SessionFactory sessionFactory = HibernateConnection.HibernateConnection().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        Object aux = session.createCriteria(tipoObjeto).add(Restrictions.idEq(id)).uniqueResult();
-        session.close();
-        sessionFactory.close();
+    public E retrieve(Class tipoObjeto, int id) throws Exception {
+        EntityManager em = HibernateFactory.getEntityManager();
+        em.getTransaction().begin();
+        em.find(tipoObjeto, id);
+        em.getTransaction().commit();
 
-
-        return aux;
+        return (E) em;
 
     }
 
     @Override
-    public List<Object> list(String campoUnico, Class tipoObjeto, String nome, String whereClause) throws Exception {
-        SessionFactory sessionFactory = HibernateConnection.HibernateConnection().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        List list = null;
+    public List<E> list(String campoUnico, Class tipoObjeto, String nome, String whereClause, String orderClause) throws Exception {
+        EntityManager em = HibernateFactory.getEntityManager();
         if (campoUnico.length() > 0) {
-            session.beginTransaction().begin();
-            System.out.println("---");
-            list = session.createSQLQuery("SELECT " +campoUnico+ " FROM "+tipoObjeto.getSimpleName()).list();
-            session.beginTransaction().commit();
-            session.close();
-            sessionFactory.close();
 
+            em.getTransaction().begin();
+            Query q = em.createNativeQuery("SELECT " + campoUnico + " FROM " + tipoObjeto.getSimpleName());
+            em.getTransaction().commit();
+            return q.getResultList();
+        } else if (nome.length() > 0 || whereClause.length() > 0) {
+            em.getTransaction().begin();
+            Query q = em.createNativeQuery("SELECT * FROM " + tipoObjeto.getSimpleName()
+                    + (whereClause == null || whereClause.trim().isEmpty() ? "" : " WHERE " + whereClause + " = '" + nome + "'")
+                    + (orderClause == null || orderClause.trim().isEmpty() ? "" : " ORDER BY " + orderClause),tipoObjeto);
+            em.getTransaction().commit();
+            return q.getResultList();
         } else {
-            session.beginTransaction().begin();
-            list = session.createCriteria(tipoObjeto).add(Restrictions.like(whereClause, nome, MatchMode.EXACT)).list();
-            session.beginTransaction().commit();
-            session.close();
-            sessionFactory.close();
+            em.getTransaction().begin();
+            Query q = em.createQuery("FROM " + tipoObjeto.getSimpleName());
+            em.getTransaction().commit();
+            return q.getResultList();
         }
-        return list;
+
     }
 
     @Override
-    public List<Object> list(Class classe, Filter... filters) throws Exception {
+    public List<E> list(Class classe, Filter... filters) throws Exception {
         SessionFactory sessionFactory = HibernateConnection.HibernateConnection().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction().commit();
@@ -138,5 +127,5 @@ public class HibernateDao implements Dao<Object> {
 
     }
 
-  
+
 }
