@@ -57,8 +57,8 @@ public class Main extends javax.swing.JFrame {
         jMEmprestimos = new javax.swing.JMenuItem();
         jMDevolução = new javax.swing.JMenuItem();
         jMAjuda = new javax.swing.JMenu();
-        jMenuItem19 = new javax.swing.JMenuItem();
-        jMenuItem20 = new javax.swing.JMenuItem();
+        jMenuItemAjuda = new javax.swing.JMenuItem();
+        jMenuItemAjudaOnline = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -183,6 +183,14 @@ public class Main extends javax.swing.JFrame {
         jMCadastros.setForeground(new java.awt.Color(1, 1, 1));
         jMCadastros.setText("Cadastro");
         jMCadastros.setToolTipText("Botão de cadastros");
+        jMCadastros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMCadastrosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMCadastrosMouseExited(evt);
+            }
+        });
 
         jMUsuario.setText("Usuário");
         jMUsuario.setToolTipText("Cadastrar usuário");
@@ -274,6 +282,14 @@ public class Main extends javax.swing.JFrame {
         jMConsultas.setForeground(new java.awt.Color(1, 1, 1));
         jMConsultas.setText("Consulta");
         jMConsultas.setToolTipText("Botão de Consultas");
+        jMConsultas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMConsultasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMConsultasMouseExited(evt);
+            }
+        });
 
         jMConsultaUsuario.setText("Usuário");
         jMConsultaUsuario.setToolTipText("Consulta usuário");
@@ -325,6 +341,14 @@ public class Main extends javax.swing.JFrame {
         jMAlterar.setForeground(new java.awt.Color(1, 1, 1));
         jMAlterar.setText("Alterar");
         jMAlterar.setToolTipText("Botão de alteração");
+        jMAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMAlterarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMAlterarMouseExited(evt);
+            }
+        });
 
         jMAlterarUsuario.setText("Usuário");
         jMAlterarUsuario.setToolTipText("Alterar usuário");
@@ -376,6 +400,14 @@ public class Main extends javax.swing.JFrame {
         jMEmprestimo.setForeground(new java.awt.Color(1, 1, 1));
         jMEmprestimo.setText("Empréstimos");
         jMEmprestimo.setToolTipText("Botão empréstimos");
+        jMEmprestimo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMEmprestimoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMEmprestimoMouseExited(evt);
+            }
+        });
 
         jMEmprestimos.setText("Emprestimos");
         jMEmprestimos.setToolTipText("Botão para empréstimos de Livros");
@@ -400,26 +432,54 @@ public class Main extends javax.swing.JFrame {
         jMAjuda.setForeground(new java.awt.Color(1, 1, 1));
         jMAjuda.setText("Ajuda");
         jMAjuda.setToolTipText("Botão de ajuda");
-
-        jMenuItem19.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
-        jMenuItem19.setText("Conteúdo de Ajuda");
-        jMenuItem19.setToolTipText("Ajuda");
-        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem19ActionPerformed(evt);
+        jMAjuda.addMenuDragMouseListener(new javax.swing.event.MenuDragMouseListener() {
+            public void menuDragMouseDragged(javax.swing.event.MenuDragMouseEvent evt) {
+            }
+            public void menuDragMouseEntered(javax.swing.event.MenuDragMouseEvent evt) {
+                jMAjudaMenuDragMouseEntered(evt);
+            }
+            public void menuDragMouseExited(javax.swing.event.MenuDragMouseEvent evt) {
+                jMAjudaMenuDragMouseExited(evt);
+            }
+            public void menuDragMouseReleased(javax.swing.event.MenuDragMouseEvent evt) {
             }
         });
-        jMAjuda.add(jMenuItem19);
 
-        jMenuItem20.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
-        jMenuItem20.setText("Suporte Online");
-        jMenuItem20.setToolTipText("conteudo online");
-        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem20ActionPerformed(evt);
+        jMenuItemAjuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        jMenuItemAjuda.setText("Conteúdo de Ajuda");
+        jMenuItemAjuda.setToolTipText("Ajuda");
+        jMenuItemAjuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMenuItemAjudaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMenuItemAjudaMouseExited(evt);
             }
         });
-        jMAjuda.add(jMenuItem20);
+        jMenuItemAjuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAjudaActionPerformed(evt);
+            }
+        });
+        jMAjuda.add(jMenuItemAjuda);
+
+        jMenuItemAjudaOnline.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jMenuItemAjudaOnline.setText("Suporte Online");
+        jMenuItemAjudaOnline.setToolTipText("conteudo online");
+        jMenuItemAjudaOnline.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMenuItemAjudaOnlineMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMenuItemAjudaOnlineMouseExited(evt);
+            }
+        });
+        jMenuItemAjudaOnline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAjudaOnlineActionPerformed(evt);
+            }
+        });
+        jMAjuda.add(jMenuItemAjudaOnline);
 
         jMenuBar1.add(jMAjuda);
 
@@ -519,13 +579,13 @@ public class Main extends javax.swing.JFrame {
         devolverLivro.setVisible(true);
     }//GEN-LAST:event_jMDevoluçãoActionPerformed
 
-    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+    private void jMenuItemAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAjudaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem19ActionPerformed
+    }//GEN-LAST:event_jMenuItemAjudaActionPerformed
 
-    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
+    private void jMenuItemAjudaOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAjudaOnlineActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem20ActionPerformed
+    }//GEN-LAST:event_jMenuItemAjudaOnlineActionPerformed
 
     private void jBDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDevolucaoActionPerformed
         DevolverLivro devolucao = new DevolverLivro();
@@ -586,12 +646,68 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jBDevolucaoMouseExited
 
     private void jMUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMUsuarioMouseEntered
-        
+        jLBarraStatus.setText(jMUsuario.getToolTipText());
     }//GEN-LAST:event_jMUsuarioMouseEntered
 
     private void jMUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMUsuarioMouseExited
-        // TODO add your handling code here:
+        jLBarraStatus.setText("");
     }//GEN-LAST:event_jMUsuarioMouseExited
+
+    private void jMCadastrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMCadastrosMouseEntered
+        jLBarraStatus.setText(jMCadastros.getToolTipText());
+    }//GEN-LAST:event_jMCadastrosMouseEntered
+
+    private void jMCadastrosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMCadastrosMouseExited
+        jLBarraStatus.setText("");
+    }//GEN-LAST:event_jMCadastrosMouseExited
+
+    private void jMConsultasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMConsultasMouseEntered
+        jLBarraStatus.setText(jMConsultas.getToolTipText());
+    }//GEN-LAST:event_jMConsultasMouseEntered
+
+    private void jMConsultasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMConsultasMouseExited
+        jLBarraStatus.setText("");
+    }//GEN-LAST:event_jMConsultasMouseExited
+
+    private void jMAlterarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMAlterarMouseEntered
+        jLBarraStatus.setText(jMAlterar.getToolTipText());
+    }//GEN-LAST:event_jMAlterarMouseEntered
+
+    private void jMAlterarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMAlterarMouseExited
+        jLBarraStatus.setText("");
+    }//GEN-LAST:event_jMAlterarMouseExited
+
+    private void jMEmprestimoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMEmprestimoMouseEntered
+        jLBarraStatus.setText(jMEmprestimo.getToolTipText());
+    }//GEN-LAST:event_jMEmprestimoMouseEntered
+
+    private void jMEmprestimoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMEmprestimoMouseExited
+        jLBarraStatus.setText("");
+    }//GEN-LAST:event_jMEmprestimoMouseExited
+
+    private void jMAjudaMenuDragMouseEntered(javax.swing.event.MenuDragMouseEvent evt) {//GEN-FIRST:event_jMAjudaMenuDragMouseEntered
+        jLBarraStatus.setText(jMAjuda.getToolTipText());
+    }//GEN-LAST:event_jMAjudaMenuDragMouseEntered
+
+    private void jMAjudaMenuDragMouseExited(javax.swing.event.MenuDragMouseEvent evt) {//GEN-FIRST:event_jMAjudaMenuDragMouseExited
+        jLBarraStatus.setText("");
+    }//GEN-LAST:event_jMAjudaMenuDragMouseExited
+
+    private void jMenuItemAjudaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemAjudaMouseEntered
+       jLBarraStatus.setText(jMenuItemAjuda.getToolTipText());
+    }//GEN-LAST:event_jMenuItemAjudaMouseEntered
+
+    private void jMenuItemAjudaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemAjudaMouseExited
+        jLBarraStatus.setText("");
+    }//GEN-LAST:event_jMenuItemAjudaMouseExited
+
+    private void jMenuItemAjudaOnlineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemAjudaOnlineMouseEntered
+        jLBarraStatus.setText(jMenuItemAjudaOnline.getToolTipText());
+    }//GEN-LAST:event_jMenuItemAjudaOnlineMouseEntered
+
+    private void jMenuItemAjudaOnlineMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemAjudaOnlineMouseExited
+        jLBarraStatus.setText("");
+    }//GEN-LAST:event_jMenuItemAjudaOnlineMouseExited
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -634,8 +750,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMUsuario;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem19;
-    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItemAjuda;
+    private javax.swing.JMenuItem jMenuItemAjudaOnline;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
