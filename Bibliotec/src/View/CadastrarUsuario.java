@@ -22,7 +22,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     Usuario usuario = new Usuario();
     Endereco endereco = new Endereco();
     Municipio municipio = new Municipio();
-    boolean valida;
 
     public CadastrarUsuario() {
         initComponents();
@@ -41,14 +40,14 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jLLogradouro = new javax.swing.JLabel();
         jTFLogradouro = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLNumero = new javax.swing.JLabel();
         jTFComplemento = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        jLCep = new javax.swing.JLabel();
         jTFBairro = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        jLBairro = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -56,23 +55,24 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jTFCidade = new javax.swing.JComboBox();
         jFTFCep = new javax.swing.JFormattedTextField();
         jFTFNumero = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLNome = new javax.swing.JLabel();
         jTFNome = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jLRg = new javax.swing.JLabel();
         jLcpf = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jBuCadastro = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        jLDDD = new javax.swing.JLabel();
+        jLTelefone = new javax.swing.JLabel();
         jFTFRg = new javax.swing.JFormattedTextField();
         jFTFCpf = new javax.swing.JFormattedTextField();
         jFTFDDD = new javax.swing.JFormattedTextField();
         jFTFTelefone = new javax.swing.JFormattedTextField();
         jBAlterar = new javax.swing.JButton();
         jLInfo = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLEmail = new javax.swing.JLabel();
         jTFEmail = new javax.swing.JTextField();
+        JBValidar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -110,9 +110,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 764, -1));
 
-        jLabel5.setText("Logradouro:");
+        jLLogradouro.setText("Logradouro*:");
 
-        jLabel7.setText("N:");
+        jLNumero.setText("N*:");
 
         jTFComplemento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,9 +120,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Cep:");
+        jLCep.setText("Cep*:");
 
-        jLabel9.setText("Bairro:");
+        jLBairro.setText("Bairro*:");
 
         jLabel10.setText("Complemento:");
 
@@ -155,8 +155,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)))
+                            .addComponent(jLNumero)
+                            .addComponent(jLLogradouro)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel14)))
@@ -179,13 +179,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jFTFNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)
+                                .addComponent(jLBairro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTFBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel8)
+                                .addComponent(jLCep)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFTFCep, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)))
+                                .addComponent(jFTFCep, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
@@ -197,13 +197,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                         .addComponent(jTFComplemento)
                         .addComponent(jLabel10)
                         .addComponent(jTFLogradouro))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(jLNumero)
                     .addComponent(jTFBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8)
+                    .addComponent(jLBairro)
+                    .addComponent(jLCep)
                     .addComponent(jFTFCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFTFNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -221,9 +221,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Endereço", jPanel3);
 
-        jLabel2.setText("NOME*:");
+        jLNome.setText("Nome*:");
 
-        jLabel3.setText("RG*:");
+        jLRg.setText("RG*:");
 
         jLcpf.setText("CPF*:");
 
@@ -241,9 +241,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setText("DDD*:");
+        jLDDD.setText("DDD*:");
 
-        jLabel13.setText("Telefone*:");
+        jLTelefone.setText("Telefone*:");
 
         try {
             jFTFRg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-###-###-#")));
@@ -256,6 +256,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFTFCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFTFCpfActionPerformed(evt);
+            }
+        });
         jFTFCpf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jFTFCpfFocusLost(evt);
@@ -267,12 +272,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFTFDDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFTFDDDActionPerformed(evt);
+            }
+        });
 
-        try {
-            jFTFTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        jFTFTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###############"))));
 
         jBAlterar.setText("Alterar");
         jBAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -281,11 +287,18 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("E-mail:");
+        jLEmail.setText("E-mail:");
 
         jTFEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTFEmailFocusLost(evt);
+            }
+        });
+
+        JBValidar.setText("Validar");
+        JBValidar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBValidarActionPerformed(evt);
             }
         });
 
@@ -301,6 +314,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(JBValidar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBAlterar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBuCadastro)
@@ -312,10 +327,10 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel12))
-                            .addComponent(jLabel4))
+                                .addComponent(jLNome)
+                                .addComponent(jLRg)
+                                .addComponent(jLDDD))
+                            .addComponent(jLEmail))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTFEmail)
@@ -329,12 +344,12 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                         .addComponent(jFTFDDD, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel13)))
+                                        .addComponent(jLTelefone)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jFTFCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                                     .addComponent(jFTFTelefone))
-                                .addGap(0, 284, Short.MAX_VALUE)))))
+                                .addGap(0, 285, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -342,14 +357,14 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLNome))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(jLEmail)
                     .addComponent(jTFEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jLRg)
                     .addComponent(jLcpf)
                     .addComponent(jFTFRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFTFCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -357,13 +372,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
+                            .addComponent(jLDDD)
                             .addComponent(jFTFDDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
+                            .addComponent(jLTelefone)
                             .addComponent(jFTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,7 +390,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jBuCadastro)
                             .addComponent(jButton1)
-                            .addComponent(jBAlterar))
+                            .addComponent(jBAlterar)
+                            .addComponent(JBValidar))
                         .addGap(22, 22, 22))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -393,17 +409,20 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
     private void jBuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuCadastroActionPerformed
 
-        try {
-            persistencia();
+            if (validar() == false) {
+                try {
+                    persistencia();
 
 
-            JOptionPane.showMessageDialog(null, " Cadastro realizada com sucesso!!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, " Não foi possivel cadastrar!!");
-        }
+                    JOptionPane.showMessageDialog(null, " Cadastro realizada com sucesso!!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, " Não foi possivel cadastrar!!");
+                }
 
-
+            } else {
+            }
+        
     }//GEN-LAST:event_jBuCadastroActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -411,25 +430,38 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
-        try {
-            persistencia();
+       if (validar() == false) {
+                try {
+                    persistencia();
 
 
-            JOptionPane.showMessageDialog(null, " Alteração realizada com sucesso!!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, " Não foi possivel Alterar!!");
-        }
+                    JOptionPane.showMessageDialog(null, " Alteração realizada com sucesso!!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, " Não foi alterar o cadastro!!");
+                }
+
+            } else {
+            }
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jFTFCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jFTFCpfFocusLost
 
-        boolean aux = CPF(jFTFCpf.getText().replace("-", "").toString());
-        if (aux == true) {
-            jLInfo.setText("Cpf válido");
-        } else if (aux == false) {
+        if (!jFTFCpf.getText().replace("-", "").toString().trim().equals("")) {
+
+            boolean aux = CPF(jFTFCpf.getText().replace("-", "").toString());
+            if (aux == true) {
+                jLInfo.setText("Cpf válido");
+                jLcpf.setForeground(Color.BLACK);
+
+            } else if (aux == false) {
+                jLcpf.setForeground(Color.red);
+                jLInfo.setText("Cpf inválido");
+            }
+        } else {
+            jFTFCpf.setText("");
+            jLInfo.setText("cpf é obrigatório");
             jLcpf.setForeground(Color.red);
-            jLInfo.setText("Cpf inválido");
         }
 
     }//GEN-LAST:event_jFTFCpfFocusLost
@@ -442,10 +474,24 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 jLInfo.setText("E-mail válido");
             } else if (b == false) {
                 jLInfo.setText("E-mail inválido");
+                jLEmail.setForeground(Color.red);
             }
         } else {
         }
     }//GEN-LAST:event_jTFEmailFocusLost
+
+    private void JBValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBValidarActionPerformed
+        validar();
+
+    }//GEN-LAST:event_JBValidarActionPerformed
+
+    private void jFTFDDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTFDDDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTFDDDActionPerformed
+
+    private void jFTFCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTFCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTFCpfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -482,6 +528,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBValidar;
     private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBuCadastro;
     private javax.swing.JButton jButton1;
@@ -491,21 +538,21 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFTFNumero;
     private javax.swing.JFormattedTextField jFTFRg;
     private javax.swing.JFormattedTextField jFTFTelefone;
+    private javax.swing.JLabel jLBairro;
+    private javax.swing.JLabel jLCep;
+    private javax.swing.JLabel jLDDD;
+    private javax.swing.JLabel jLEmail;
     private javax.swing.JLabel jLInfo;
+    private javax.swing.JLabel jLLogradouro;
+    private javax.swing.JLabel jLNome;
+    private javax.swing.JLabel jLNumero;
+    private javax.swing.JLabel jLRg;
+    private javax.swing.JLabel jLTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLcpf;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -541,7 +588,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         usuario.setEmail(jTFEmail.getText());
         usuario.setCpf(jFTFCpf.getText().replace("-", ""));
         usuario.setRg(jFTFRg.getText().replace("-", ""));
-        usuario.setTelefone(jFTFTelefone.getText().replace("-", ""));
+        usuario.setTelefone(jFTFDDD.getText() + jFTFTelefone.getText().replace("-", ""));
         usuario.setEndereco(endereco);
         new HibernateDao().persist(usuario);
     }
@@ -596,5 +643,99 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         } else {
             return false;
         }
+    }
+
+    private boolean validar() {
+        boolean valida = false;
+        StringBuilder stringsBuilder = new StringBuilder();
+        if (jTFNome.getText().length() < 3) {
+            stringsBuilder.append("Nome é obrigatório\n");
+            jLNome.setForeground(Color.red);
+            valida = true;
+        } else {
+            jLNome.setForeground(Color.BLACK);
+        }
+
+        if (jFTFRg.getText().replace("-", "").trim().length() < 9 || jFTFRg.getText().replace("-", "").trim().length() > 9) {
+            stringsBuilder.append("Rg é obrigatório \n");
+            jLRg.setForeground(Color.red);
+            valida = true;
+
+        } else {
+            jLRg.setForeground(Color.BLACK);
+        }
+
+        if (jFTFCpf.getText().length() < 11 || jFTFCpf.getText().length() > 11) {
+            if (!jFTFCpf.getText().replace("-", "").toString().trim().equals("")) {
+
+                boolean aux = CPF(jFTFCpf.getText().replace("-", "").toString());
+                if (aux == true) {
+                    jLInfo.setText("Cpf válido");
+                    jLcpf.setForeground(Color.BLACK);
+
+                } else if (aux == false) {
+                    jLcpf.setForeground(Color.red);
+                    jLInfo.setText("Cpf inválido");
+                    stringsBuilder.append("cpf é Obrigatório \n");
+                }
+            } else {
+                jFTFCpf.setText("");
+                jLcpf.setForeground(Color.red);
+                jLInfo.setText("cpf é obrigatório");
+                stringsBuilder.append("cpf é obrigatório \n");
+            }
+            valida = true;
+
+        } else {
+            jFTFCpf.setForeground(Color.BLACK);
+        }
+
+        if (jFTFCep.getText().replace("-", "").trim().length() < 8 || jFTFCep.getText().replace("-", "").trim().length() > 8) {
+            stringsBuilder.append("cep é obrigatório \n");
+            jLCep.setForeground(Color.red);
+            valida = true;
+        } else {
+            jFTFCep.setForeground(Color.BLACK);
+        }
+
+        if (jFTFTelefone.getText().length() < 4 || jFTFTelefone.getText().length() >= 9) {
+            stringsBuilder.append("telefone é obrigatório \n");
+            jLTelefone.setForeground(Color.red);
+            jLDDD.setForeground(Color.red);
+            valida = true;
+        } else {
+            jLTelefone.setForeground(Color.BLACK);
+            jLDDD.setForeground(Color.BLACK);
+        }
+
+        if (jTFLogradouro.getText().length() < 3) {
+            stringsBuilder.append("Logradouro é obrigatório \n");
+            jLLogradouro.setForeground(Color.red);
+            valida = true;
+        } else {
+            jLLogradouro.setForeground(Color.BLACK);
+        }
+
+        if (jTFBairro.getText().length() < 3) {
+            stringsBuilder.append("Bairro é obrigatório \n");
+            jLBairro.setForeground(Color.red);
+            valida = true;
+        } else {
+            jLBairro.setForeground(Color.BLACK);
+        }
+
+        if (jFTFNumero.getText().length() == 0) {
+            stringsBuilder.append("Numero é obrigatório \n");
+            jLNumero.setForeground(Color.red);
+            valida = true;
+        } else {
+            jLNumero.setForeground(Color.BLACK);
+        }
+
+        if (stringsBuilder.length() > 0) {
+            JOptionPane.showMessageDialog(null, stringsBuilder.toString());
+            return true;
+        }
+        return false;
     }
 }

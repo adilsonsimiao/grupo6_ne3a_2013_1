@@ -106,6 +106,8 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLInfo" min="-2" pref="229" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="JBValidar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jBAlterar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jBuCadastro" min="-2" max="-2" attributes="0"/>
@@ -120,11 +122,11 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLNome" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLRg" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLDDD" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLEmail" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -140,7 +142,7 @@
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="jFTFDDD" min="-2" pref="27" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLTelefone" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -148,7 +150,7 @@
                                       <Component id="jFTFCpf" pref="182" max="32767" attributes="0"/>
                                       <Component id="jFTFTelefone" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="284" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="285" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -162,16 +164,16 @@
               <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jTFNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTFEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLRg" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLcpf" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jFTFRg" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jFTFCpf" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -180,7 +182,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLDDD" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jFTFDDD" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -188,7 +190,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="12" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jFTFTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -205,6 +207,7 @@
                               <Component id="jBuCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jBAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="JBValidar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
@@ -244,8 +247,8 @@
                                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLNumero" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLLogradouro" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -275,13 +278,13 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jFTFNumero" min="-2" pref="71" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLBairro" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jTFBairro" min="-2" pref="290" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLCep" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jFTFCep" pref="84" max="32767" attributes="0"/>
+                                          <Component id="jFTFCep" pref="66" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -300,14 +303,14 @@
                                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTFLogradouro" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jLabel5" max="32767" attributes="0"/>
+                              <Component id="jLLogradouro" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTFBairro" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLCep" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jFTFCep" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jFTFNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -329,18 +332,18 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="jLLogradouro">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Logradouro:"/>
+                    <Property name="text" type="java.lang.String" value="Logradouro*:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTFLogradouro">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel7">
+                <Component class="javax.swing.JLabel" name="jLNumero">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="N:"/>
+                    <Property name="text" type="java.lang.String" value="N*:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTFComplemento">
@@ -348,16 +351,16 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFComplementoActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel8">
+                <Component class="javax.swing.JLabel" name="jLCep">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Cep:"/>
+                    <Property name="text" type="java.lang.String" value="Cep*:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTFBairro">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel9">
+                <Component class="javax.swing.JLabel" name="jLBairro">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Bairro:"/>
+                    <Property name="text" type="java.lang.String" value="Bairro*:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel10">
@@ -494,14 +497,14 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="jLNome">
           <Properties>
-            <Property name="text" type="java.lang.String" value="NOME*:"/>
+            <Property name="text" type="java.lang.String" value="Nome*:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFNome">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="jLRg">
           <Properties>
             <Property name="text" type="java.lang.String" value="RG*:"/>
           </Properties>
@@ -529,12 +532,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel12">
+        <Component class="javax.swing.JLabel" name="jLDDD">
           <Properties>
             <Property name="text" type="java.lang.String" value="DDD*:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel13">
+        <Component class="javax.swing.JLabel" name="jLTelefone">
           <Properties>
             <Property name="text" type="java.lang.String" value="Telefone*:"/>
           </Properties>
@@ -553,6 +556,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFTFCpfActionPerformed"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jFTFCpfFocusLost"/>
           </Events>
         </Component>
@@ -562,11 +566,14 @@
               <Format format="##" subtype="-1" type="5"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFTFDDDActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="jFTFTelefone">
           <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="####-####" subtype="-1" type="5"/>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="###############" subtype="-1" type="0"/>
             </Property>
           </Properties>
         </Component>
@@ -580,7 +587,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLInfo">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="jLEmail">
           <Properties>
             <Property name="text" type="java.lang.String" value="E-mail:"/>
           </Properties>
@@ -588,6 +595,14 @@
         <Component class="javax.swing.JTextField" name="jTFEmail">
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTFEmailFocusLost"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="JBValidar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Validar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBValidarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
