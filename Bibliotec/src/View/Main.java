@@ -28,35 +28,35 @@ public class Main extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLBarraStatus = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jBCriarSql = new javax.swing.JButton();
+        jBCadastros = new javax.swing.JButton();
+        jBConsultas = new javax.swing.JButton();
         jBDevolucao = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMCadastros = new javax.swing.JMenu();
         jMUsuario = new javax.swing.JMenuItem();
         jMLivro = new javax.swing.JMenuItem();
         jMEditora = new javax.swing.JMenuItem();
         jMFuncionario = new javax.swing.JMenuItem();
         jMAutor = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jMConsultas = new javax.swing.JMenu();
         jMConsultaUsuario = new javax.swing.JMenuItem();
         jMConsultaLivro = new javax.swing.JMenuItem();
         jMConsultaEditora = new javax.swing.JMenuItem();
         jMConsultaFuncionário = new javax.swing.JMenuItem();
         jMConsultaAutor = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jMAlterar = new javax.swing.JMenu();
         jMAlterarUsuario = new javax.swing.JMenuItem();
         jMAlterarLivro = new javax.swing.JMenuItem();
         jMAlterarEditora = new javax.swing.JMenuItem();
         jMAlterarFuncionario = new javax.swing.JMenuItem();
         jMAlterarAutor = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        jMEmprestimo = new javax.swing.JMenu();
         jMEmprestimos = new javax.swing.JMenuItem();
         jMDevolução = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        jMAjuda = new javax.swing.JMenu();
         jMenuItem19 = new javax.swing.JMenuItem();
         jMenuItem20 = new javax.swing.JMenuItem();
 
@@ -70,23 +70,34 @@ public class Main extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 51, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 19, Short.MAX_VALUE)
-        );
+        jLBarraStatus.setForeground(new java.awt.Color(0, 0, 0));
 
         jButton4.setText("Fechar");
+        jButton4.setToolTipText("Botão para fechar o sistema");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLBarraStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133)
+                .addComponent(jButton4)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLBarraStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,57 +108,67 @@ public class Main extends javax.swing.JFrame {
                 .addGap(264, 264, 264)
                 .addComponent(jLabel1)
                 .addContainerGap(138, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
-        jButton1.setText("Cadastrar");
-        jButton1.setToolTipText("opcões de cadastros");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jBCadastros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
+        jBCadastros.setText("Cadastrar");
+        jBCadastros.setToolTipText("Opcões de cadastros");
+        jBCadastros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBCadastrosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBCadastrosMouseExited(evt);
             }
         });
-        jButton1.setBounds(10, 20, 150, 51);
-        jLayeredPane1.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jBCadastros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrosActionPerformed(evt);
+            }
+        });
+        jBCadastros.setBounds(10, 20, 150, 51);
+        jLayeredPane1.add(jBCadastros, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/consult.png"))); // NOI18N
-        jButton2.setText("Consultar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jBConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/consult.png"))); // NOI18N
+        jBConsultas.setText("Consultar");
+        jBConsultas.setToolTipText("Opções de consultas");
+        jBConsultas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBConsultasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBConsultasMouseExited(evt);
             }
         });
-        jButton2.setBounds(170, 20, 140, 50);
-        jLayeredPane1.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jBCriarSql.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Sql-runner-icon.png"))); // NOI18N
-        jBCriarSql.setText("Criar Banco");
-        jBCriarSql.addActionListener(new java.awt.event.ActionListener() {
+        jBConsultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCriarSqlActionPerformed(evt);
+                jBConsultasActionPerformed(evt);
             }
         });
-        jBCriarSql.setBounds(490, 20, 160, 50);
-        jLayeredPane1.add(jBCriarSql, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jBConsultas.setBounds(170, 20, 140, 50);
+        jLayeredPane1.add(jBConsultas, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jBDevolucao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Books-icon.png"))); // NOI18N
         jBDevolucao.setText("Devoluções");
+        jBDevolucao.setToolTipText("Botão para Devolução de Livro");
+        jBDevolucao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBDevolucaoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBDevolucaoMouseExited(evt);
+            }
+        });
         jBDevolucao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBDevolucaoActionPerformed(evt);
@@ -158,198 +179,249 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(0, 51, 153));
 
-        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu1.setForeground(new java.awt.Color(1, 1, 1));
-        jMenu1.setText("Cadastro");
+        jMCadastros.setBackground(new java.awt.Color(255, 255, 255));
+        jMCadastros.setForeground(new java.awt.Color(1, 1, 1));
+        jMCadastros.setText("Cadastro");
+        jMCadastros.setToolTipText("Botão de cadastros");
 
-        jMUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMUsuario.setText("Usuário");
+        jMUsuario.setToolTipText("Cadastrar usuário");
+        jMUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMUsuarioMouseExited(evt);
+            }
+        });
         jMUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMUsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMUsuario);
+        jMCadastros.add(jMUsuario);
 
-        jMLivro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMLivro.setText("Livro");
+        jMLivro.setToolTipText("Cadastrar livro");
+        jMLivro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMUsuarioMouseExited(evt);
+            }
+        });
         jMLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMLivroActionPerformed(evt);
             }
         });
-        jMenu1.add(jMLivro);
+        jMCadastros.add(jMLivro);
 
-        jMEditora.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMEditora.setText("Editora");
+        jMEditora.setToolTipText("Cadastrar editora");
+        jMEditora.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMUsuarioMouseExited(evt);
+            }
+        });
         jMEditora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMEditoraActionPerformed(evt);
             }
         });
-        jMenu1.add(jMEditora);
+        jMCadastros.add(jMEditora);
 
-        jMFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMFuncionario.setText("Funcionário");
+        jMFuncionario.setToolTipText("Cadastrar funcionário");
+        jMFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMUsuarioMouseExited(evt);
+            }
+        });
         jMFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMFuncionarioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMFuncionario);
+        jMCadastros.add(jMFuncionario);
 
-        jMAutor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMAutor.setText("Autor");
+        jMAutor.setToolTipText("Cadastrar autor");
+        jMAutor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMUsuarioMouseExited(evt);
+            }
+        });
         jMAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMAutorActionPerformed(evt);
             }
         });
-        jMenu1.add(jMAutor);
+        jMCadastros.add(jMAutor);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMCadastros);
 
-        jMenu2.setForeground(new java.awt.Color(1, 1, 1));
-        jMenu2.setText("Consulta");
+        jMConsultas.setForeground(new java.awt.Color(1, 1, 1));
+        jMConsultas.setText("Consulta");
+        jMConsultas.setToolTipText("Botão de Consultas");
 
         jMConsultaUsuario.setText("Usuário");
+        jMConsultaUsuario.setToolTipText("Consulta usuário");
         jMConsultaUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMConsultaUsuarioActionPerformed(evt);
             }
         });
-        jMenu2.add(jMConsultaUsuario);
+        jMConsultas.add(jMConsultaUsuario);
 
-        jMConsultaLivro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMConsultaLivro.setText("Livro");
+        jMConsultaLivro.setToolTipText("Consulta livro");
         jMConsultaLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMConsultaLivroActionPerformed(evt);
             }
         });
-        jMenu2.add(jMConsultaLivro);
+        jMConsultas.add(jMConsultaLivro);
 
-        jMConsultaEditora.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMConsultaEditora.setText("Editora");
+        jMConsultaEditora.setToolTipText("Consulta editora");
         jMConsultaEditora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMConsultaEditoraActionPerformed(evt);
             }
         });
-        jMenu2.add(jMConsultaEditora);
+        jMConsultas.add(jMConsultaEditora);
 
-        jMConsultaFuncionário.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMConsultaFuncionário.setText("Funcionário");
+        jMConsultaFuncionário.setToolTipText("Consulta funcionário");
         jMConsultaFuncionário.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMConsultaFuncionárioActionPerformed(evt);
             }
         });
-        jMenu2.add(jMConsultaFuncionário);
+        jMConsultas.add(jMConsultaFuncionário);
 
-        jMConsultaAutor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMConsultaAutor.setText("Autor");
+        jMConsultaAutor.setToolTipText("Consulta autor");
         jMConsultaAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMConsultaAutorActionPerformed(evt);
             }
         });
-        jMenu2.add(jMConsultaAutor);
+        jMConsultas.add(jMConsultaAutor);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMConsultas);
 
-        jMenu3.setForeground(new java.awt.Color(1, 1, 1));
-        jMenu3.setText("Alterar");
+        jMAlterar.setForeground(new java.awt.Color(1, 1, 1));
+        jMAlterar.setText("Alterar");
+        jMAlterar.setToolTipText("Botão de alteração");
 
         jMAlterarUsuario.setText("Usuário");
+        jMAlterarUsuario.setToolTipText("Alterar usuário");
         jMAlterarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMAlterarUsuarioActionPerformed(evt);
             }
         });
-        jMenu3.add(jMAlterarUsuario);
+        jMAlterar.add(jMAlterarUsuario);
 
-        jMAlterarLivro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMAlterarLivro.setText("Livro");
+        jMAlterarLivro.setToolTipText("Alterar livro");
         jMAlterarLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMAlterarLivroActionPerformed(evt);
             }
         });
-        jMenu3.add(jMAlterarLivro);
+        jMAlterar.add(jMAlterarLivro);
 
-        jMAlterarEditora.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMAlterarEditora.setText("Editora");
+        jMAlterarEditora.setToolTipText("Alterar editora");
         jMAlterarEditora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMAlterarEditoraActionPerformed(evt);
             }
         });
-        jMenu3.add(jMAlterarEditora);
+        jMAlterar.add(jMAlterarEditora);
 
-        jMAlterarFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMAlterarFuncionario.setText("Funcionário");
+        jMAlterarFuncionario.setToolTipText("Alterar funcionário ");
         jMAlterarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMAlterarFuncionarioActionPerformed(evt);
             }
         });
-        jMenu3.add(jMAlterarFuncionario);
+        jMAlterar.add(jMAlterarFuncionario);
 
-        jMAlterarAutor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMAlterarAutor.setText("Autor");
+        jMAlterarAutor.setToolTipText("Alterar autor");
         jMAlterarAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMAlterarAutorActionPerformed(evt);
             }
         });
-        jMenu3.add(jMAlterarAutor);
+        jMAlterar.add(jMAlterarAutor);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMAlterar);
 
-        jMenu4.setForeground(new java.awt.Color(1, 1, 1));
-        jMenu4.setText("Empréstimos");
+        jMEmprestimo.setForeground(new java.awt.Color(1, 1, 1));
+        jMEmprestimo.setText("Empréstimos");
+        jMEmprestimo.setToolTipText("Botão empréstimos");
 
         jMEmprestimos.setText("Emprestimos");
+        jMEmprestimos.setToolTipText("Botão para empréstimos de Livros");
         jMEmprestimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMEmprestimosActionPerformed(evt);
             }
         });
-        jMenu4.add(jMEmprestimos);
+        jMEmprestimo.add(jMEmprestimos);
 
-        jMDevolução.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMDevolução.setText("Devoluções");
+        jMDevolução.setToolTipText("Botão para devolução de livros");
         jMDevolução.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMDevoluçãoActionPerformed(evt);
             }
         });
-        jMenu4.add(jMDevolução);
+        jMEmprestimo.add(jMDevolução);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jMEmprestimo);
 
-        jMenu5.setForeground(new java.awt.Color(1, 1, 1));
-        jMenu5.setText("Ajuda");
+        jMAjuda.setForeground(new java.awt.Color(1, 1, 1));
+        jMAjuda.setText("Ajuda");
+        jMAjuda.setToolTipText("Botão de ajuda");
 
+        jMenuItem19.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuItem19.setText("Conteúdo de Ajuda");
+        jMenuItem19.setToolTipText("Ajuda");
         jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem19ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem19);
+        jMAjuda.add(jMenuItem19);
 
-        jMenuItem20.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem20.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         jMenuItem20.setText("Suporte Online");
+        jMenuItem20.setToolTipText("conteudo online");
         jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem20ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem20);
+        jMAjuda.add(jMenuItem20);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(jMAjuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -366,7 +438,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -424,7 +496,7 @@ public class Main extends javax.swing.JFrame {
     private void jMAlterarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarLivroActionPerformed
         AlterarLivro alterarLivro = new AlterarLivro();
         alterarLivro.setVisible(true);
-        
+
     }//GEN-LAST:event_jMAlterarLivroActionPerformed
 
     private void jMAlterarEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarEditoraActionPerformed
@@ -456,60 +528,21 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem20ActionPerformed
 
     private void jBDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDevolucaoActionPerformed
-       DevolverLivro devolucao = new DevolverLivro();
-       devolucao.setVisible(true);
+        DevolverLivro devolucao = new DevolverLivro();
+        devolucao.setVisible(true);
     }//GEN-LAST:event_jBDevolucaoActionPerformed
 
-    private void jBCriarSqlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarSqlActionPerformed
-        try {
-            
-            PreparedStatement pst = ConnectionFactory.prepareConnection().prepareStatement("DROP DATABASE IF EXISTS bibliotec;\\n\"\n"
-                    + "CREATE DATABASE IF NOT EXISTS bibliotec;\\n\"\n"
-                    + "USE bibliotec;"
-                    +"DROP TABLE IF EXISTS Cidade"
-                    + "CREATE TABLE Cidade(\n"
-                    + "		id int PRIMARY KEY NOT NULL AUTO_INCREMENT,\n"
-                    + "        nome varchar(100) NOT NULL,\n"
-                    + "        uf char(2) NOT NULL);\n"
-                    +"DROP TABLE IF EXISTS Endereco;\n"
-                    + "CREATE TABLE Endereco\n"
-                    + "		(id INT NOT NULL AUTO_INCREMENT,\n"
-                    + "		numero INT NOT NULL,\n"
-                    + "		complemento VARCHAR(45),\n"
-                    + "		cep VARCHAR(8) NOT NULL,\n"
-                    + "		logradouro VARCHAR(200) NOT NULL,\n"
-                    + "		idCidade INT NOT NULL,\n"
-                    + "		PRIMARY KEY (id),\n"
-                    + "		FOREIGN KEY (idCidade) REFERENCES Cidade(id));"
-                    +"DROP TABLE IF EXISTS Usuario;\n"
-                    + "CREATE TABLE Usuario\n"
-                    + "		(id INT NOT NULL AUTO_INCREMENT,\n"
-                    + "		nome VARCHAR(100) NOT NULL,\n"
-                    + "		cpf VARCHAR(11) UNIQUE NOT NULL,\n"
-                    + "		idEndereco INT NOT NULL,\n"
-                    + "		telefone varchar(11) NOT NULL,\n"
-                    + "		PRIMARY KEY (id),\n"
-                    + "        	FOREIGN KEY (idEndereco) REFERENCES Endereco(id) ON DELETE CASCADE);");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-
-
-
-    }//GEN-LAST:event_jBCriarSqlActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultasActionPerformed
         OpcoesConsultar opcoesConsultar = new OpcoesConsultar();
         opcoesConsultar.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBConsultasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBCadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrosActionPerformed
         OpcoesCadastrar opcoesCadastrar = new OpcoesCadastrar();
         opcoesCadastrar.setVisible(true);
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBCadastrosActionPerformed
 
     private void jMAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAutorActionPerformed
         CadastrarAutor cadastrarAutor = new CadastrarAutor();
@@ -526,6 +559,40 @@ public class Main extends javax.swing.JFrame {
         alterarAutor.setVisible(true);
     }//GEN-LAST:event_jMAlterarAutorActionPerformed
 
+    private void jBCadastrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCadastrosMouseEntered
+        jLBarraStatus.setText(jBCadastros.getToolTipText());
+    }//GEN-LAST:event_jBCadastrosMouseEntered
+
+    private void jBCadastrosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCadastrosMouseExited
+        jLBarraStatus.setText("");
+    }//GEN-LAST:event_jBCadastrosMouseExited
+
+    private void jBConsultasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBConsultasMouseEntered
+        jLBarraStatus.setText(jBConsultas.getToolTipText());
+    }//GEN-LAST:event_jBConsultasMouseEntered
+
+    private void jBConsultasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBConsultasMouseExited
+        jLBarraStatus.setText("");
+
+    }//GEN-LAST:event_jBConsultasMouseExited
+
+    private void jBDevolucaoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBDevolucaoMouseEntered
+                jLBarraStatus.setText(jBDevolucao.getToolTipText());
+
+    }//GEN-LAST:event_jBDevolucaoMouseEntered
+
+    private void jBDevolucaoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBDevolucaoMouseExited
+        jLBarraStatus.setText("");
+    }//GEN-LAST:event_jBDevolucaoMouseExited
+
+    private void jMUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMUsuarioMouseEntered
+        
+    }//GEN-LAST:event_jMUsuarioMouseEntered
+
+    private void jMUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMUsuarioMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMUsuarioMouseExited
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -536,35 +603,35 @@ public class Main extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBCriarSql;
+    private javax.swing.JButton jBCadastros;
+    private javax.swing.JButton jBConsultas;
     private javax.swing.JButton jBDevolucao;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLBarraStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JMenu jMAjuda;
+    private javax.swing.JMenu jMAlterar;
     private javax.swing.JMenuItem jMAlterarAutor;
     private javax.swing.JMenuItem jMAlterarEditora;
     private javax.swing.JMenuItem jMAlterarFuncionario;
     private javax.swing.JMenuItem jMAlterarLivro;
     private javax.swing.JMenuItem jMAlterarUsuario;
     private javax.swing.JMenuItem jMAutor;
+    private javax.swing.JMenu jMCadastros;
     private javax.swing.JMenuItem jMConsultaAutor;
     private javax.swing.JMenuItem jMConsultaEditora;
     private javax.swing.JMenuItem jMConsultaFuncionário;
     private javax.swing.JMenuItem jMConsultaLivro;
     private javax.swing.JMenuItem jMConsultaUsuario;
+    private javax.swing.JMenu jMConsultas;
     private javax.swing.JMenuItem jMDevolução;
     private javax.swing.JMenuItem jMEditora;
+    private javax.swing.JMenu jMEmprestimo;
     private javax.swing.JMenuItem jMEmprestimos;
     private javax.swing.JMenuItem jMFuncionario;
     private javax.swing.JMenuItem jMLivro;
     private javax.swing.JMenuItem jMUsuario;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem19;
