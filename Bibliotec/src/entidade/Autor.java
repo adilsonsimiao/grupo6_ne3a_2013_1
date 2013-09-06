@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -25,7 +26,7 @@ public class Autor {
     @Column(length = 200)
     private String Nome;
     
-    @ManyToMany(mappedBy = "autores", cascade = CascadeType.PERSIST)    
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)    
     private Set<Livro> livros = new HashSet<Livro>();
 
     public Set<Livro> getLivros() {
