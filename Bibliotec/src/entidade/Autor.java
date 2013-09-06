@@ -24,8 +24,6 @@ public class Autor {
     private int id;
     @Column(length = 200)
     private String Nome;
-    @Column(length = 20)
-    private String ISBN;
     
     @ManyToMany(mappedBy = "autores", cascade = CascadeType.PERSIST)    
     private Set<Livro> livros = new HashSet<Livro>();
@@ -58,15 +56,11 @@ public class Autor {
         this.Nome = Nome;
     }
 
-    public String getISBN() {
-        return ISBN;
-    }
-
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
-    }
     @Override
     public String toString() {
-        return "Autor{" + "nome=" + Nome + ", id=" + id + ", ISBN"+ ISBN +'}';
+        return "Autor{" + "id=" + id + ", Nome=" + Nome + ", livros=" + livros + '}';
     }
+
+   
+    
 }
