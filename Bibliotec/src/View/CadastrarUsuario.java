@@ -646,12 +646,10 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }
 
     private boolean validar() {
-        boolean valida = false;
         StringBuilder stringsBuilder = new StringBuilder();
         if (jTFNome.getText().length() < 3) {
             stringsBuilder.append("Nome é obrigatório\n");
             jLNome.setForeground(Color.red);
-            valida = true;
         } else {
             jLNome.setForeground(Color.BLACK);
         }
@@ -659,7 +657,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         if (jFTFRg.getText().replace("-", "").trim().length() < 9 || jFTFRg.getText().replace("-", "").trim().length() > 9) {
             stringsBuilder.append("Rg é obrigatório \n");
             jLRg.setForeground(Color.red);
-            valida = true;
 
         } else {
             jLRg.setForeground(Color.BLACK);
@@ -684,7 +681,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 jLInfo.setText("cpf é obrigatório");
                 stringsBuilder.append("cpf é obrigatório \n");
             }
-            valida = true;
 
         } else {
             jFTFCpf.setForeground(Color.BLACK);
@@ -693,7 +689,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         if (jFTFCep.getText().replace("-", "").trim().length() < 8 || jFTFCep.getText().replace("-", "").trim().length() > 8) {
             stringsBuilder.append("cep é obrigatório \n");
             jLCep.setForeground(Color.red);
-            valida = true;
         } else {
             jFTFCep.setForeground(Color.BLACK);
         }
@@ -702,7 +697,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             stringsBuilder.append("telefone é obrigatório \n");
             jLTelefone.setForeground(Color.red);
             jLDDD.setForeground(Color.red);
-            valida = true;
         } else {
             jLTelefone.setForeground(Color.BLACK);
             jLDDD.setForeground(Color.BLACK);
@@ -711,7 +705,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         if (jTFLogradouro.getText().length() < 3) {
             stringsBuilder.append("Logradouro é obrigatório \n");
             jLLogradouro.setForeground(Color.red);
-            valida = true;
         } else {
             jLLogradouro.setForeground(Color.BLACK);
         }
@@ -719,7 +712,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         if (jTFBairro.getText().length() < 3) {
             stringsBuilder.append("Bairro é obrigatório \n");
             jLBairro.setForeground(Color.red);
-            valida = true;
         } else {
             jLBairro.setForeground(Color.BLACK);
         }
@@ -727,7 +719,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         if (jFTFNumero.getText().length() == 0) {
             stringsBuilder.append("Numero é obrigatório \n");
             jLNumero.setForeground(Color.red);
-            valida = true;
         } else {
             jLNumero.setForeground(Color.BLACK);
         }
