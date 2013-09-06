@@ -8,6 +8,7 @@ import entidade.Editora;
 import entidade.Endereco;
 import entidade.Municipio;
 import hibernate.HibernateDao;
+import java.awt.Color;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -40,12 +41,12 @@ public class CadastrarEditora extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLNomeEditora = new javax.swing.JLabel();
+        jLEmail = new javax.swing.JLabel();
         jTNome = new javax.swing.JTextField();
         jTFEmail = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jBFechar = new javax.swing.JButton();
+        jBCadastrar = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -64,6 +65,8 @@ public class CadastrarEditora extends javax.swing.JFrame {
         jFTFCep = new javax.swing.JFormattedTextField();
         jTFNumero = new javax.swing.JFormattedTextField();
         jLInfo = new javax.swing.JLabel();
+        jBAlterar = new javax.swing.JButton();
+        jBValidar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,9 +90,9 @@ public class CadastrarEditora extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, Short.MAX_VALUE)
         );
 
-        jLabel2.setText("Nome:");
+        jLNomeEditora.setText("Nome*:");
 
-        jLabel4.setText("Email:");
+        jLEmail.setText("Email*:");
 
         jTFEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,17 +105,17 @@ public class CadastrarEditora extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Cadastrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBCadastrarActionPerformed(evt);
             }
         });
 
-        jBFechar.setText("Cancelar");
-        jBFechar.addActionListener(new java.awt.event.ActionListener() {
+        jBCancelar.setText("Cancelar");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBFecharActionPerformed(evt);
+                jBCancelarActionPerformed(evt);
             }
         });
 
@@ -227,6 +230,15 @@ public class CadastrarEditora extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Endereço", jPanel4);
 
+        jBAlterar.setText("Alterar");
+
+        jBValidar.setText("Validar");
+        jBValidar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBValidarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -238,23 +250,27 @@ public class CadastrarEditora extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(jLNomeEditora)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTNome, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
+                                    .addComponent(jLEmail)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jTFEmail)
                                     .addGap(11, 11, 11))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(13, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(jBValidar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBAlterar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBCadastrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBFechar)
+                        .addComponent(jBCancelar)
                         .addGap(41, 41, 41))))
         );
         layout.setVerticalGroup(
@@ -263,11 +279,11 @@ public class CadastrarEditora extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLNomeEditora)
                     .addComponent(jTNome, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(jLEmail)
                     .addComponent(jTFEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,8 +291,10 @@ public class CadastrarEditora extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jBFechar))
+                            .addComponent(jBCadastrar)
+                            .addComponent(jBCancelar)
+                            .addComponent(jBAlterar)
+                            .addComponent(jBValidar))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jLInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -289,11 +307,11 @@ public class CadastrarEditora extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFEmailActionPerformed
 
-    private void jBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecharActionPerformed
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         dispose();
-    }//GEN-LAST:event_jBFecharActionPerformed
+    }//GEN-LAST:event_jBCancelarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
         try {
             municipio.setUf(jTUF.getItemAt(jTUF.getSelectedIndex()).toString());
             municipio.setNome(jTFCidade.getItemAt(jTFCidade.getSelectedIndex()).toString());
@@ -315,7 +333,7 @@ public class CadastrarEditora extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, " Não foi possivel cadastrar!!");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jTFComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFComplementoActionPerformed
         // TODO add your handling code here:
@@ -333,6 +351,10 @@ public class CadastrarEditora extends javax.swing.JFrame {
         } else {
         }
     }//GEN-LAST:event_jTFEmailFocusLost
+
+    private void jBValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBValidarActionPerformed
+        validar();
+    }//GEN-LAST:event_jBValidarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,10 +391,14 @@ public class CadastrarEditora extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBFechar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBAlterar;
+    private javax.swing.JButton jBCadastrar;
+    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBValidar;
     private javax.swing.JFormattedTextField jFTFCep;
+    private javax.swing.JLabel jLEmail;
     private javax.swing.JLabel jLInfo;
+    private javax.swing.JLabel jLNomeEditora;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
@@ -380,10 +406,8 @@ public class CadastrarEditora extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jTFBairro;
@@ -405,6 +429,30 @@ public boolean validEmail(String email) {
         } else {
             return false;
         }
+    }
+
+    private boolean validar() {
+         StringBuilder stringsBuilder = new StringBuilder();
+        if (jTNome.getText().length() < 3) {
+            stringsBuilder.append("Nome é obrigatório\n");
+            jLNomeEditora.setForeground(Color.red);
+        } else {
+            jLNomeEditora.setForeground(Color.BLACK);
+        }
+         Pattern p = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$");
+        Matcher m = p.matcher(jTFEmail.getText());
+        if (m.find()) {
+            jLEmail.setForeground(Color.black);
+        } else {
+            stringsBuilder.append("Email é obrigatório\n");
+            jLEmail.setForeground(Color.red);
+            
+        }
+        if (stringsBuilder.length() > 0) {
+            JOptionPane.showMessageDialog(null, stringsBuilder.toString());
+            return true;
+        }
+        return false;
     }
 
 }
