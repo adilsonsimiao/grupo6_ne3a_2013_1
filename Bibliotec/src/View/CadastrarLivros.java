@@ -147,6 +147,11 @@ public class CadastrarLivros extends javax.swing.JFrame {
         jLAutor.setText("Autor*:");
 
         jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarActionPerformed(evt);
+            }
+        });
 
         jBValidar.setText("validar");
         jBValidar.addActionListener(new java.awt.event.ActionListener() {
@@ -288,6 +293,21 @@ public class CadastrarLivros extends javax.swing.JFrame {
         validar();
     }//GEN-LAST:event_jBValidarActionPerformed
 
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+         if (validar() == false) {
+            try {
+                persistencia();
+
+
+                JOptionPane.showMessageDialog(null, " Cadastro realizada com sucesso!!");
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, " Não foi possivel cadastrar!!");
+            }
+
+        }
+    }//GEN-LAST:event_jBAlterarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -363,19 +383,19 @@ public class CadastrarLivros extends javax.swing.JFrame {
         } else {
             jLQuantidade.setForeground(Color.BLACK);
         }
-        if (jCBEditora.getSelectedItem() != null) {
+        if (jCBEditora.getSelectedItem().toString().trim().length() <= 0) {
             stringsBuilder.append("Editora é obrigatório\n");
             jLEditora.setForeground(Color.red);
         } else {
             jLEditora.setForeground(Color.BLACK);
         }
-        if (jCBGenero.getSelectedItem() != null) {
+        if (jCBGenero.getSelectedItem().toString().trim().length() <= 0) {
             stringsBuilder.append("Gênero é obrigatório\n");
             jLGenero.setForeground(Color.red);
         } else {
             jLGenero.setForeground(Color.BLACK);
         }
-        if (jCBAutor.getSelectedItem() != null) {
+        if (jCBAutor.getSelectedItem().toString().trim().length() <= 0) {
             stringsBuilder.append("Autor é obrigatório\n");
             jLAutor.setForeground(Color.red);
         } else {
@@ -389,12 +409,17 @@ public class CadastrarLivros extends javax.swing.JFrame {
     }
 
     private void persistencia() throws Exception {
-//        livro.setNomeLivro(jTFNome.getText());
-//        livro.setAutores((Set<Autor>) jCBAutor);
-//        livro.setQuantidade(Integer.parseInt(jTFQuantidade.getText()));
-//        livro.setEditoras((Set<Editora>) jCBEditora);
-//        livro.setIsbn(jTFIsbn.getText());
-//        genero.setGenero(jCBGenero.getActionCommand());
-//        livro.setGenero(genero);
+        livro.setNomeLivro(jTFNome.getText());
+        autor.setNome(jCBAutor.getSelectedItem().toString());
+        livro.getAutores().add(autor);
+        livro.setQuantidade(Integer.parseInt(jTFQuantidade.getText()));
+        editora.setNome(jCBEditora.getSelectedItem().toString());
+        livro.getEditoras().add(editora);
+        livro.setIsbn(jTFIsbn.getText());
+        genero.setGenero(jCBGenero.getSelectedItem().toString());
+        livro.setGenero(genero);
+        new HibernateDao<Genero>().persist(genero);
+        new HibernateDao<Autor>().persist(autor);
+        new HibernateDao<Livro>().persist(livro);
     }
 }
