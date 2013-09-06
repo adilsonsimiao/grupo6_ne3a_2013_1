@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -22,12 +23,25 @@ public class Livro {
 
     @Id
     @GeneratedValue
+    
     private int id;
+    
     @Column(length = 200)
     private String nomeLivro;
+    
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    private Set<Editora> editoras = new HashSet<Editora>();
+    
+    private int quantidade;
+    
     @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<Autor> autores = new HashSet<Autor>();
-
+    
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private Genero genero;
+    @Column(length = 13)
+    private String Isbn;
+    
     public Set<Autor> getAutores() {
         return autores;
     }
@@ -35,7 +49,6 @@ public class Livro {
     public void setAutores(Set<Autor> autores) {
         this.autores = autores;
     }
-    private int quantidade;
 
     public int getId() {
         return id;
@@ -63,8 +76,36 @@ public class Livro {
         this.quantidade = quantidade;
     }
 
+    public Set<Editora> getEditoras() {
+        return editoras;
+    }
+
+    public void setEditoras(Set<Editora> editoras) {
+        this.editoras = editoras;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
+    public String getIsbn() {
+        return Isbn;
+    }
+
+    public void setIsbn(String Isbn) {
+        this.Isbn = Isbn;
+    }
+
     @Override
     public String toString() {
-        return "livro{" + "id=" + id + ", nomeLivro=" + nomeLivro + ", autor" + autores + ", quantidade" + quantidade + "}";
+        return "Livro{" + "id=" + id + ", nomeLivro=" + nomeLivro + ", editoras=" + editoras + ", quantidade=" + quantidade + ", autores=" + autores + ", genero=" + genero + ", Isbn=" + Isbn + '}';
     }
+
+    
+   
+    
 }
