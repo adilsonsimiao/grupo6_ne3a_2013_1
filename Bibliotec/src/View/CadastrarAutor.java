@@ -6,6 +6,7 @@ package View;
 
 import entidade.Autor;
 import hibernate.HibernateDao;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,10 +14,12 @@ import javax.swing.JOptionPane;
  * @author fabio
  */
 public class CadastrarAutor extends javax.swing.JFrame {
+
     /**
      * Creates new form CadastrarAutor
      */
     private Autor autor = new Autor();
+
     public CadastrarAutor() {
         initComponents();
     }
@@ -33,12 +36,11 @@ public class CadastrarAutor extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLNomeAutor = new javax.swing.JLabel();
         jTFNomeAutor = new javax.swing.JTextField();
-        jTFIsbn = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jBAlterarAutor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,9 +75,7 @@ public class CadastrarAutor extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setText("Nome:");
-
-        jLabel2.setText("ISBN:");
+        jLNomeAutor.setText("Nome*:");
 
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +91,13 @@ public class CadastrarAutor extends javax.swing.JFrame {
             }
         });
 
+        jBAlterarAutor.setText("Alterar");
+        jBAlterarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarAutorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,18 +105,14 @@ public class CadastrarAutor extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFNomeAutor))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTFIsbn)))
+                .addComponent(jLNomeAutor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTFNomeAutor)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBAlterarAutor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
@@ -121,16 +124,14 @@ public class CadastrarAutor extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(jLNomeAutor)
                     .addComponent(jTFNomeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTFIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jBAlterarAutor))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
@@ -144,19 +145,31 @@ public class CadastrarAutor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            
-            autor.setNome(jTFNomeAutor.getText());
-            autor.setISBN(jTFIsbn.getText());
-            new HibernateDao().persist(autor);
 
-
-            JOptionPane.showMessageDialog(null, " Cadastro realizada com sucesso!!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, " Não foi possivel cadastrar!!");
+        if (validar() == false) {
+            try {
+                autor.setNome(jTFNomeAutor.getText());
+                new HibernateDao().persist(autor);
+                JOptionPane.showMessageDialog(null, " Cadastro realizada com sucesso!!");
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, " Não foi possivel cadastrar!!");
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jBAlterarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarAutorActionPerformed
+        if (validar() == false) {
+            try {
+                autor.setNome(jTFNomeAutor.getText());
+                new HibernateDao().persist(autor);
+                JOptionPane.showMessageDialog(null, " Aleração realizada com sucesso!!");
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, " Não foi possivel Alterar!!");
+            }
+        }
+    }//GEN-LAST:event_jBAlterarAutorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,14 +206,24 @@ public class CadastrarAutor extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAlterarAutor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLNomeAutor;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTFIsbn;
     private javax.swing.JTextField jTFNomeAutor;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validar() {
+        if (jTFNomeAutor.getText().length() < 3) {
+            JOptionPane.showMessageDialog(null, "Nome é obrigatório\n");
+            jLNomeAutor.setForeground(Color.red);
+            return true;
+        } else {
+            jLNomeAutor.setForeground(Color.BLACK);
+        }
+        return false;
+    }
 }
