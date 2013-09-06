@@ -35,7 +35,7 @@ public class Usuario implements Serializable {
     @OneToOne(cascade = CascadeType.PERSIST)   
     private Endereco endereco;
    
-    @Column(length = 15)
+    @Column(length = 20)
     private String telefone;
     
     @Column(length = 9)
