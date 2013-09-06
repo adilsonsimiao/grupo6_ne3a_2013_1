@@ -127,5 +127,4 @@ public class HibernateDao<E> implements Dao<E> {
 
     }
 
-
 }
