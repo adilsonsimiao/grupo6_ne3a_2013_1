@@ -690,7 +690,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             stringsBuilder.append("cep é obrigatório \n");
             jLCep.setForeground(Color.red);
         } else {
-            jFTFCep.setForeground(Color.BLACK);
+            jLCep.setForeground(Color.BLACK);
         }
 
         if (jFTFTelefone.getText().length() < 4 || jFTFTelefone.getText().length() >= 9) {

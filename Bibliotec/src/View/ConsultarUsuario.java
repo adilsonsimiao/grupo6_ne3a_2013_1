@@ -8,6 +8,8 @@ import entidade.Usuario;
 import hibernate.HibernateDao;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +24,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     private Usuario usuario = new Usuario();
     List<Object> listaUsuario = new ArrayList<>();
     DefaultTableModel tableModel;
+    private Object[] Object;
 
     public ConsultarUsuario() {
         initComponents();
@@ -31,7 +34,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jTAreaDadosConsulta.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-            "Id ", "Nome", "Cpf", 
+            "Id ", "E-mail", "Nome", "Cpf"
         }));
     }
 
@@ -54,8 +57,8 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jTFCampoConsulta = new javax.swing.JTextField();
         jBConsultar = new javax.swing.JButton();
         jBFechar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBExcluir = new javax.swing.JButton();
+        jBAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,76 +125,83 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 jBFecharActionPerformed(evt);
             }
         });
-        getContentPane().add(jBFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, -1, -1));
+        getContentPane().add(jBFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, -1, -1));
 
-        jButton1.setText("Excluir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, -1, -1));
+        getContentPane().add(jBExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, -1, -1));
 
-        jButton2.setText("Alterar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBAlterarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, -1, -1));
+        getContentPane().add(jBAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
         tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
-        System.out.println("::>> " + usuario.getNome());
-        if (jTFCampoConsulta.getText().trim().equals(" ")) {
+        if (jTFCampoConsulta.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
-        }
+        } else {
+            try {
+                if (jRBNome.isSelected() == true) {
+                    tableModel.addRow(Object);
+                    listaUsuario.add(new HibernateDao().list("", usuario.getClass(), jTFCampoConsulta.getText(), "nome", ""));
+                    String[] aux = listaUsuario.toString().split("Usuario");
+                    for (int p = 0; p < aux.length - 1; p++) {
+                        int al = listaUsuario.size();
+                        s = aux[p + 1].toString().split(",");
+                        result = new String[4];
 
-        try {
-            if (jRBNome.isSelected() == true) {
-                listaUsuario.add(new HibernateDao().list("", usuario.getClass(), jTFCampoConsulta.getText(), "nome",""));
-                int al = listaUsuario.size();
-                s = listaUsuario.toString().split(",");
-                result = new String[4];
-                for (int i = 0; i < al; i++) {
-                    
-                    for (int y = 0; y < 4; y++) {
-                        int a = s[y].indexOf("=");
-                        String s1 = s[y].substring(a, s[y].length());
-                        result[y] = s1.replace("=", "");
+                        for (int i = 0; i < al; i++) {
+
+                            for (int y = 0; y < 4; y++) {
+                                int a = s[y].indexOf("=");
+                                String s1 = s[y].substring(a, s[y].length());
+                                result[y] = s1.replace("=", "");
+                            }
+                            tableModel.addRow(new Object[]{result[0], result[1], result[2], result[3]});
+
+                        }
                     }
-                        tableModel.addRow(new Object[]{result[0],result[1],result[2],result[3]});
-                    
+
+                } else if (jRBCpf.isSelected() == true) {
+                    listaUsuario.add(new HibernateDao().list("", usuario.getClass(), jTFCampoConsulta.getText(), "Cpf", ""));
+                    String[] aux = listaUsuario.toString().split("Usuario");
+                    System.out.println(" aux " + aux.length);
+                    for (int p = 0; p < aux.length - 1; p++) {
+                        int al = listaUsuario.size();
+                        s = aux[p + 1].toString().split(",");
+                        result = new String[4];
+                        for (int i = 0; i < al; i++) {
+
+                            for (int y = 0; y < 4; y++) {
+                                int a = s[y].indexOf("=");
+                                String s1 = s[y].substring(a, s[y].length());
+                                result[y] = s1.replace("=", "");
+                            }
+                            tableModel.addRow(new Object[]{result[0], result[1], result[2], result[3]});
+
+                        }
+                    }
+
                 }
 
+
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Nao foi possivel localizar " + jTFCampoConsulta.getText());
             }
-            if (jRBCpf.isSelected() == true) {
-                listaUsuario.add( new HibernateDao().list("", usuario.getClass(), jTFCampoConsulta.getText(), "livros",""));
-                int al = listaUsuario.size();
-                String[] s = listaUsuario.toString().split(",");
-                String[] result = new String[4];
-                for (int i = 0; i < al; i++) {
-
-                    for (int y = 0; y < 4; y++) {
-                        int a = s[y].indexOf("=");
-                        String s1 = s[y].substring(a, s[y].length());
-                        result[y] = s1.replace("=", "");
-                    }
-                    tableModel.addRow(new Object[]{result[0], result[1], result[2], result[3]});
-
-                }
-
-            }
-
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Nao foi possivel localizar o cpf " + jTFCampoConsulta.getText());
         }
 
     }//GEN-LAST:event_jBConsultarActionPerformed
@@ -200,43 +210,57 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jBFecharActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
-        } else {
-
-            JOptionPane.showMessageDialog(null, "Selecione um usuario para alterar" + jTFCampoConsulta.getText());
-            AlterarUsuario alt = new AlterarUsuario();
-            alt.preencheTelaCadastro(usuario);
-            alt.setVisible(true);
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-    }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
         int row = jTAreaDadosConsulta.getSelectedRow();
+        String sa = tableModel.getValueAt(row, 0).toString();
+        int al = Integer.parseInt(sa);
+        try {
+            usuario = new HibernateDao<Usuario>().retrieve(usuario.getClass(), al);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos" + jTFCampoConsulta.getText());
-
+        if (jTFCampoConsulta.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Selecione um usuario para alterar" + jTFCampoConsulta.getText());
         } else {
 
 
-
+            AlterarUsuario alt = new AlterarUsuario();
             try {
+                alt.preencheTelaCadastro(usuario.getId());
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            alt.setVisible(true);
 
+        }
+    }//GEN-LAST:event_jBAlterarActionPerformed
 
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+        tableModel = (DefaultTableModel) jTAreaDadosConsulta.getModel();
+        int row = jTAreaDadosConsulta.getSelectedRow();
+        String sa = tableModel.getValueAt(row, 0).toString();
+        int al = Integer.parseInt(sa);
+        try {
+            usuario = new HibernateDao<Usuario>().retrieve(usuario.getClass(), al);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (jTFCampoConsulta.getText().equals("") || jTFCampoConsulta.getText().equals(" ")) {
+            JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
+
+        } else {
+            try {
                 if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == usuario.getId()) {
-                    System.out.println("deu certo");
+                    new HibernateDao().delete(usuario);
                     tableModel.removeRow(row);
                     JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
-
-
                 }
-
             } catch (Exception e) {
             }
-    }//GEN-LAST:event_jButton1ActionPerformed
-    }
+        }
+    }//GEN-LAST:event_jBExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,10 +298,10 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup BGConsulta;
+    private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBConsultar;
+    private javax.swing.JButton jBExcluir;
     private javax.swing.JButton jBFechar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRBCpf;
