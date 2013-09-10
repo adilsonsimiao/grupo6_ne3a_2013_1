@@ -10,13 +10,7 @@ import entidade.Genero;
 import entidade.Livro;
 import hibernate.HibernateDao;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import static java.awt.image.ImageObserver.HEIGHT;
-import static java.awt.image.ImageObserver.WIDTH;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -169,6 +163,12 @@ public class CadastrarLivros extends javax.swing.JFrame {
             }
         });
 
+        jCBEditora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBEditoraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -307,6 +307,10 @@ public class CadastrarLivros extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jBAlterarActionPerformed
+
+    private void jCBEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEditoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBEditoraActionPerformed
 
     /**
      * @param args the command line arguments
