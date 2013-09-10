@@ -4,6 +4,9 @@
  */
 package View;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author fabio
@@ -145,8 +148,12 @@ public class OpcoesCadastrar extends javax.swing.JFrame {
     }//GEN-LAST:event_jBUsuarioActionPerformed
 
     private void jBLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLivroActionPerformed
-        CadastrarLivros cadastrarLivros = new CadastrarLivros();
-        cadastrarLivros.setVisible(true);
+        try {
+            CadastrarLivros cadastrarLivros = new CadastrarLivros();
+            cadastrarLivros.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(OpcoesCadastrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBLivroActionPerformed
 
     private void jBEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditoraActionPerformed

@@ -3,6 +3,8 @@ package View;
 import Dao.ConnectionFactory;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -524,8 +526,12 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jMLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMLivroActionPerformed
-        CadastrarLivros cadastrarLivro = new CadastrarLivros();
-        cadastrarLivro.setVisible(true);
+        try {
+            CadastrarLivros cadastrarLivros = new CadastrarLivros();
+            cadastrarLivros.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMLivroActionPerformed
 
     private void jMEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMEditoraActionPerformed

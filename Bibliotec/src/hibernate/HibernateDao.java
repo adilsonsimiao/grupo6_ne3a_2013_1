@@ -50,10 +50,10 @@ public class HibernateDao<E> implements Dao<E> {
     public E retrieve(Class tipoObjeto, int id) throws Exception {
         EntityManager em = HibernateFactory.getEntityManager();
         em.getTransaction().begin();
-        em.find(tipoObjeto, id);
+        E e = (E) em.find(tipoObjeto, id);
         em.getTransaction().commit();
 
-        return (E) em;
+        return e;
 
     }
 
