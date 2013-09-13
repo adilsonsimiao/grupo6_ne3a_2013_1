@@ -73,16 +73,14 @@ public class AlterarUsuario extends javax.swing.JFrame {
         jLcpf = new javax.swing.JLabel();
         jBuCadastro = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLDDD = new javax.swing.JLabel();
-        jLTelefone = new javax.swing.JLabel();
         jFTFRg = new javax.swing.JFormattedTextField();
         jFTFCpf = new javax.swing.JFormattedTextField();
-        jFTFDDD = new javax.swing.JFormattedTextField();
-        jFTFTelefone = new javax.swing.JFormattedTextField();
         jLInfo = new javax.swing.JLabel();
         jLEmail = new javax.swing.JLabel();
         jTFEmail = new javax.swing.JTextField();
         JBValidar = new javax.swing.JButton();
+        jFTFTelefone = new javax.swing.JFormattedTextField();
+        jLTelefone = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -122,7 +120,7 @@ public class AlterarUsuario extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(434, 434, 434))
         );
         jPanel1Layout.setVerticalGroup(
@@ -205,7 +203,7 @@ public class AlterarUsuario extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLCep)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFTFCep, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)))
+                                .addComponent(jFTFCep, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         jPanel7Layout.setVerticalGroup(
@@ -261,10 +259,6 @@ public class AlterarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLDDD.setText("DDD*:");
-
-        jLTelefone.setText("Telefone*:");
-
         try {
             jFTFRg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-###-###-#")));
         } catch (java.text.ParseException ex) {
@@ -287,19 +281,6 @@ public class AlterarUsuario extends javax.swing.JFrame {
             }
         });
 
-        try {
-            jFTFDDD.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFTFDDD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFTFDDDActionPerformed(evt);
-            }
-        });
-
-        jFTFTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###############"))));
-
         jLEmail.setText("E-mail:");
 
         jTFEmail.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -315,6 +296,10 @@ public class AlterarUsuario extends javax.swing.JFrame {
             }
         });
 
+        jFTFTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###########"))));
+
+        jLTelefone.setText("Telefone*:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -323,44 +308,33 @@ public class AlterarUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
-                                .addComponent(JBValidar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBuCadastro)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1))
-                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 19, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(236, 236, 236)
+                        .addComponent(JBValidar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBuCadastro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLNome)
                                 .addComponent(jLRg)
-                                .addComponent(jLDDD))
-                            .addComponent(jLEmail))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFEmail)
-                            .addComponent(jTFNome)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jFTFRg, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLcpf))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jFTFDDD, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLTelefone)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jFTFCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                                    .addComponent(jFTFTelefone))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                                .addComponent(jLTelefone)
+                                .addComponent(jLEmail))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jFTFRg, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLcpf)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jFTFCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTFNome, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
+                                .addComponent(jTFEmail)
+                                .addComponent(jFTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,21 +352,13 @@ public class AlterarUsuario extends javax.swing.JFrame {
                     .addComponent(jLcpf)
                     .addComponent(jFTFRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFTFCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLDDD)
-                            .addComponent(jFTFDDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLTelefone)
-                            .addComponent(jFTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLTelefone)
+                    .addComponent(jFTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBuCadastro)
@@ -406,8 +372,10 @@ public class AlterarUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,9 +438,6 @@ public class AlterarUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jFTFCpfFocusLost
 
-    private void jFTFDDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTFDDDActionPerformed
-    }//GEN-LAST:event_jFTFDDDActionPerformed
-
     private void jTFEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFEmailFocusLost
         boolean b = validEmail(jTFEmail.getText().toString());
         if (jTFEmail.getText().trim().length() > 0) {
@@ -527,14 +492,13 @@ public class AlterarUsuario extends javax.swing.JFrame {
     }
 
     public void preencheTelaCadastro(int a) throws Exception {
-        this.usuario = new HibernateDao<Usuario>().retrieve(usuario.getClass(), a);
+        this.usuario = new HibernateDao<Usuario>(usuario.getClass()).retrieve(a);
         usuario.setId(a);
         jTFNome.setText(usuario.getNome());
         jFTFRg.setText(usuario.getRg());
         jFTFCpf.setText(usuario.getCpf());
         jTFLogradouro.setText(usuario.getEndereco().getLogradouro());
         jTFBairro.setText(usuario.getEndereco().getBairro());
-        jFTFDDD.setText(usuario.getTelefone());
         jFTFTelefone.setText(usuario.getTelefone().trim());
         jFTFNumero.setText(usuario.getEndereco().getNumero());
         jFTFCep.setText(usuario.getEndereco().getCep());
@@ -547,13 +511,11 @@ public class AlterarUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JFormattedTextField jFTFCep;
     private javax.swing.JFormattedTextField jFTFCpf;
-    private javax.swing.JFormattedTextField jFTFDDD;
     private javax.swing.JFormattedTextField jFTFNumero;
     private javax.swing.JFormattedTextField jFTFRg;
     private javax.swing.JFormattedTextField jFTFTelefone;
     private javax.swing.JLabel jLBairro;
     private javax.swing.JLabel jLCep;
-    private javax.swing.JLabel jLDDD;
     private javax.swing.JLabel jLEmail;
     private javax.swing.JLabel jLInfo;
     private javax.swing.JLabel jLLogradouro;
@@ -595,7 +557,6 @@ public class AlterarUsuario extends javax.swing.JFrame {
         endereco.setBairro(jTFBairro.getText());
         endereco.setCep(jFTFCep.getText().replace("-", ""));
         endereco.setMunicipio(municipio);
-        System.out.println("telefone:: "+ jFTFDDD.getText() + jFTFTelefone.getText().toString().trim().replace("-", "").length());
         new HibernateDao<Endereco>().persist(endereco);
 
         usuario.setId(usuario.getId());
@@ -603,9 +564,7 @@ public class AlterarUsuario extends javax.swing.JFrame {
         usuario.setEmail(jTFEmail.getText());
         usuario.setCpf(jFTFCpf.getText().replace("-", ""));
         usuario.setRg(jFTFRg.getText().replace("-", ""));
-        System.out.println(":: "+ jFTFDDD.getText() + jFTFTelefone.getText().replace("-", ""));
-        System.out.println("rg:: "+ jFTFRg.getText().replace("-", "").length());
-        //usuario.setTelefone(jFTFDDD.getText() + jFTFTelefone.getText().replace("-", ""));
+        usuario.setTelefone(jFTFTelefone.getText().replace("-", ""));
         usuario.setEndereco(endereco);
         new HibernateDao<Usuario>().persist(usuario);
     }
@@ -710,13 +669,11 @@ public class AlterarUsuario extends javax.swing.JFrame {
             jLCep.setForeground(Color.BLACK);
         }
 
-        if (jFTFTelefone.getText().length() < 4 || jFTFTelefone.getText().length() > 9) {
+        if (jFTFTelefone.getText().length() < 4 || jFTFTelefone.getText().length() > 11) {
             stringsBuilder.append("telefone é obrigatório \n");
             jLTelefone.setForeground(Color.red);
-            jLDDD.setForeground(Color.red);
         } else {
             jLTelefone.setForeground(Color.BLACK);
-            jLDDD.setForeground(Color.BLACK);
         }
 
         if (jTFLogradouro.getText().length() < 3) {
