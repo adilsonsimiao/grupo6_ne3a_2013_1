@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -17,6 +19,11 @@ import javax.persistence.OneToOne;
  */
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "retrieveNomeEditoras",
+            query = "SELECT e.nome FROM Editora e"),
+    
+})
 public class Editora {
     @Id
     @GeneratedValue
