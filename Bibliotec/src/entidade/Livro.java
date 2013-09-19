@@ -13,6 +13,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -20,6 +22,11 @@ import javax.persistence.OneToOne;
  * @author a1294016
  */
 @Entity
+@NamedQueries({    
+    @NamedQuery(name = "retrieveByNomeAutores",
+            query = "SELECT l FROM Livro l WHERE l.autores Like :nome"),
+   
+})
 public class Livro {
 
     @Id
@@ -104,6 +111,8 @@ public class Livro {
     public String toString() {
         return "Livro{" + "id=" + id + ", nomeLivro=" + nomeLivro + ", editoras=" + editoras + ", quantidade=" + quantidade + ", autores=" + autores + ", genero=" + genero + ", Isbn=" + Isbn + '}';
     }
+
+  
 
     
    
