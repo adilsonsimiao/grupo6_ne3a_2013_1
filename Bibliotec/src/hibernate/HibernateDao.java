@@ -5,7 +5,6 @@
 package hibernate;
 
 import Dao.Dao;
-import Dao.DaoUsuario;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -58,7 +57,6 @@ public class HibernateDao<E> implements Dao<E> {
         return em.createQuery(query);
     }
     public Query createNamedQuery(String queryName){
-        System.out.println("\nCREATE NAMED QUERY: "+queryName);
         EntityManager em = HibernateFactory.getEntityManager();
         return em.createNamedQuery(queryName);
     }
