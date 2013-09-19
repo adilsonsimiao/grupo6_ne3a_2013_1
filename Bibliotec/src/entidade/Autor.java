@@ -13,18 +13,27 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author fabio
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "retrieveNomeAutores",
+            query = "SELECT a.nome FROM Autor a"),
+    @NamedQuery(name = "retrieveByNomeAutor",
+            query = "SELECT a FROM Autor a WHERE a.nome Like :nome"),
+   
+})
 public class Autor {
     @Id
     @GeneratedValue
     private int id;
     @Column(length = 200)
-    private String Nome;
+    private String nome;
     
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)    
     private Set<Livro> livros = new HashSet<Livro>();
@@ -50,16 +59,16 @@ public class Autor {
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String Nome) {
-        this.Nome = Nome;
+        this.nome = Nome;
     }
 
     @Override
     public String toString() {
-        return "Autor{" + "id=" + id + ", Nome=" + Nome + ", livros=" + livros + '}';
+        return "Autor{" + "id=" + id + ", Nome=" + nome + ", livros=" + livros + '}';
     }
 
    
