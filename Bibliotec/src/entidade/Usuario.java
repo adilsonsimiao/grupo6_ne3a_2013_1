@@ -4,7 +4,6 @@
  */
 package entidade;
 
-import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,17 +15,16 @@ import javax.persistence.OneToOne;
 
 /**
  *
- * @author a1294016
+ * @author fabio
  */
 @Entity
 @NamedQueries({
     @NamedQuery(name = "retrieveByNome",
-        query = "SELECT u FROM Usuario u WHERE u.nome Like :nome"),
+            query = "SELECT u FROM Usuario u WHERE u.nome Like :nome"),
     @NamedQuery(name = "retrieveByCpf",
-        query = "SELECT u FROM Usuario u WHERE u.cpf Like :cpf")
-    
+            query = "SELECT u FROM Usuario u WHERE u.cpf Like :cpf")
 })
-public class Usuario implements Serializable {
+public class Usuario {
 
     @Id
     @GeneratedValue
@@ -39,21 +37,10 @@ public class Usuario implements Serializable {
     private String cpf;
     @OneToOne(cascade = CascadeType.PERSIST)
     private Endereco endereco;
-    @Column(length = 20)
+    @Column(length = 12)
     private String telefone;
     @Column(length = 9)
     private String rg;
-
-    public Usuario() {
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public int getId() {
         return id;
@@ -61,22 +48,6 @@ public class Usuario implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 
     public String getEmail() {
@@ -87,12 +58,20 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public String getRg() {
-        return rg;
+    public String getNome() {
+        return nome;
     }
 
-    public void setRg(String rg) {
-        this.rg = rg;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public Endereco getEndereco() {
@@ -103,8 +82,27 @@ public class Usuario implements Serializable {
         this.endereco = endereco;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" + "id=" + id + ", email=" + email + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + ", rg=" + rg + '}';
     }
+    
+    
+    
 }
