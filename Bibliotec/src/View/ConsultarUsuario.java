@@ -27,7 +27,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     public ConsultarUsuario() {
         initComponents();
 
-        setTitle("Consulta Cliente");
+        setTitle("Consultar Cliente");
         tableModel.setColumnIdentifiers(new String[]{
             "ID", "E-mail", "Nome", "Cpf", "Rg", "Telefone"});
         jTAreaDadosConsulta.setModel(tableModel);
