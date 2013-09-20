@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -16,33 +18,33 @@ import javax.persistence.OneToOne;
  * @author fabio
  */
 @Entity 
+@NamedQueries({
+    @NamedQuery(name = "retrieveByNomeFuncionario",
+            query = "SELECT f FROM Funcionario f WHERE f.nome Like :nome"),
+    @NamedQuery(name = "retrieveByCpfFuncionario",
+            query = "SELECT f FROM Funcionario f WHERE f.cpf Like :cpf")
+})
 public class Funcionario {
-     @Id
+    @Id
     @GeneratedValue
     private int id;
-    @Column(length = 200)  
+    @Column(length = 50)
+    private String email;
+    @Column(length = 200)
     private String nome;
-   
-   @Column(length = 11)
+    @Column(length = 11)
     private String cpf;
-
-    @OneToOne(cascade = CascadeType.PERSIST)   
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Endereco endereco;
-   
-    @Column(length = 2)
-    private String DDD;
-   
-    @Column(length = 9)
+    @Column(length = 12)
     private String telefone;
-    
     @Column(length = 9)
     private String rg;
-    
-    @Column(length = 100)
-    private String Funcao;
-    
-    @Column(length = 20)
+    @Column(length = 11)
     private String pis;
+    @Column(length = 50)
+    private String funcao;
+    
 
     public int getId() {
         return id;
@@ -50,6 +52,14 @@ public class Funcionario {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNome() {
@@ -76,14 +86,6 @@ public class Funcionario {
         this.endereco = endereco;
     }
 
-    public String getDDD() {
-        return DDD;
-    }
-
-    public void setDDD(String DDD) {
-        this.DDD = DDD;
-    }
-
     public String getTelefone() {
         return telefone;
     }
@@ -100,14 +102,6 @@ public class Funcionario {
         this.rg = rg;
     }
 
-    public String getFuncao() {
-        return Funcao;
-    }
-
-    public void setFuncao(String Funcao) {
-        this.Funcao = Funcao;
-    }
-
     public String getPis() {
         return pis;
     }
@@ -115,9 +109,18 @@ public class Funcionario {
     public void setPis(String pis) {
         this.pis = pis;
     }
-    
-     @Override
-    public String toString() {
-        return "Funcionario{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + ", rg=" + rg + ", pis="+pis+ ", Funcao="+Funcao+ '}';
+
+    public String getFuncao() {
+        return funcao;
     }
+
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" + "id=" + id + ", email=" + email + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + ", rg=" + rg + ", pis=" + pis + ", funcao=" + funcao + '}';
+    }
+    
 }
