@@ -44,6 +44,7 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTAreaDadosConsulta = new javax.swing.JTable();
         jRBNome = new javax.swing.JRadioButton();
@@ -73,9 +74,11 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
         jTAreaDadosConsulta.setToolTipText("");
         jScrollPane1.setViewportView(jTAreaDadosConsulta);
 
+        buttonGroup1.add(jRBNome);
         jRBNome.setSelected(true);
         jRBNome.setText("Consulta por nome");
 
+        buttonGroup1.add(jRBCpf);
         jRBCpf.setText("Consulta por cpf");
 
         jBConsultar.setText("Consultar");
@@ -313,6 +316,7 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBConsultar;

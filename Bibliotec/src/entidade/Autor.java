@@ -26,6 +26,8 @@ import javax.persistence.NamedQuery;
             query = "SELECT a.nome FROM Autor a"),
     @NamedQuery(name = "retrieveByNomeAutor",
             query = "SELECT a FROM Autor a WHERE a.nome Like :nome"),
+    @NamedQuery(name = "retrieveAutorByNomeLivro",
+            query = "SELECT a FROM Autor a JOIN A.livros l WHERE l.nomeLivro Like :nome"),
    
 })
 public class Autor {

@@ -210,4 +210,9 @@ public class AlterarAutor extends javax.swing.JFrame {
         }
         return false;
     }
+
+   public void preencheTelaCadastro(int ValorRowColum) throws Exception {
+        autor = new HibernateDao<Autor>().retrieve(ValorRowColum);
+        jTFNomeAutor.setText(autor.getNome());
+    }
 }

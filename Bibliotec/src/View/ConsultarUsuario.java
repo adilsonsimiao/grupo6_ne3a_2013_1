@@ -27,7 +27,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     public ConsultarUsuario() {
         initComponents();
 
-        setTitle("Consultar Cliente");
+        setTitle("Consultar Usuario");
         tableModel.setColumnIdentifiers(new String[]{
             "ID", "E-mail", "Nome", "Cpf", "Rg", "Telefone"});
         jTAreaDadosConsulta.setModel(tableModel);
@@ -55,6 +55,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jBExcluir = new javax.swing.JButton();
         jBAlterar = new javax.swing.JButton();
         jBCadastrar = new javax.swing.JButton();
+        jBOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -146,6 +147,14 @@ public class ConsultarUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jBCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, -1, -1));
+
+        jBOk.setText("Ok");
+        jBOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOkActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -243,6 +252,10 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         cadastrarUsuario.setVisible(true);
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
+    private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBOkActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -284,6 +297,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jBConsultar;
     private javax.swing.JButton jBExcluir;
     private javax.swing.JButton jBFechar;
+    private javax.swing.JButton jBOk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRBCpf;

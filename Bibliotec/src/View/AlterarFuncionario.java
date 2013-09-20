@@ -8,6 +8,7 @@ import static View.CadastrarUsuario.CPF;
 import entidade.Endereco;
 import entidade.Funcionario;
 import entidade.Municipio;
+import entidade.Usuario;
 import hibernate.HibernateDao;
 import java.awt.Color;
 import java.util.regex.Matcher;
@@ -233,12 +234,6 @@ public class AlterarFuncionario extends javax.swing.JFrame {
 
         jLPis.setText("PIS*:");
 
-        jTFCarteiraTrabalho.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTFCarteiraTrabalhoFocusLost(evt);
-            }
-        });
-
         jLFuncao.setText("Função*:");
 
         jFTFTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###############"))));
@@ -432,24 +427,6 @@ public class AlterarFuncionario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTFCarteiraTrabalhoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFCarteiraTrabalhoFocusLost
-        if (!jTFCarteiraTrabalho.getText().toString().trim().equals("")) {
-
-            boolean aux = validaPIS(jFTFCpf.getText().replace("-", "").toString());
-            if (aux == true) {
-                jLInfo.setText("Pis válido");
-                jLPis.setForeground(Color.BLACK);
-
-            } else if (aux == false) {
-                jLPis.setForeground(Color.red);
-                jLInfo.setText("Pis inválido");
-            }
-        } else {
-            jLInfo.setText("Pis é obrigatório");
-            jLcpf.setForeground(Color.red);
-        }
-    }//GEN-LAST:event_jTFCarteiraTrabalhoFocusLost
-
     private void jFTFTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTFTelefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFTFTelefoneActionPerformed
@@ -576,8 +553,18 @@ public class AlterarFuncionario extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 
-    void preencheTelaCadastro(int ValorRowColum) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   public void preencheTelaCadastro(int ValorRowColum) throws Exception {
+        funcionario = new HibernateDao<Funcionario>().retrieve(ValorRowColum);
+        jTFCarteiraTrabalho.setText(funcionario.getPis());
+        jTFuncao.setText(funcionario.getFuncao());
+        jTFNome.setText(funcionario.getNome());
+        jFTFRg.setText(funcionario.getRg());
+        jFTFCpf.setText(funcionario.getCpf());
+        jTFLogradouro.setText(funcionario.getEndereco().getLogradouro());
+        jTFBairro.setText(funcionario.getEndereco().getBairro());
+        jFTFTelefone.setText(funcionario.getTelefone().trim());
+        jFTFNumero.setText(funcionario.getEndereco().getNumero());
+        jFTFCep.setText(funcionario.getEndereco().getCep());
     }
 
     private boolean validar() {
@@ -622,24 +609,11 @@ public class AlterarFuncionario extends javax.swing.JFrame {
             jFTFCpf.setForeground(Color.BLACK);
         }
        
-        if (jTFCarteiraTrabalho.getText().length() < 11 || jTFCarteiraTrabalho.getText().length() > 11) {
-            if (!jFTFCpf.getText().replace("-", "").toString().trim().equals("")) {
-
-                boolean aux = validaPIS(jTFCarteiraTrabalho.getText().replace("-", "").toString());
-                if (aux == true) {
-                    jLInfo.setText("Pis válido");
-                    jLPis.setForeground(Color.BLACK);
-
-                } else if (aux == false) {
+        if (jTFCarteiraTrabalho.getText().length() < 11 || jTFCarteiraTrabalho.getText().length() > 11) {              
                     jLPis.setForeground(Color.red);
                     jLInfo.setText("Pis inválido");
                     stringsBuilder.append("Pis é Obrigatório \n");
-                }
-            } else {
-                jLPis.setForeground(Color.red);
-                jLInfo.setText("Pis é obrigatório");
-                stringsBuilder.append("Pis é obrigatório \n");
-            }
+             
 
         } else {
             jTFCarteiraTrabalho.setForeground(Color.BLACK);
@@ -725,31 +699,5 @@ public class AlterarFuncionario extends javax.swing.JFrame {
             return false;
         }
     }
-    private boolean validaPIS(String strPIS) {
-        char i, j, somatorio = 0;
-        char chDigitoVerificador;
-        char chPISAux;
-
-        try {
-            for (i = 0, j = 4; j >= 2; i++, j--) {
-                somatorio += ((strPIS.charAt(i) - 0x30) * j);
-            }
-            for (j = 9; j >= 2; i++, j--) {
-                somatorio += ((strPIS.charAt(i) - 0x30) * j);
-            }
-            if ((somatorio % 11) < 2) {
-                chDigitoVerificador = 0;
-            } else {
-                chDigitoVerificador = (char) (11 - (somatorio % 11));
-            }
-            chPISAux = (char) (chDigitoVerificador + '0');
-            if (strPIS.charAt(11) == chPISAux) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            return false;
-        }
-    }
+   
 }

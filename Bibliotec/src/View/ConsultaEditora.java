@@ -8,6 +8,8 @@ import Dao.DaoAutor;
 import Dao.DaoEditora;
 import entidade.Autor;
 import entidade.Editora;
+import entidade.Usuario;
+import hibernate.HibernateDao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,17 +22,18 @@ import javax.swing.table.DefaultTableModel;
  * @author fabio
  */
 public class ConsultaEditora extends javax.swing.JFrame {
-    
+
     private DefaultTableModel tableModel = new DefaultTableModel();
     private List<Editora> listEditora = new ArrayList<>();
     private Editora editora = new Editora();
     private int idEditora;
+
     /**
      * Creates new form ConsultaEditora
      */
     public ConsultaEditora() {
         initComponents();
-        
+        setTitle("Consultar Editora");
         tableModel.setColumnIdentifiers(new String[]{
             "ID", "Nome", "Email"});
         jTAreaDadosConsulta.setModel(tableModel);
@@ -45,6 +48,7 @@ public class ConsultaEditora extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -55,8 +59,8 @@ public class ConsultaEditora extends javax.swing.JFrame {
         jTFCampoConsulta = new javax.swing.JTextField();
         jBConsultar = new javax.swing.JButton();
         jBFechar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBExcluir = new javax.swing.JButton();
+        jBAlterar = new javax.swing.JButton();
         jBSelecionar = new javax.swing.JButton();
         jBCadAutor = new javax.swing.JButton();
 
@@ -79,7 +83,7 @@ public class ConsultaEditora extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(0, 184, Short.MAX_VALUE))
+                .addGap(0, 189, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,9 +112,11 @@ public class ConsultaEditora extends javax.swing.JFrame {
         jTAreaDadosConsulta.setToolTipText("");
         jScrollPane1.setViewportView(jTAreaDadosConsulta);
 
+        buttonGroup1.add(jRBNome);
         jRBNome.setSelected(true);
         jRBNome.setText("Consulta por nome");
 
+        buttonGroup1.add(jRBLivro);
         jRBLivro.setText("Consulta por livro");
 
         jBConsultar.setText("Consultar");
@@ -127,21 +133,21 @@ public class ConsultaEditora extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Excluir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBExcluirActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Alterar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBAlterarActionPerformed(evt);
             }
         });
 
-        jBSelecionar.setText("Selecionar");
+        jBSelecionar.setText("Ok");
         jBSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSelecionarActionPerformed(evt);
@@ -160,36 +166,38 @@ public class ConsultaEditora extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTFCampoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTFCampoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jRBNome)
+                                .addGap(17, 17, 17)
+                                .addComponent(jRBLivro))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jBSelecionar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBCadAutor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBSelecionar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addComponent(jBAlterar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addGap(19, 19, 19)
-                        .addComponent(jBFechar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRBNome)
-                        .addGap(17, 17, 17)
-                        .addComponent(jRBLivro)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jBExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBFechar)))
+                .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addGap(102, 102, 102)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRBNome)
                     .addComponent(jRBLivro))
@@ -202,14 +210,13 @@ public class ConsultaEditora extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jButton2)
-                        .addComponent(jBSelecionar)
-                        .addComponent(jBCadAutor))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBExcluir)
+                    .addComponent(jBAlterar)
+                    .addComponent(jBSelecionar)
+                    .addComponent(jBCadAutor)
                     .addComponent(jBFechar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,7 +227,7 @@ public class ConsultaEditora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
-      tableModel.setRowCount(0);
+        tableModel.setRowCount(0);
         if (jRBNome.isSelected()) {
 
             if (jTFCampoConsulta.getText().trim().equals("")) {
@@ -257,20 +264,51 @@ public class ConsultaEditora extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Nao foi possivel localizar " + jTFCampoConsulta.getText());
                 }
             }
-        } 
+        }
     }//GEN-LAST:event_jBConsultarActionPerformed
 
     private void jBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecharActionPerformed
         dispose();
     }//GEN-LAST:event_jBFecharActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+        int row = jTAreaDadosConsulta.getSelectedRow();
+        String sa = tableModel.getValueAt(row, 0).toString();
+        int ValorRowColum = Integer.parseInt(sa);
+        try {
+            editora = new HibernateDao<Editora>().retrieve(ValorRowColum);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (jTFCampoConsulta.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
-    }//GEN-LAST:event_jButton2ActionPerformed
+        } else {
+            try {
+                if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == editora.getId()) {
+                    new HibernateDao().delete(editora);
+                    tableModel.removeRow(row);
+                    JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
+                    jTAreaDadosConsulta.setModel(tableModel);
+                }
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_jBExcluirActionPerformed
+
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+        int row = jTAreaDadosConsulta.getSelectedRow();
+        String sa = tableModel.getValueAt(row, 0).toString();
+        int ValorRowColum = Integer.parseInt(sa);
+        AlterarEditora alterarEditora = new AlterarEditora();
+        try {
+            alterarEditora.preencheTelaCadastro(ValorRowColum);
+            alterarEditora.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jBSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSelecionarActionPerformed
         retornaID();
@@ -317,12 +355,13 @@ public class ConsultaEditora extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBCadAutor;
     private javax.swing.JButton jBConsultar;
+    private javax.swing.JButton jBExcluir;
     private javax.swing.JButton jBFechar;
     private javax.swing.JButton jBSelecionar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -333,11 +372,11 @@ public class ConsultaEditora extends javax.swing.JFrame {
     private javax.swing.JTextField jTFCampoConsulta;
     // End of variables declaration//GEN-END:variables
 
-public int retornaID() {
+    public int retornaID() {
         int row = jTAreaDadosConsulta.getSelectedRow();
         String sa = tableModel.getValueAt(row, 0).toString();
         idEditora = Integer.parseInt(sa);
-        
+
         dispose();
         return idEditora;
     }

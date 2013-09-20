@@ -439,4 +439,10 @@ public class AlterarLivro extends javax.swing.JFrame {
         }
         return false;
     }
+
+   public void preencheTelaCadastro(int ValorRowColum) throws Exception {
+        livro = new HibernateDao<Livro>().retrieve(ValorRowColum);
+        jTFNome.setText(livro.getNomeLivro());
+        jTFIsbn.setText(livro.getIsbn());
+    }
 }

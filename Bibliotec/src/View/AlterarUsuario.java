@@ -498,7 +498,7 @@ public class AlterarUsuario extends javax.swing.JFrame {
     }
 
     public void preencheTelaCadastro(int a) throws Exception {
-        this.usuario = new HibernateDao<Usuario>().retrieve(a);
+        usuario = new HibernateDao<Usuario>().retrieve(a);
         usuario.setId(a);
         jTFNome.setText(usuario.getNome());
         jFTFRg.setText(usuario.getRg());
