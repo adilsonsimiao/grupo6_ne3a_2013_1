@@ -4,6 +4,8 @@
  */
 package entidade;
 
+
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -24,11 +26,12 @@ import javax.persistence.OneToOne;
 @Entity
 @NamedQueries({    
     @NamedQuery(name = "retrieveByNomeAutores",
-            query = "SELECT l FROM Livro l WHERE l.autores Like :nome"),
+            query = "SELECT l FROM Livro l INNER JOIN L.autores a WHERE a.nome Like :nome"),
+    @NamedQuery(name = "retrieveByNomeLivros",
+            query = "SELECT l FROM Livro l WHERE l.nomeLivro Like :nome"),
    
 })
 public class Livro {
-
     @Id
     @GeneratedValue
     
@@ -43,6 +46,7 @@ public class Livro {
     private int quantidade;
     
     @ManyToMany(mappedBy = "livros",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+   
     private Set<Autor> autores = new HashSet<Autor>();
     
     @OneToOne(cascade = CascadeType.PERSIST)
@@ -111,8 +115,6 @@ public class Livro {
     public String toString() {
         return "Livro{" + "id=" + id + ", nomeLivro=" + nomeLivro + ", editoras=" + editoras + ", quantidade=" + quantidade + ", autores=" + autores + ", genero=" + genero + ", Isbn=" + Isbn + '}';
     }
-
-  
 
     
    
