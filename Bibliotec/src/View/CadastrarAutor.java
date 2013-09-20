@@ -38,9 +38,10 @@ public class CadastrarAutor extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLNomeAutor = new javax.swing.JLabel();
         jTFNomeAutor = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBCadastrar = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
         jBAlterarAutor = new javax.swing.JButton();
+        jBOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,17 +78,17 @@ public class CadastrarAutor extends javax.swing.JFrame {
 
         jLNomeAutor.setText("Nome*:");
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBCadastrarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBCancelar.setText("Cancelar");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBCancelarActionPerformed(evt);
             }
         });
 
@@ -95,6 +96,13 @@ public class CadastrarAutor extends javax.swing.JFrame {
         jBAlterarAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAlterarAutorActionPerformed(evt);
+            }
+        });
+
+        jBOk.setText("Ok");
+        jBOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOkActionPerformed(evt);
             }
         });
 
@@ -111,11 +119,13 @@ public class CadastrarAutor extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBOk)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBAlterarAutor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(jBCadastrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(jBCancelar)
                 .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
@@ -130,21 +140,22 @@ public class CadastrarAutor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jBAlterarAutor))
+                            .addComponent(jBCadastrar)
+                            .addComponent(jBAlterarAutor)
+                            .addComponent(jBOk))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jBCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBCancelarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
 
         if (validar() == false) {
             try {
@@ -156,7 +167,7 @@ public class CadastrarAutor extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, " Não foi possivel cadastrar!!");
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jBAlterarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarAutorActionPerformed
         if (validar() == false) {
@@ -170,6 +181,10 @@ public class CadastrarAutor extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jBAlterarAutorActionPerformed
+
+    private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBOkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,8 +222,9 @@ public class CadastrarAutor extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAlterarAutor;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBCadastrar;
+    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBOk;
     private javax.swing.JLabel jLNomeAutor;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

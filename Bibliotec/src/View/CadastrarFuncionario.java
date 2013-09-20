@@ -70,10 +70,8 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         jFTFCpf = new javax.swing.JFormattedTextField();
         jLcpf = new javax.swing.JLabel();
         jLTelefone = new javax.swing.JLabel();
-        jFTFDDD = new javax.swing.JFormattedTextField();
         jFTFRg = new javax.swing.JFormattedTextField();
         jLRg = new javax.swing.JLabel();
-        jLDDD = new javax.swing.JLabel();
         jBAlterar = new javax.swing.JButton();
         jBValidar = new javax.swing.JButton();
         jLInfo = new javax.swing.JLabel();
@@ -223,6 +221,11 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         jLFuncao.setText("Função*:");
 
         jFTFTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###############"))));
+        jFTFTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFTFTelefoneActionPerformed(evt);
+            }
+        });
 
         try {
             jFTFCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-###-###-##")));
@@ -245,25 +248,12 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         jLTelefone.setText("Telefone*:");
 
         try {
-            jFTFDDD.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFTFDDD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFTFDDDActionPerformed(evt);
-            }
-        });
-
-        try {
             jFTFRg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-###-###-#")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
         jLRg.setText("RG*:");
-
-        jLDDD.setText("DDD*:");
 
         jBAlterar.setText("Alterar");
         jBAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -295,30 +285,33 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(jLcpf)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFTFCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLNome)
-                                    .addComponent(jLPis)
-                                    .addComponent(jLRg)
-                                    .addComponent(jLDDD)
-                                    .addComponent(jLEmail))
+                                .addComponent(jLInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBValidar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBAlterar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBuCadastro)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLTelefone)
+                            .addComponent(jLNome)
+                            .addComponent(jLPis)
+                            .addComponent(jLRg)
+                            .addComponent(jLEmail))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTFNome)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jFTFDDD, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLTelefone)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jFTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(106, 106, 106))
                                     .addComponent(jTFEmail)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,25 +321,16 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLFuncao)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(jTFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jFTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jBValidar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jBAlterar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jBuCadastro)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton1))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addContainerGap())))
+                                .addGap(184, 184, 184)
+                                .addComponent(jLcpf)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jFTFCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,18 +349,11 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                     .addComponent(jLcpf)
                     .addComponent(jFTFRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFTFCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLDDD)
-                            .addComponent(jFTFDDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLTelefone))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jFTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jFTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLTelefone))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLPis)
                     .addComponent(jTFCarteiraTrabalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,12 +362,13 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBuCadastro)
-                    .addComponent(jButton1)
-                    .addComponent(jBAlterar)
-                    .addComponent(jBValidar)
-                    .addComponent(jLInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBuCadastro)
+                        .addComponent(jButton1)
+                        .addComponent(jBAlterar)
+                        .addComponent(jBValidar)))
                 .addContainerGap())
         );
 
@@ -479,10 +457,6 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jFTFCpfFocusLost
 
-    private void jFTFDDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTFDDDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFTFDDDActionPerformed
-
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         try {
             persistirFuncionario();
@@ -531,6 +505,10 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
          }
     }//GEN-LAST:event_jTFCarteiraTrabalhoFocusLost
 
+    private void jFTFTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTFTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTFTelefoneActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -572,14 +550,12 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JFormattedTextField jFTFCep;
     private javax.swing.JFormattedTextField jFTFCpf;
-    private javax.swing.JFormattedTextField jFTFDDD;
     private javax.swing.JFormattedTextField jFTFNumero;
     private javax.swing.JFormattedTextField jFTFRg;
     private javax.swing.JFormattedTextField jFTFTelefone;
     private javax.swing.JLabel jLBairro;
     private javax.swing.JLabel jLCep;
     private javax.swing.JLabel jLComplemento;
-    private javax.swing.JLabel jLDDD;
     private javax.swing.JLabel jLEmail;
     private javax.swing.JLabel jLFuncao;
     private javax.swing.JLabel jLInfo;
@@ -701,10 +677,8 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         if (jFTFTelefone.getText().length() < 4 || jFTFTelefone.getText().length() >= 9) {
             stringsBuilder.append("telefone é obrigatório \n");
             jLTelefone.setForeground(Color.red);
-            jLDDD.setForeground(Color.red);
         } else {
             jLTelefone.setForeground(Color.BLACK);
-            jLDDD.setForeground(Color.BLACK);
         }
 
         if (jTFLogradouro.getText().length() < 3) {
@@ -748,8 +722,12 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         new HibernateDao().persist(endereco);
 
         funcionario.setNome(jTFNome.getText());
+        funcionario.setEmail(jTFEmail.getText());
+        funcionario.setPis(jTFCarteiraTrabalho.getText());
+        funcionario.setFuncao(jTFuncao.getText());
         funcionario.setCpf(jFTFCpf.getText());
-        funcionario.setTelefone(jFTFDDD.getText() + jFTFTelefone.getText());
+        funcionario.setRg(jFTFRg.getText());
+        funcionario.setTelefone(jFTFTelefone.getText());
         new HibernateDao().persist(funcionario);
     }
 

@@ -31,8 +31,8 @@ public class AlterarUsuario extends javax.swing.JFrame {
     }
 
     public AlterarUsuario() {
-        usuario = new Usuario();
         initComponents();
+        setTitle("Alterar Usuario");
     }
 
     /**
@@ -72,7 +72,7 @@ public class AlterarUsuario extends javax.swing.JFrame {
         jLRg = new javax.swing.JLabel();
         jLcpf = new javax.swing.JLabel();
         jBuCadastro = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
         jFTFRg = new javax.swing.JFormattedTextField();
         jFTFCpf = new javax.swing.JFormattedTextField();
         jLInfo = new javax.swing.JLabel();
@@ -81,6 +81,7 @@ public class AlterarUsuario extends javax.swing.JFrame {
         JBValidar = new javax.swing.JButton();
         jFTFTelefone = new javax.swing.JFormattedTextField();
         jLTelefone = new javax.swing.JLabel();
+        jBOk = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -252,10 +253,10 @@ public class AlterarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Cancelar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBCancelar.setText("Cancelar");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBCancelarActionPerformed(evt);
             }
         });
 
@@ -300,6 +301,8 @@ public class AlterarUsuario extends javax.swing.JFrame {
 
         jLTelefone.setText("Telefone*:");
 
+        jBOk.setText("Ok");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -309,12 +312,14 @@ public class AlterarUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(236, 236, 236)
+                        .addGap(136, 136, 136)
+                        .addComponent(jBOk)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JBValidar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBuCadastro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBCancelar))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
@@ -362,8 +367,9 @@ public class AlterarUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBuCadastro)
-                        .addComponent(jButton1)
-                        .addComponent(JBValidar))
+                        .addComponent(jBCancelar)
+                        .addComponent(JBValidar)
+                        .addComponent(jBOk))
                     .addComponent(jLInfo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -410,9 +416,9 @@ public class AlterarUsuario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jBuCadastroActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jFTFCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTFCpfActionPerformed
         // TODO add your handling code here:
@@ -492,7 +498,7 @@ public class AlterarUsuario extends javax.swing.JFrame {
     }
 
     public void preencheTelaCadastro(int a) throws Exception {
-        this.usuario = new HibernateDao<Usuario>(usuario.getClass()).retrieve(a);
+        this.usuario = new HibernateDao<Usuario>().retrieve(a);
         usuario.setId(a);
         jTFNome.setText(usuario.getNome());
         jFTFRg.setText(usuario.getRg());
@@ -507,8 +513,9 @@ public class AlterarUsuario extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBValidar;
+    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBOk;
     private javax.swing.JButton jBuCadastro;
-    private javax.swing.JButton jButton1;
     private javax.swing.JFormattedTextField jFTFCep;
     private javax.swing.JFormattedTextField jFTFCpf;
     private javax.swing.JFormattedTextField jFTFNumero;

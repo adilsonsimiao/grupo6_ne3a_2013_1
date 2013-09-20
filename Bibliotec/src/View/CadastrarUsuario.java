@@ -26,15 +26,12 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     public CadastrarUsuario() {
         initComponents();
         setTitle("Cadastro de Usuario");
-        endereco = new Endereco();
-        usuario = new Usuario();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -70,17 +67,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jTFEmail = new javax.swing.JTextField();
         JBValidar = new javax.swing.JButton();
         jFTFTelefone = new javax.swing.JFormattedTextField();
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 604, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 282, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -284,7 +270,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jFTFTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###########"))));
+        jFTFTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -294,20 +280,19 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLNome)
-                                .addComponent(jLRg)
-                                .addComponent(jLTelefone))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLNome)
+                            .addComponent(jLRg)
+                            .addComponent(jLTelefone)
                             .addComponent(jLEmail))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTFNome)
                             .addComponent(jTFEmail)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jFTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jFTFRg, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jFTFTelefone, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jFTFRg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
                                 .addGap(54, 54, 54)
                                 .addComponent(jLcpf)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -357,10 +342,10 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                         .addComponent(jBAlterar)
                         .addComponent(JBValidar))
                     .addComponent(jLInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 79, 750, 450));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 79, 740, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -427,7 +412,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jBuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuCadastroActionPerformed
-
+        this.usuario = new Usuario();
         if (validar() == false) {
             try {
                 persistencia();
@@ -509,7 +494,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jTFBairro;
     private javax.swing.JComboBox jTFCidade;
     private javax.swing.JTextField jTFComplemento;
@@ -523,7 +507,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private void persistencia() throws Exception {
         municipio.setUf(jTUF.getItemAt(jTUF.getSelectedIndex()).toString());
         municipio.setNome(jTFCidade.getItemAt(jTFCidade.getSelectedIndex()).toString());
-        new HibernateDao<Municipio>(municipio.getClass()).persist(municipio);
+        new HibernateDao<Municipio>().persist(municipio);
 
         endereco.setLogradouro(jTFLogradouro.getText());
         endereco.setComplemento(jTFComplemento.getText());
@@ -531,7 +515,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         endereco.setBairro(jTFBairro.getText());
         endereco.setCep(jFTFCep.getText().replace("-", ""));
         endereco.setMunicipio(municipio);
-        new HibernateDao<Endereco>(endereco.getClass()).persist(endereco);
+        new HibernateDao<Endereco>().persist(endereco);
 
 
 
@@ -541,7 +525,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         usuario.setRg(jFTFRg.getText().replace("-", ""));
         usuario.setTelefone(jFTFTelefone.getText());
         usuario.setEndereco(endereco);
-        new HibernateDao<Usuario>(usuario.getClass()).persist(usuario);
+        new HibernateDao<Usuario>().persist(usuario);
     }
 
     static public boolean CPF(String strCpf) {
@@ -644,7 +628,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             jLCep.setForeground(Color.BLACK);
         }
 
-        if (jFTFTelefone.getText().length() < 4 || jFTFTelefone.getText().length() > 11) {
+        if (jFTFTelefone.getText().length() < 10 || jFTFTelefone.getText().length() > 11) {
             stringsBuilder.append("telefone é obrigatório \n");
             jLTelefone.setForeground(Color.red);
         } else {

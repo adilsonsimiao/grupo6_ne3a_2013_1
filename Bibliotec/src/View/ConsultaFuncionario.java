@@ -4,6 +4,16 @@
  */
 package View;
 
+import Dao.DaoFucnionario;
+import entidade.Funcionario;
+import hibernate.HibernateDao;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author fabio
@@ -13,8 +23,16 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
     /**
      * Creates new form ConsultaFuncionario
      */
+    private Funcionario funcionario = new Funcionario();
+    List<Funcionario> listaFucionario = new ArrayList<>();
+    DefaultTableModel tableModel = new DefaultTableModel();
+
     public ConsultaFuncionario() {
         initComponents();
+        setTitle("Consulta Cliente");
+        tableModel.setColumnIdentifiers(new String[]{
+            "ID", "E-mail", "Nome", "Cpf", "Rg", "Telefone"});
+        jTAreaDadosConsulta.setModel(tableModel);
     }
 
     /**
@@ -33,10 +51,11 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
         jTFCampoConsulta = new javax.swing.JTextField();
         jBConsultar = new javax.swing.JButton();
         jBFechar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBExcluir = new javax.swing.JButton();
+        jBAlterar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jBCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,17 +92,17 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Excluir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBExcluirActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Alterar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBAlterarActionPerformed(evt);
             }
         });
 
@@ -108,6 +127,8 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, Short.MAX_VALUE)
         );
 
+        jBCadastrar.setText("Cadastrar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,16 +142,18 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(200, 200, 200))
+                .addComponent(jBCadastrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBAlterar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBExcluir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBFechar)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap(23, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jButton1)
-                            .addGap(19, 19, 19)
-                            .addComponent(jBFechar))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jTFCampoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -146,9 +169,13 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRBNome)
                     .addComponent(jRBCpf))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 337, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(7, 7, 7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 332, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBAlterar)
+                    .addComponent(jBExcluir)
+                    .addComponent(jBFechar)
+                    .addComponent(jBCadastrar))
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 122, Short.MAX_VALUE)
@@ -159,31 +186,97 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
                         .addComponent(jBConsultar))
                     .addGap(20, 20, 20)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(12, 12, 12)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton1)
-                        .addComponent(jBFechar))
-                    .addGap(0, 7, Short.MAX_VALUE)))
+                    .addGap(0, 44, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
-        
+        tableModel.setRowCount(0);
+        if (jRBNome.isSelected()) {
+
+            if (jTFCampoConsulta.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digite um nome para pesquisar" + jTFCampoConsulta.getText());
+            } else {
+
+                try {
+                    listaFucionario = new DaoFucnionario().retrieveByNome(jTFCampoConsulta.getText());
+
+                    for (Funcionario f : listaFucionario) {
+                        tableModel.addRow(new Object[]{
+                            f.getId(), f.getEmail(), f.getNome(), f.getCpf(), f.getRg(), f.getTelefone()});
+                        this.funcionario.setId(f.getId());
+                    }
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Nao foi possivel localizar " + jTFCampoConsulta.getText());
+                }
+            }
+        } else if (jRBCpf.isSelected()) {
+            if (jTFCampoConsulta.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
+            } else {
+
+                try {
+                    listaFucionario = new DaoFucnionario().retrieveByCpf(jTFCampoConsulta.getText());
+
+                    for (Funcionario f : listaFucionario) {
+                        tableModel.addRow(new Object[]{
+                            f.getId(), f.getEmail(), f.getNome(), f.getCpf(), f.getRg(), f.getTelefone()});
+                        this.funcionario.setId(f.getId());
+                    }
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Nao foi possivel localizar " + jTFCampoConsulta.getText());
+                }
+            }
+        }
     }//GEN-LAST:event_jBConsultarActionPerformed
 
     private void jBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecharActionPerformed
         dispose();
     }//GEN-LAST:event_jBFecharActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+        int row = jTAreaDadosConsulta.getSelectedRow();
+        String sa = tableModel.getValueAt(row, 0).toString();
+        int ValorRowColum = Integer.parseInt(sa);
+        try {
+            funcionario = new HibernateDao<Funcionario>().retrieve(ValorRowColum);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (jTFCampoConsulta.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
-    }//GEN-LAST:event_jButton2ActionPerformed
+        } else {
+            try {
+                if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == funcionario.getId()) {
+                    new HibernateDao().delete(funcionario);
+                    tableModel.removeRow(row);
+                    JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
+                    jTAreaDadosConsulta.setModel(tableModel);
+                }
+            } catch (Exception e) {
+            }
+        }
+
+    }//GEN-LAST:event_jBExcluirActionPerformed
+
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+        int row = jTAreaDadosConsulta.getSelectedRow();
+        String sa = tableModel.getValueAt(row, 0).toString();
+        int ValorRowColum = Integer.parseInt(sa);
+        AlterarFuncionario alterarFuncionario = new AlterarFuncionario();
+        try {
+            alterarFuncionario.preencheTelaCadastro(ValorRowColum);
+            alterarFuncionario.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jBAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,10 +313,11 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAlterar;
+    private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBConsultar;
+    private javax.swing.JButton jBExcluir;
     private javax.swing.JButton jBFechar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRBCpf;

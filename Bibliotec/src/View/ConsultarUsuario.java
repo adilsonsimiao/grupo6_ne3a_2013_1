@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -55,6 +54,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         jBFechar = new javax.swing.JButton();
         jBExcluir = new javax.swing.JButton();
         jBAlterar = new javax.swing.JButton();
+        jBCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -63,7 +63,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/1cadastro.png"))); // NOI18N
-        jLabel1.setText("Alterar Usuário");
+        jLabel1.setText("Consultar Usuário");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -71,15 +71,15 @@ public class ConsultarUsuario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, -1));
 
         jTAreaDadosConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,6 +138,14 @@ public class ConsultarUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jBAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, -1, -1));
+
+        jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,6 +238,11 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBExcluirActionPerformed
 
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
+        cadastrarUsuario.setVisible(true);
+    }//GEN-LAST:event_jBCadastrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -267,6 +280,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup BGConsulta;
     private javax.swing.JButton jBAlterar;
+    private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBConsultar;
     private javax.swing.JButton jBExcluir;
     private javax.swing.JButton jBFechar;
