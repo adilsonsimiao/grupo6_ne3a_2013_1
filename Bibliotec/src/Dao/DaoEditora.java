@@ -7,6 +7,7 @@ package Dao;
 import entidade.Editora;
 import hibernate.HibernateDao;
 import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
@@ -18,6 +19,11 @@ public class DaoEditora extends HibernateDao<Editora>{
    }
    public List<Editora> retrieveNome(){
         return createNamedQuery("retrieveNomeEditoras").getResultList();
+        
+    }
+   
+    public List<Editora> retrieveByNome(String nome){
+        return createNamedQuery("retrieveIdEditoras").setParameter("nome", "%"+nome+"%").getResultList();
         
     }
 }
