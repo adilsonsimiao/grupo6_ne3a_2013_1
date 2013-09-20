@@ -4,6 +4,13 @@
  */
 package View;
 
+import Dao.DaoLivro;
+import entidade.Livro;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author fabio
@@ -13,8 +20,16 @@ public class ConsultaLivro extends javax.swing.JFrame {
     /**
      * Creates new form ConsultaLivro
      */
+    Livro livro = new Livro();
+    List<Livro> listaLivros = new ArrayList<>();
+    DefaultTableModel tableModel = new DefaultTableModel();
+
     public ConsultaLivro() {
         initComponents();
+        setTitle("Consultar Livro");
+        tableModel.setColumnIdentifiers(new String[]{
+            "ID", "Nome", "Isbn", "Quantidade"});
+        jTAreaDadosConsulta.setModel(tableModel);
     }
 
     /**
@@ -26,18 +41,20 @@ public class ConsultaLivro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTAreaDadosConsulta = new javax.swing.JTable();
         jRBNome = new javax.swing.JRadioButton();
-        jRBCpf = new javax.swing.JRadioButton();
+        jRBAutor = new javax.swing.JRadioButton();
         jTFCampoConsulta = new javax.swing.JTextField();
         jBConsultar = new javax.swing.JButton();
         jBFechar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBExcluir = new javax.swing.JButton();
+        jBAlterar = new javax.swing.JButton();
         jBEmprestar = new javax.swing.JButton();
+        jBOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,10 +95,12 @@ public class ConsultaLivro extends javax.swing.JFrame {
         jTAreaDadosConsulta.setToolTipText("");
         jScrollPane1.setViewportView(jTAreaDadosConsulta);
 
+        buttonGroup1.add(jRBNome);
         jRBNome.setSelected(true);
         jRBNome.setText("Consulta por Titulo");
 
-        jRBCpf.setText("Consulta por Autor");
+        buttonGroup1.add(jRBAutor);
+        jRBAutor.setText("Consulta por Autor");
 
         jBConsultar.setText("Consultar");
         jBConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,21 +116,28 @@ public class ConsultaLivro extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Excluir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBExcluirActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Alterar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBAlterarActionPerformed(evt);
             }
         });
 
         jBEmprestar.setText("Emprestar");
+
+        jBOk.setText("Ok");
+        jBOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOkActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,18 +150,20 @@ public class ConsultaLivro extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBOk)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBEmprestar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(jBAlterar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(jBExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBFechar))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jRBNome)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jRBCpf))
+                            .addComponent(jRBAutor))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jTFCampoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -151,7 +179,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRBNome)
-                    .addComponent(jRBCpf))
+                    .addComponent(jRBAutor))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -162,10 +190,11 @@ public class ConsultaLivro extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jBExcluir)
                     .addComponent(jBFechar)
-                    .addComponent(jButton2)
-                    .addComponent(jBEmprestar))
+                    .addComponent(jBAlterar)
+                    .addComponent(jBEmprestar)
+                    .addComponent(jBOk))
                 .addContainerGap())
         );
 
@@ -173,20 +202,49 @@ public class ConsultaLivro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
-       
+        tableModel.setRowCount(0);
+        if (jRBNome.isSelected()) {
+
+            if (jTFCampoConsulta.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
+            } else {
+                listaLivros = new DaoLivro().retrieveNomeLivros(jTFCampoConsulta.getText());
+                for (Livro l : listaLivros) {
+                    tableModel.addRow(new Object[]{
+                        l.getId(), l.getNomeLivro(), l.getIsbn(), l.getQuantidade()});
+                    this.livro.setId(l.getId());
+                }
+            }
+        } else {
+            if (jTFCampoConsulta.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
+            } else {
+                listaLivros = new DaoLivro().retrieveNomeAutores(jTFCampoConsulta.getText());
+                for (Livro l : listaLivros) {
+                    tableModel.addRow(new Object[]{
+                        l.getId(), l.getNomeLivro(), l.getIsbn(), l.getQuantidade()});
+                    this.livro.setId(l.getId());
+                }
+
+
+            }
+        }
+
     }//GEN-LAST:event_jBConsultarActionPerformed
 
     private void jBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecharActionPerformed
         dispose();
     }//GEN-LAST:event_jBFecharActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+    }//GEN-LAST:event_jBExcluirActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+    }//GEN-LAST:event_jBAlterarActionPerformed
+
+    private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBOkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,14 +281,16 @@ public class ConsultaLivro extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBConsultar;
     private javax.swing.JButton jBEmprestar;
+    private javax.swing.JButton jBExcluir;
     private javax.swing.JButton jBFechar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBOk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRBCpf;
+    private javax.swing.JRadioButton jRBAutor;
     private javax.swing.JRadioButton jRBNome;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTAreaDadosConsulta;
