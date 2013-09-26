@@ -31,7 +31,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
         initComponents();
         setTitle("Consultar Livro");
         tableModel.setColumnIdentifiers(new String[]{
-            "ID", "Nome", "Isbn", "Quantidade"});
+            "ID", "Nome", "Isbn", "Quantidade", "Cópias Disponíveis"});
         jTAreaDadosConsulta.setModel(tableModel);
     }
 
@@ -134,6 +134,11 @@ public class ConsultaLivro extends javax.swing.JFrame {
         });
 
         jBEmprestar.setText("Emprestar");
+        jBEmprestar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEmprestarActionPerformed(evt);
+            }
+        });
 
         jBOk.setText("Ok");
         jBOk.addActionListener(new java.awt.event.ActionListener() {
@@ -214,7 +219,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
                 listaLivros = new DaoLivro().retrieveNomeLivros(jTFCampoConsulta.getText());
                 for (Livro l : listaLivros) {
                     tableModel.addRow(new Object[]{
-                        l.getId(), l.getNomeLivro(), l.getIsbn(), l.getQuantidade()});
+                        l.getId(), l.getNomeLivro(), l.getIsbn(), l.getQuantidade(), l.getQuantidadeDisponivel()});
                     this.livro.setId(l.getId());
                 }
             }
@@ -225,7 +230,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
                 listaLivros = new DaoLivro().retrieveNomeAutores(jTFCampoConsulta.getText());
                 for (Livro l : listaLivros) {
                     tableModel.addRow(new Object[]{
-                        l.getId(), l.getNomeLivro(), l.getIsbn(), l.getQuantidade()});
+                        l.getId(), l.getNomeLivro(), l.getIsbn(), l.getQuantidade(), l.getQuantidadeDisponivel()});
                     this.livro.setId(l.getId());
                 }
 
@@ -266,7 +271,9 @@ public class ConsultaLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_jBExcluirActionPerformed
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+
         int row = jTAreaDadosConsulta.getSelectedRow();
+
         String sa = tableModel.getValueAt(row, 0).toString();
         int ValorRowColum = Integer.parseInt(sa);
         AlterarLivro alterarLivro = new AlterarLivro();
@@ -282,6 +289,19 @@ public class ConsultaLivro extends javax.swing.JFrame {
     private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
         dispose();
     }//GEN-LAST:event_jBOkActionPerformed
+
+    private void jBEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEmprestarActionPerformed
+        try {
+            int row = jTAreaDadosConsulta.getSelectedRow();
+            String sa = tableModel.getValueAt(row, 0).toString();
+            int ValorRowColum = Integer.parseInt(sa);
+            EmprestarLivro el = new EmprestarLivro();
+            el.preencherTela(ValorRowColum);
+            el.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultaLivro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBEmprestarActionPerformed
 
     /**
      * @param args the command line arguments
