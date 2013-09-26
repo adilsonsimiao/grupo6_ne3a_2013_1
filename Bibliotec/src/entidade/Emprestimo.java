@@ -26,14 +26,22 @@ public class Emprestimo {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataPrevistaParaDevolucao;
     
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Calendar dataDaDevolucao;
+    
     @OneToOne(cascade = CascadeType.PERSIST)
     private Usuario usuario;
    
     @OneToOne(cascade = CascadeType.PERSIST)
     private Livro livro;
-    
-    
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Calendar getDataDoEmprestimo() {
         return dataDoEmprestimo;
@@ -43,21 +51,22 @@ public class Emprestimo {
         this.dataDoEmprestimo = dataDoEmprestimo;
     }
 
-    public Calendar getDataPrevistaDevolucao() {
+    public Calendar getDataPrevistaParaDevolucao() {
         return dataPrevistaParaDevolucao;
     }
 
-    public void setDataPrevistaDevolucao(Calendar dataPrevistaDevolucao) {
-        this.dataPrevistaParaDevolucao = dataPrevistaDevolucao;
+    public void setDataPrevistaParaDevolucao(Calendar dataPrevistaParaDevolucao) {
+        this.dataPrevistaParaDevolucao = dataPrevistaParaDevolucao;
     }
 
-    public int getId() {
-        return id;
+    public Calendar getDataDaDevolucao() {
+        return dataDaDevolucao;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDataDaDevolucao(Calendar dataDaDevolucao) {
+        this.dataDaDevolucao = dataDaDevolucao;
     }
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -74,23 +83,11 @@ public class Emprestimo {
         this.livro = livro;
     }
 
-    public Calendar getDataEmprestimo() {
-        return dataDoEmprestimo;
-    }
-
-    public void setDataEmprestimo(Calendar dataEmprestimo) {
-        this.dataDoEmprestimo = dataEmprestimo;
-    }
-
-    public Calendar getDataDevolucao() {
-        return dataPrevistaParaDevolucao;
-    }
-
-    public void setDataDevolucao(Calendar dataDevolucao) {
-        this.dataPrevistaParaDevolucao = dataDevolucao;
-    }
     @Override
     public String toString() {
-        return "Emprestimo{" + "livro=" + livro + ", id=" + id + ", usuario=" + usuario + ", dataEmprestimo=" + dataDoEmprestimo + ", dataDevolução=" + dataPrevistaParaDevolucao + '}';
+        return "Emprestimo{" + "id=" + id + ", dataDoEmprestimo=" + dataDoEmprestimo + ", dataPrevistaParaDevolucao=" + dataPrevistaParaDevolucao + ", dataDaDevolucao=" + dataDaDevolucao + ", usuario=" + usuario + ", livro=" + livro + '}';
     }
+    
+    
+    
 }
