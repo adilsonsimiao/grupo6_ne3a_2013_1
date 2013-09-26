@@ -52,13 +52,15 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLInfo" min="-2" pref="193" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jBOk" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jBValidar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jBAlterar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jBuCadastro" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jBCancelar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jTabbedPane1" min="-2" pref="718" max="-2" attributes="0"/>
@@ -149,9 +151,10 @@
                       <Component id="jLInfo" alignment="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jBuCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jBAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jBValidar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBOk" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -452,12 +455,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBuCadastroActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="jBCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCancelarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLPis">
@@ -547,6 +550,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="E-mail:"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBOk">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ok"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBOkActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

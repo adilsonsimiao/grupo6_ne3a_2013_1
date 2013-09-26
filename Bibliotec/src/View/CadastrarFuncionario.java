@@ -61,7 +61,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         jLNome = new javax.swing.JLabel();
         jTFNome = new javax.swing.JTextField();
         jBuCadastro = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
         jLPis = new javax.swing.JLabel();
         jTFCarteiraTrabalho = new javax.swing.JTextField();
         jLFuncao = new javax.swing.JLabel();
@@ -77,6 +77,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         jLInfo = new javax.swing.JLabel();
         jTFEmail = new javax.swing.JTextField();
         jLEmail = new javax.swing.JLabel();
+        jBOk = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -203,10 +204,10 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Cancelar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBCancelar.setText("Cancelar");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBCancelarActionPerformed(evt);
             }
         });
 
@@ -277,6 +278,13 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
 
         jLEmail.setText("E-mail:");
 
+        jBOk.setText("Ok");
+        jBOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOkActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -290,13 +298,15 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBOk)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBValidar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBAlterar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBuCadastro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1))
+                                .addComponent(jBCancelar))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
@@ -366,9 +376,10 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                     .addComponent(jLInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBuCadastro)
-                        .addComponent(jButton1)
+                        .addComponent(jBCancelar)
                         .addComponent(jBAlterar)
-                        .addComponent(jBValidar)))
+                        .addComponent(jBValidar)
+                        .addComponent(jBOk)))
                 .addContainerGap())
         );
 
@@ -429,9 +440,9 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jBuCadastroActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jFTFCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTFCpfActionPerformed
         // TODO add your handling code here:
@@ -509,6 +520,10 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFTFTelefoneActionPerformed
 
+    private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
+           dispose();
+    }//GEN-LAST:event_jBOkActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -545,9 +560,10 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAlterar;
+    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBOk;
     private javax.swing.JButton jBValidar;
     private javax.swing.JButton jBuCadastro;
-    private javax.swing.JButton jButton1;
     private javax.swing.JFormattedTextField jFTFCep;
     private javax.swing.JFormattedTextField jFTFCpf;
     private javax.swing.JFormattedTextField jFTFNumero;
