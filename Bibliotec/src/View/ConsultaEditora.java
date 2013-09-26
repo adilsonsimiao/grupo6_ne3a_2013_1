@@ -311,8 +311,12 @@ public class ConsultaEditora extends javax.swing.JFrame {
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jBSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSelecionarActionPerformed
-        retornaID();
+        if (jTAreaDadosConsulta.getSelectedRow() > 0) {
+            retornaID();
 
+        } else {
+            dispose();
+        }
     }//GEN-LAST:event_jBSelecionarActionPerformed
 
     private void jBCadAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadAutorActionPerformed

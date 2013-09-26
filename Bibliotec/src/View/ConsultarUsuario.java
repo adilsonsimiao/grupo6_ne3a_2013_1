@@ -181,8 +181,8 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Nao foi possivel localizar " + jTFCampoConsulta.getText());
                 }
             }
-        }else if (jRBCpf.isSelected()) {
-             if (jTFCampoConsulta.getText().trim().equals("")) {
+        } else if (jRBCpf.isSelected()) {
+            if (jTFCampoConsulta.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
             } else {
 
@@ -253,7 +253,11 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
-        dispose();
+        if (jTAreaDadosConsulta.getSelectedRow() > 0) {
+            retornaID();
+        } else {
+            dispose();
+        }
     }//GEN-LAST:event_jBOkActionPerformed
 
     /**
@@ -306,4 +310,13 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     private javax.swing.JTable jTAreaDadosConsulta;
     private javax.swing.JTextField jTFCampoConsulta;
     // End of variables declaration//GEN-END:variables
+
+   public int retornaID() {
+        int row = jTAreaDadosConsulta.getSelectedRow();
+        String sa = tableModel.getValueAt(row, 0).toString();
+        int idUsuario = Integer.parseInt(sa);
+
+        dispose();
+        return idUsuario;
+    }
 }

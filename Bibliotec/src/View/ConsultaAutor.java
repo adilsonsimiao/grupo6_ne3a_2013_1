@@ -298,7 +298,7 @@ public class ConsultaAutor extends javax.swing.JFrame {
         int ValorRowColum = Integer.parseInt(sa);
         AlterarAutor alterarAutor = new AlterarAutor();
         try {
-            alterarAutor.preencheTelaCadastro(ValorRowColum); 
+            alterarAutor.preencheTelaCadastro(ValorRowColum);
             alterarAutor.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -307,9 +307,12 @@ public class ConsultaAutor extends javax.swing.JFrame {
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jBSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSelecionarActionPerformed
-        retornaID();
-        dispose();
+        if (jTAreaDadosConsulta.getSelectedRow() > 0) {
 
+            retornaID();
+        } else {
+            dispose();
+        }
 
     }//GEN-LAST:event_jBSelecionarActionPerformed
 
