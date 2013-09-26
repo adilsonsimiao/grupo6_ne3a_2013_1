@@ -70,8 +70,10 @@ public class Autor {
 
     @Override
     public String toString() {
-        return "Autor{" + "id=" + id + ", Nome=" + nome + ", livros=" + livros + '}';
+        return "Autor{" + "id=" + id + ", nome=" + nome + ", livros=" + livros + '}';
     }
+
+  
 
    
     
