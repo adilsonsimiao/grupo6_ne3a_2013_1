@@ -57,6 +57,7 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jBCadastrar = new javax.swing.JButton();
+        jBOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,6 +133,13 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
 
         jBCadastrar.setText("Cadastrar");
 
+        jBOk.setText("Ok");
+        jBOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOkActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,6 +153,8 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBOk)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBCadastrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBAlterar)
@@ -177,7 +187,8 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
                     .addComponent(jBAlterar)
                     .addComponent(jBExcluir)
                     .addComponent(jBFechar)
-                    .addComponent(jBCadastrar))
+                    .addComponent(jBCadastrar)
+                    .addComponent(jBOk))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -281,6 +292,10 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jBAlterarActionPerformed
 
+    private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBOkActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -322,6 +337,7 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jBConsultar;
     private javax.swing.JButton jBExcluir;
     private javax.swing.JButton jBFechar;
+    private javax.swing.JButton jBOk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRBCpf;

@@ -37,6 +37,8 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="jBOk" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jBCadastrar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jBAlterar" min="-2" max="-2" attributes="0"/>
@@ -77,6 +79,7 @@
                   <Component id="jBExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBFechar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBOk" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -213,6 +216,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBOk">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ok"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBOkActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
