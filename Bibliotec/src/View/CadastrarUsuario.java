@@ -57,7 +57,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jLRg = new javax.swing.JLabel();
         jLcpf = new javax.swing.JLabel();
         jBuCadastro = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
         jLTelefone = new javax.swing.JLabel();
         jFTFRg = new javax.swing.JFormattedTextField();
         jFTFCpf = new javax.swing.JFormattedTextField();
@@ -67,6 +67,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jTFEmail = new javax.swing.JTextField();
         JBValidar = new javax.swing.JButton();
         jFTFTelefone = new javax.swing.JFormattedTextField();
+        jBOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -217,10 +218,10 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Cancelar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBCancelar.setText("Cancelar");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBCancelarActionPerformed(evt);
             }
         });
 
@@ -272,6 +273,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         jFTFTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
+        jBOk.setText("Ok");
+        jBOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOkActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -302,13 +310,15 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBOk)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(JBValidar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jBAlterar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jBuCadastro)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton1))
+                            .addComponent(jBCancelar))
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(48, 48, 48))
         );
@@ -338,9 +348,10 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBuCadastro)
-                        .addComponent(jButton1)
+                        .addComponent(jBCancelar)
                         .addComponent(jBAlterar)
-                        .addComponent(JBValidar))
+                        .addComponent(JBValidar)
+                        .addComponent(jBOk))
                     .addComponent(jLInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -407,9 +418,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFTFCpfActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jBuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuCadastroActionPerformed
         this.usuario = new Usuario();
@@ -431,6 +442,10 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private void jTFComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFComplementoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFComplementoActionPerformed
+
+    private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBOkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -469,8 +484,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBValidar;
     private javax.swing.JButton jBAlterar;
+    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBOk;
     private javax.swing.JButton jBuCadastro;
-    private javax.swing.JButton jButton1;
     private javax.swing.JFormattedTextField jFTFCep;
     private javax.swing.JFormattedTextField jFTFCpf;
     private javax.swing.JFormattedTextField jFTFNumero;
