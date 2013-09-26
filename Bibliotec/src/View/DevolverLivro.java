@@ -33,10 +33,11 @@ public class DevolverLivro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTFGenero = new javax.swing.JTextField();
         jTFNomeLivro = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
+        jBDevolver = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jTFDovolucao = new javax.swing.JTextField();
+        jBOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,7 +59,7 @@ public class DevolverLivro extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(315, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,16 +72,18 @@ public class DevolverLivro extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBCancelar.setText("Cancelar");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBCancelarActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Devolver");
+        jBDevolver.setText("Devolver");
 
         jLabel4.setText("Autor:");
+
+        jBOk.setText("Ok");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,10 +102,12 @@ public class DevolverLivro extends javax.swing.JFrame {
                     .addComponent(jTFDovolucao))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(434, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBOk)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(jBDevolver)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBCancelar)
                 .addGap(18, 18, 18))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -124,17 +129,18 @@ public class DevolverLivro extends javax.swing.JFrame {
                     .addComponent(jTFDovolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jBDevolver)
+                    .addComponent(jBCancelar)
+                    .addComponent(jBOk))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,8 +177,9 @@ public class DevolverLivro extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBDevolver;
+    private javax.swing.JButton jBOk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
