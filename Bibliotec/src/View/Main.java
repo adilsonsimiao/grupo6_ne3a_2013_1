@@ -1,5 +1,8 @@
 package View;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,12 +49,6 @@ public class Main extends javax.swing.JFrame {
         jMConsultaEditora = new javax.swing.JMenuItem();
         jMConsultaFuncionário = new javax.swing.JMenuItem();
         jMConsultaAutor = new javax.swing.JMenuItem();
-        jMAlterar = new javax.swing.JMenu();
-        jMAlterarUsuario = new javax.swing.JMenuItem();
-        jMAlterarLivro = new javax.swing.JMenuItem();
-        jMAlterarEditora = new javax.swing.JMenuItem();
-        jMAlterarFuncionario = new javax.swing.JMenuItem();
-        jMAlterarAutor = new javax.swing.JMenuItem();
         jMEmprestimo = new javax.swing.JMenu();
         jMEmprestimos = new javax.swing.JMenuItem();
         jMDevolução = new javax.swing.JMenuItem();
@@ -337,65 +334,6 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMConsultas);
 
-        jMAlterar.setForeground(new java.awt.Color(1, 1, 1));
-        jMAlterar.setText("Alterar");
-        jMAlterar.setToolTipText("Botão de alteração");
-        jMAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jMAlterarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jMAlterarMouseExited(evt);
-            }
-        });
-
-        jMAlterarUsuario.setText("Usuário");
-        jMAlterarUsuario.setToolTipText("Alterar usuário");
-        jMAlterarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMAlterarUsuarioActionPerformed(evt);
-            }
-        });
-        jMAlterar.add(jMAlterarUsuario);
-
-        jMAlterarLivro.setText("Livro");
-        jMAlterarLivro.setToolTipText("Alterar livro");
-        jMAlterarLivro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMAlterarLivroActionPerformed(evt);
-            }
-        });
-        jMAlterar.add(jMAlterarLivro);
-
-        jMAlterarEditora.setText("Editora");
-        jMAlterarEditora.setToolTipText("Alterar editora");
-        jMAlterarEditora.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMAlterarEditoraActionPerformed(evt);
-            }
-        });
-        jMAlterar.add(jMAlterarEditora);
-
-        jMAlterarFuncionario.setText("Funcionário");
-        jMAlterarFuncionario.setToolTipText("Alterar funcionário ");
-        jMAlterarFuncionario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMAlterarFuncionarioActionPerformed(evt);
-            }
-        });
-        jMAlterar.add(jMAlterarFuncionario);
-
-        jMAlterarAutor.setText("Autor");
-        jMAlterarAutor.setToolTipText("Alterar autor");
-        jMAlterarAutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMAlterarAutorActionPerformed(evt);
-            }
-        });
-        jMAlterar.add(jMAlterarAutor);
-
-        jMenuBar1.add(jMAlterar);
-
         jMEmprestimo.setForeground(new java.awt.Color(1, 1, 1));
         jMEmprestimo.setText("Empréstimos");
         jMEmprestimo.setToolTipText("Botão empréstimos");
@@ -408,8 +346,16 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jMEmprestimos.setText("Emprestimos");
+        jMEmprestimos.setText("Empréstimos");
         jMEmprestimos.setToolTipText("Botão para empréstimos de Livros");
+        jMEmprestimos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMEmprestimosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMEmprestimosMouseExited(evt);
+            }
+        });
         jMEmprestimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMEmprestimosActionPerformed(evt);
@@ -419,6 +365,14 @@ public class Main extends javax.swing.JFrame {
 
         jMDevolução.setText("Devoluções");
         jMDevolução.setToolTipText("Botão para devolução de livros");
+        jMDevolução.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMDevoluçãoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMDevoluçãoMouseExited(evt);
+            }
+        });
         jMDevolução.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMDevoluçãoActionPerformed(evt);
@@ -513,11 +467,6 @@ public class Main extends javax.swing.JFrame {
         consult.setVisible(true);
     }//GEN-LAST:event_jMConsultaUsuarioActionPerformed
 
-    private void jMAlterarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarUsuarioActionPerformed
-        AlterarUsuario alt = new AlterarUsuario();
-        alt.setVisible(true);
-    }//GEN-LAST:event_jMAlterarUsuarioActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -556,22 +505,6 @@ public class Main extends javax.swing.JFrame {
         consultaFuncionario.setVisible(true);
     }//GEN-LAST:event_jMConsultaFuncionárioActionPerformed
 
-    private void jMAlterarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarLivroActionPerformed
-        AlterarLivro alterarLivro = new AlterarLivro();
-        alterarLivro.setVisible(true);
-
-    }//GEN-LAST:event_jMAlterarLivroActionPerformed
-
-    private void jMAlterarEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarEditoraActionPerformed
-        AlterarEditora alterarEditora = new AlterarEditora();
-        alterarEditora.setVisible(true);
-    }//GEN-LAST:event_jMAlterarEditoraActionPerformed
-
-    private void jMAlterarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarFuncionarioActionPerformed
-        AlterarFuncionario alterarFuncionario = new AlterarFuncionario();
-        alterarFuncionario.setVisible(true);
-    }//GEN-LAST:event_jMAlterarFuncionarioActionPerformed
-
     private void jMEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMEmprestimosActionPerformed
         EmprestarLivro emprestarLivro = new EmprestarLivro();
         emprestarLivro.setVisible(true);
@@ -587,7 +520,12 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAjudaActionPerformed
 
     private void jMenuItemAjudaOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAjudaOnlineActionPerformed
-        // TODO add your handling code here:
+        try {
+            Desktop.getDesktop().open(new File("/home/fabio/Documentos/grupo6_ne3a_2013_1/Bibliotec/src/web/Paginas/Ajuda.html"));
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jMenuItemAjudaOnlineActionPerformed
 
     private void jBDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDevolucaoActionPerformed
@@ -617,11 +555,6 @@ public class Main extends javax.swing.JFrame {
         consultaAutor.setVisible(true);
     }//GEN-LAST:event_jMConsultaAutorActionPerformed
 
-    private void jMAlterarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarAutorActionPerformed
-        AlterarAutor alterarAutor = new AlterarAutor();
-        alterarAutor.setVisible(true);
-    }//GEN-LAST:event_jMAlterarAutorActionPerformed
-
     private void jBCadastrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCadastrosMouseEntered
         jLBarraStatus.setText(jBCadastros.getToolTipText());
     }//GEN-LAST:event_jBCadastrosMouseEntered
@@ -640,7 +573,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jBConsultasMouseExited
 
     private void jBDevolucaoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBDevolucaoMouseEntered
-                jLBarraStatus.setText(jBDevolucao.getToolTipText());
+        jLBarraStatus.setText(jBDevolucao.getToolTipText());
 
     }//GEN-LAST:event_jBDevolucaoMouseEntered
 
@@ -672,14 +605,6 @@ public class Main extends javax.swing.JFrame {
         jLBarraStatus.setText("");
     }//GEN-LAST:event_jMConsultasMouseExited
 
-    private void jMAlterarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMAlterarMouseEntered
-        jLBarraStatus.setText(jMAlterar.getToolTipText());
-    }//GEN-LAST:event_jMAlterarMouseEntered
-
-    private void jMAlterarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMAlterarMouseExited
-        jLBarraStatus.setText("");
-    }//GEN-LAST:event_jMAlterarMouseExited
-
     private void jMEmprestimoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMEmprestimoMouseEntered
         jLBarraStatus.setText(jMEmprestimo.getToolTipText());
     }//GEN-LAST:event_jMEmprestimoMouseEntered
@@ -697,7 +622,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMAjudaMenuDragMouseExited
 
     private void jMenuItemAjudaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemAjudaMouseEntered
-       jLBarraStatus.setText(jMenuItemAjuda.getToolTipText());
+        jLBarraStatus.setText(jMenuItemAjuda.getToolTipText());
     }//GEN-LAST:event_jMenuItemAjudaMouseEntered
 
     private void jMenuItemAjudaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemAjudaMouseExited
@@ -711,6 +636,22 @@ public class Main extends javax.swing.JFrame {
     private void jMenuItemAjudaOnlineMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemAjudaOnlineMouseExited
         jLBarraStatus.setText("");
     }//GEN-LAST:event_jMenuItemAjudaOnlineMouseExited
+
+    private void jMEmprestimosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMEmprestimosMouseEntered
+        jLBarraStatus.setText(jMEmprestimos.getToolTipText());
+    }//GEN-LAST:event_jMEmprestimosMouseEntered
+
+    private void jMEmprestimosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMEmprestimosMouseExited
+        jLBarraStatus.setText("");
+    }//GEN-LAST:event_jMEmprestimosMouseExited
+
+    private void jMDevoluçãoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMDevoluçãoMouseEntered
+        jLBarraStatus.setText(jMDevolução.getToolTipText());
+    }//GEN-LAST:event_jMDevoluçãoMouseEntered
+
+    private void jMDevoluçãoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMDevoluçãoMouseExited
+        jLBarraStatus.setText("");
+    }//GEN-LAST:event_jMDevoluçãoMouseExited
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -730,12 +671,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenu jMAjuda;
-    private javax.swing.JMenu jMAlterar;
-    private javax.swing.JMenuItem jMAlterarAutor;
-    private javax.swing.JMenuItem jMAlterarEditora;
-    private javax.swing.JMenuItem jMAlterarFuncionario;
-    private javax.swing.JMenuItem jMAlterarLivro;
-    private javax.swing.JMenuItem jMAlterarUsuario;
     private javax.swing.JMenuItem jMAutor;
     private javax.swing.JMenu jMCadastros;
     private javax.swing.JMenuItem jMConsultaAutor;

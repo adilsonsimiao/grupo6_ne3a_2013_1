@@ -147,66 +147,6 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMAlterar">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="1" green="1" red="1" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Alterar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o de altera&#xe7;&#xe3;o"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMAlterarMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMAlterarMouseExited"/>
-          </Events>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMAlterarUsuario">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
-                <Property name="toolTipText" type="java.lang.String" value="Alterar usu&#xe1;rio"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMAlterarUsuarioActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMAlterarLivro">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Livro"/>
-                <Property name="toolTipText" type="java.lang.String" value="Alterar livro"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMAlterarLivroActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMAlterarEditora">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Editora"/>
-                <Property name="toolTipText" type="java.lang.String" value="Alterar editora"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMAlterarEditoraActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMAlterarFuncionario">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Funcion&#xe1;rio"/>
-                <Property name="toolTipText" type="java.lang.String" value="Alterar funcion&#xe1;rio "/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMAlterarFuncionarioActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMAlterarAutor">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Autor"/>
-                <Property name="toolTipText" type="java.lang.String" value="Alterar autor"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMAlterarAutorActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="jMEmprestimo">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -222,10 +162,12 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMEmprestimos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Emprestimos"/>
+                <Property name="text" type="java.lang.String" value="Empr&#xe9;stimos"/>
                 <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para empr&#xe9;stimos de Livros"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMEmprestimosMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMEmprestimosMouseExited"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMEmprestimosActionPerformed"/>
               </Events>
             </MenuItem>
@@ -235,6 +177,8 @@
                 <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para devolu&#xe7;&#xe3;o de livros"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMDevolu&#xe7;&#xe3;oMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMDevolu&#xe7;&#xe3;oMouseExited"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMDevolu&#xe7;&#xe3;oActionPerformed"/>
               </Events>
             </MenuItem>
