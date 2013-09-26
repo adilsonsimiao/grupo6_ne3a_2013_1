@@ -54,6 +54,8 @@ public class Livro {
     @Column(length = 13)
     private String Isbn;
     
+    private int quantidadeDisponivel;
+    
     public Set<Autor> getAutores() {
         return autores;
     }
@@ -111,12 +113,16 @@ public class Livro {
         this.Isbn = Isbn;
     }
 
-    @Override
-    public String toString() {
-        return "Livro{" + "id=" + id + ", nomeLivro=" + nomeLivro + ", editoras=" + editoras + ", quantidade=" + quantidade + ", autores=" + autores + ", genero=" + genero + ", Isbn=" + Isbn + '}';
+    public int getQuantidadeDisponivel() {
+        return quantidadeDisponivel;
     }
 
-    
-   
-    
+    public void setQuantidadeDisponivel(int quantidadeDisponivel) {
+        this.quantidadeDisponivel = quantidadeDisponivel;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro{" + "id=" + id + ", nomeLivro=" + nomeLivro + ", editoras=" + editoras + ", quantidade=" + quantidade + ", autores=" + autores + ", genero=" + genero + ", Isbn=" + Isbn + ", quantidadeDisponivel=" + quantidadeDisponivel + '}';
+    }
 }
