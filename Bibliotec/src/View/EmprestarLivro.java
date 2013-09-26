@@ -4,16 +4,37 @@
  */
 package View;
 
+import Dao.DaoUsuario;
+import entidade.Autor;
+import entidade.Emprestimo;
+import entidade.Livro;
+import entidade.Usuario;
+import hibernate.HibernateDao;
+import java.awt.Dialog;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author fabio
  */
 public class EmprestarLivro extends javax.swing.JFrame {
 
+    Livro livro = new Livro();
+    Autor autor = new Autor();
+    Usuario usuario = new Usuario();
+    Emprestimo emprestimo = new Emprestimo();
+    ConsultarUsuario consultarUsuario = new ConsultarUsuario();
+
     /**
      * Creates new form EmprestarLivro
      */
     public EmprestarLivro() {
+        setTitle("Emprestar Livro");
         initComponents();
     }
 
@@ -28,16 +49,16 @@ public class EmprestarLivro extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jCBUsuários = new javax.swing.JComboBox();
-        jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLNomeLivro = new javax.swing.JLabel();
+        jLUsuario = new javax.swing.JLabel();
+        jLAutor = new javax.swing.JLabel();
+        jBEmprestar = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
         jTFNomeLivro = new javax.swing.JTextField();
-        jTFGenero = new javax.swing.JTextField();
         jTFAutor = new javax.swing.JTextField();
+        jBOk = new javax.swing.JButton();
+        jBConsultarUsuario = new javax.swing.JButton();
+        jTFUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,36 +74,58 @@ public class EmprestarLivro extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(315, Short.MAX_VALUE))
+                .addContainerGap(320, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(22, 22, 22))
         );
 
-        jLabel2.setText("Nome do Livro:");
+        jLNomeLivro.setText("Nome do Livro:");
 
-        jLabel3.setText("Gênero:");
+        jLUsuario.setText("Usuário:");
 
-        jLabel4.setText("Usuário:");
+        jLAutor.setText("Autor:");
 
-        jCBUsuários.addActionListener(new java.awt.event.ActionListener() {
+        jBEmprestar.setText("Emprestar");
+        jBEmprestar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBUsuáriosActionPerformed(evt);
+                jBEmprestarActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Autor:");
-
-        jButton1.setText("Emprestar");
-
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBCancelar.setText("Cancelar");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBCancelarActionPerformed(evt);
+            }
+        });
+
+        jBOk.setText("Ok");
+        jBOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOkActionPerformed(evt);
+            }
+        });
+
+        jBConsultarUsuario.setText("Consultar Usuário");
+        jBConsultarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultarUsuarioActionPerformed(evt);
+            }
+        });
+
+        jTFUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFUsuarioActionPerformed(evt);
+            }
+        });
+        jTFUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTFUsuarioFocusGained(evt);
             }
         });
 
@@ -95,67 +138,96 @@ public class EmprestarLivro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBOk)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(jBEmprestar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBCancelar)
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLNomeLivro)
+                            .addComponent(jLUsuario)
+                            .addComponent(jLAutor))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTFAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel3)))
+                                .addComponent(jBConsultarUsuario)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTFNomeLivro, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
-                                    .addComponent(jTFGenero)
-                                    .addComponent(jTFAutor)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCBUsuários, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jTFUsuario))
+                            .addComponent(jTFNomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(17, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLNomeLivro)
                     .addComponent(jTFNomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTFGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(jLAutor)
                     .addComponent(jTFAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jCBUsuários, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jBConsultarUsuario)
+                    .addComponent(jLUsuario)
+                    .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBEmprestar)
+                    .addComponent(jBCancelar)
+                    .addComponent(jBOk))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCBUsuáriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBUsuáriosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBUsuáriosActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void jBEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEmprestarActionPerformed
+        emprestimo.setLivro(livro);
+        emprestimo.setUsuario(usuario);
+        emprestimo.setDataDoEmprestimo(Calendar.getInstance());
+        emprestimo.setDataPrevistaParaDevolucao(Calendar.getInstance());
+        emprestimo.getDataPrevistaParaDevolucao().add(Calendar.DAY_OF_MONTH, 7);
+        
+           try {
+            new HibernateDao<Emprestimo>().persist(emprestimo);
+            imprimir();
+
+        } catch (Exception ex) {
+            Logger.getLogger(EmprestarLivro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBEmprestarActionPerformed
+
+    private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBOkActionPerformed
+
+    private void jBConsultarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarUsuarioActionPerformed
+        consultarUsuario.setVisible(true);
+        
+    }//GEN-LAST:event_jBConsultarUsuarioActionPerformed
+
+    private void jTFUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFUsuarioActionPerformed
+    }//GEN-LAST:event_jTFUsuarioActionPerformed
+
+    private void jTFUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFUsuarioFocusGained
+        try {
+            usuario = new DaoUsuario().retrieve(consultarUsuario.retornaID());
+            jTFUsuario.setText(usuario.getNome());
+        } catch (Exception ex) {
+            Logger.getLogger(CadastrarLivros.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jTFUsuarioFocusGained
 
     /**
      * @param args the command line arguments
@@ -192,17 +264,43 @@ public class EmprestarLivro extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jCBUsuários;
+    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBConsultarUsuario;
+    private javax.swing.JButton jBEmprestar;
+    private javax.swing.JButton jBOk;
+    private javax.swing.JLabel jLAutor;
+    private javax.swing.JLabel jLNomeLivro;
+    private javax.swing.JLabel jLUsuario;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTFAutor;
-    private javax.swing.JTextField jTFGenero;
     private javax.swing.JTextField jTFNomeLivro;
+    private javax.swing.JTextField jTFUsuario;
     // End of variables declaration//GEN-END:variables
+
+    public void preencherTela(int l) throws Exception {
+        livro = new HibernateDao<Livro>().retrieve(l);
+        jTFNomeLivro.setText(livro.getNomeLivro());
+        autor = (Autor) livro.getAutores().iterator().next();
+        jTFAutor.setText(autor.getNome());
+
+    }
+
+    private void imprimir() {
+        
+        Date dateDiaEmprestimo;
+        dateDiaEmprestimo = emprestimo.getDataDoEmprestimo().getTime();
+        SimpleDateFormat dateFormatDiaEmprestimo = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormatDiaEmprestimo.format(dateDiaEmprestimo);
+        
+        Date datePrevista;
+        datePrevista = emprestimo.getDataPrevistaParaDevolucao().getTime();
+        SimpleDateFormat dateFormatPrevista = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormatPrevista.format(datePrevista);
+        
+        ImprimirEmprestimo ie = new ImprimirEmprestimo();
+        ie.prencherTelaImp(emprestimo.getDataDoEmprestimo(), emprestimo.getDataPrevistaParaDevolucao(), usuario, livro);
+        ie.setVisible(true);
+        
+    }
 }
