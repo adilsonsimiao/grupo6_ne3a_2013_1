@@ -10,13 +10,10 @@ import entidade.Emprestimo;
 import entidade.Livro;
 import entidade.Usuario;
 import hibernate.HibernateDao;
-import java.awt.Dialog;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -198,14 +195,20 @@ public class EmprestarLivro extends javax.swing.JFrame {
         emprestimo.setDataDoEmprestimo(Calendar.getInstance());
         emprestimo.setDataPrevistaParaDevolucao(Calendar.getInstance());
         emprestimo.getDataPrevistaParaDevolucao().add(Calendar.DAY_OF_MONTH, 7);
-        
-           try {
-            new HibernateDao<Emprestimo>().persist(emprestimo);
-            imprimir();
+        livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel()-1);
+        if (livro.getQuantidadeDisponivel() > 0) {
+            try {
+                new HibernateDao<Livro>().persist(livro);
+                new HibernateDao<Emprestimo>().persist(emprestimo);
+                imprimir();
 
-        } catch (Exception ex) {
-            Logger.getLogger(EmprestarLivro.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(EmprestarLivro.class.getName()).log(Level.SEVERE, null, ex);
+            }            
+        }else{
+            JOptionPane.showInternalMessageDialog(null, "Não existe nenhuma cópia disponível");
         }
+   
     }//GEN-LAST:event_jBEmprestarActionPerformed
 
     private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
@@ -286,17 +289,8 @@ public class EmprestarLivro extends javax.swing.JFrame {
 
     }
 
-    private void imprimir() {
-        
-        Date dateDiaEmprestimo;
-        dateDiaEmprestimo = emprestimo.getDataDoEmprestimo().getTime();
-        SimpleDateFormat dateFormatDiaEmprestimo = new SimpleDateFormat("dd/MM/yyyy");
-        dateFormatDiaEmprestimo.format(dateDiaEmprestimo);
-        
-        Date datePrevista;
-        datePrevista = emprestimo.getDataPrevistaParaDevolucao().getTime();
-        SimpleDateFormat dateFormatPrevista = new SimpleDateFormat("dd/MM/yyyy");
-        dateFormatPrevista.format(datePrevista);
+    private void imprimir() {     
+       
         
         ImprimirEmprestimo ie = new ImprimirEmprestimo();
         ie.prencherTelaImp(emprestimo.getDataDoEmprestimo(), emprestimo.getDataPrevistaParaDevolucao(), usuario, livro);

@@ -4,17 +4,42 @@
  */
 package View;
 
+import Dao.DaoEmprestimo;
+import Dao.DaoLivro;
+import entidade.Emprestimo;
+import entidade.Livro;
+import hibernate.HibernateDao;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.type.YesNoType;
+
 /**
  *
  * @author fabio
  */
 public class DevolverLivro extends javax.swing.JFrame {
 
+    Livro livro = new Livro();
+    List<Emprestimo> listaEmprestimo = new ArrayList<>();
+    DefaultTableModel tableModel = new DefaultTableModel();
+    Emprestimo emprestimo = new Emprestimo();
+
     /**
      * Creates new form DevolverLivro
      */
     public DevolverLivro() {
         initComponents();
+        setTitle("Consultar Emprestimo");
+        tableModel.setColumnIdentifiers(new String[]{
+            "ID", "Nome do Usuário", "Nome Do Livro", "Data da Entrega", "idLivro"});
+        jTAreaDadosConsulta.setModel(tableModel);
     }
 
     /**
@@ -26,51 +51,65 @@ public class DevolverLivro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTFGenero = new javax.swing.JTextField();
-        jTFNomeLivro = new javax.swing.JTextField();
+        jTFCampoConsulta = new javax.swing.JTextField();
+        jBConsultar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTAreaDadosConsulta = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
         jBCancelar = new javax.swing.JButton();
         jBDevolver = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jTFDovolucao = new javax.swing.JTextField();
         jBOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel3.setText("Usuário:");
-
-        jLabel2.setText("Nome do Livro:");
-
         jPanel1.setBackground(new java.awt.Color(0, 51, 153));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel1.setText("Devolução");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/1376350938_Books.png"))); // NOI18N
+        jLabel1.setText("Devolver Livro");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(315, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(22, 22, 22))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        jBConsultar.setText("Consultar");
+        jBConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultarActionPerformed(evt);
+            }
+        });
+
+        jTAreaDadosConsulta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jTAreaDadosConsulta.setToolTipText("");
+        jScrollPane1.setViewportView(jTAreaDadosConsulta);
+
+        jLabel2.setText("Informe o titulo do livro a ser devolvido:");
 
         jBCancelar.setText("Cancelar");
         jBCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -80,27 +119,26 @@ public class DevolverLivro extends javax.swing.JFrame {
         });
 
         jBDevolver.setText("Devolver");
-
-        jLabel4.setText("Autor:");
+        jBDevolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDevolverActionPerformed(evt);
+            }
+        });
 
         jBOk.setText("Ok");
+        jBOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOkActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTFNomeLivro, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
-                    .addComponent(jTFGenero)
-                    .addComponent(jTFDovolucao))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBOk)
@@ -108,39 +146,116 @@ public class DevolverLivro extends javax.swing.JFrame {
                 .addComponent(jBDevolver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBCancelar)
-                .addGap(18, 18, 18))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTFCampoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(25, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTFNomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTFGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jTFCampoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBConsultar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTFDovolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBDevolver)
                     .addComponent(jBCancelar)
+                    .addComponent(jBDevolver)
                     .addComponent(jBOk))
-                .addContainerGap())
+                .addGap(21, 21, 21))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(173, 173, 173)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(67, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
+        tableModel.setRowCount(0);
+
+        if (jTFCampoConsulta.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
+        } else {
+            listaEmprestimo = new DaoEmprestimo().retrieveNome(jTFCampoConsulta.getText());
+            for (Emprestimo E : listaEmprestimo) {
+                Date d = E.getDataPrevistaParaDevolucao().getTime();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                sdf.format(d);
+                tableModel.addRow(new Object[]{
+                    E.getId(), E.getUsuario().getNome(), E.getLivro().getNomeLivro(), sdf.format(d), E.getLivro().getId()});
+
+            }
+
+
+        }
+    }//GEN-LAST:event_jBConsultarActionPerformed
+
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBOkActionPerformed
+
+    private void jBDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDevolverActionPerformed
+        jBDevolverActionPerformed(evt);
+        int multa = 0;
+        try {
+            int row = jTAreaDadosConsulta.getSelectedRow();
+            String sa = tableModel.getValueAt(row, 0).toString();
+            int ValorRowColum = Integer.parseInt(sa);
+            emprestimo = new HibernateDao<Emprestimo>().retrieve(ValorRowColum);
+            livro = new DaoLivro().retrieve(emprestimo.getLivro().getId());
+            Date dataPrevDevolucao = emprestimo.getDataPrevistaParaDevolucao().getTime();
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            emprestimo.setDataDaDevolucao(Calendar.getInstance());
+            emprestimo.getDataDaDevolucao().set(2013, 9, 10);
+            Date dataDevDoLivro = emprestimo.getDataDaDevolucao().getTime();
+            SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+            if (emprestimo.getDataDaDevolucao().compareTo(emprestimo.getDataPrevistaParaDevolucao()) <= 0) {
+                livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() + 1);
+                new HibernateDao<Livro>().persist(livro);
+                new HibernateDao<Emprestimo>().delete(emprestimo);
+                JOptionPane.showMessageDialog(null, "Livro devolvido com sucesso");
+            } else {
+                multa = intervaloDias(dataPrevDevolucao, dataDevDoLivro);
+                int opcao = JOptionPane.showConfirmDialog(null, "Pendência de R$" + (multa * 1) + " de multa por atraso na devolução, deseja paga?");
+                System.out.println("def "+JOptionPane.INFORMATION_MESSAGE);
+                if (opcao == JOptionPane.YES_OPTION) {
+                    livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() + 1);
+                    new HibernateDao<Livro>().persist(livro);
+                    new HibernateDao<Emprestimo>().delete(emprestimo);
+                    JOptionPane.showMessageDialog(null, "Livro devolvido com sucesso");
+                } else if (opcao == JOptionPane.NO_OPTION){                   
+                    JOptionPane.showMessageDialog(null, "Resolva a pendência de multa para que possa devolver o livro");
+                }
+
+
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(DevolverLivro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jBDevolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,17 +292,21 @@ public class DevolverLivro extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBConsultar;
     private javax.swing.JButton jBDevolver;
     private javax.swing.JButton jBOk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTFDovolucao;
-    private javax.swing.JTextField jTFGenero;
-    private javax.swing.JTextField jTFNomeLivro;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTAreaDadosConsulta;
+    private javax.swing.JTextField jTFCampoConsulta;
     // End of variables declaration//GEN-END:variables
+
+    public static int intervaloDias(Date d1, Date d2) {
+        int result = (int) ((d1.getTime() - d2.getTime()) / 86400000L);
+        return result < 0 ? result * -1 : result;
+    }
 }

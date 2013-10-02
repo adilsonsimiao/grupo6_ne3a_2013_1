@@ -1,10 +1,22 @@
 package View;
 
+import Dao.DBConnection;
+import Dao.Dao;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -36,6 +48,7 @@ public class Main extends javax.swing.JFrame {
         jBCadastros = new javax.swing.JButton();
         jBConsultas = new javax.swing.JButton();
         jBDevolucao = new javax.swing.JButton();
+        jBRelatorio = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMCadastros = new javax.swing.JMenu();
         jMUsuario = new javax.swing.JMenuItem();
@@ -172,6 +185,15 @@ public class Main extends javax.swing.JFrame {
         });
         jBDevolucao.setBounds(320, 20, 160, 50);
         jLayeredPane1.add(jBDevolucao, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jBRelatorio.setText("Relatório");
+        jBRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRelatorioActionPerformed(evt);
+            }
+        });
+        jBRelatorio.setBounds(490, 20, 180, 50);
+        jLayeredPane1.add(jBRelatorio, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jMenuBar1.setBackground(new java.awt.Color(0, 51, 153));
 
@@ -506,7 +528,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMConsultaFuncionárioActionPerformed
 
     private void jMEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMEmprestimosActionPerformed
-        EmprestarLivro emprestarLivro = new EmprestarLivro();
+        ConsultaLivro emprestarLivro = new ConsultaLivro();
         emprestarLivro.setVisible(true);
     }//GEN-LAST:event_jMEmprestimosActionPerformed
 
@@ -653,6 +675,14 @@ public class Main extends javax.swing.JFrame {
         jLBarraStatus.setText("");
     }//GEN-LAST:event_jMDevoluçãoMouseExited
 
+    private void jBRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRelatorioActionPerformed
+        try {
+            relatorioPronto();
+        } catch (JRException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBRelatorioActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -666,6 +696,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jBCadastros;
     private javax.swing.JButton jBConsultas;
     private javax.swing.JButton jBDevolucao;
+    private javax.swing.JButton jBRelatorio;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLBarraStatus;
     private javax.swing.JLabel jLabel1;
@@ -693,4 +724,31 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+ private void relatorioPronto() throws JRException {
+         try {
+            // obtem o arquivo de relatorio compilado
+            URL arquivo = getClass().getResource("relatorioUsuario.jasper");
+
+            // carrega o relatorio
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(arquivo);
+
+            // preenche o relatorio com os dados do BD
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), DBConnection.getConnection());
+
+            // cria visualizador de relatorio
+            JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
+
+            // adicionar visualizador ao frame
+            JFrameReport frame = new JFrameReport();
+            // adicionamos o visualizador a um JPanel dentro do JFrame
+            frame.getjPanelReport().add(jrviewer.getContentPane());
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            frame.setVisible(true);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO: " + e);
+        }
+    }
+
 }

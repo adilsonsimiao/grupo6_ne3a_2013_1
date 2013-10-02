@@ -9,6 +9,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
@@ -17,6 +19,10 @@ import javax.persistence.Temporal;
  * @author fabio
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "retrieveNomeLivroDeEmprestimo",
+            query = "SELECT e FROM Emprestimo e JOIN E.livro l WHERE l.nomeLivro Like :nome")
+})
 public class Emprestimo {
     @Id
     @GeneratedValue
@@ -34,6 +40,7 @@ public class Emprestimo {
    
     @OneToOne(cascade = CascadeType.PERSIST)
     private Livro livro;
+    
 
     public int getId() {
         return id;
@@ -87,6 +94,9 @@ public class Emprestimo {
     public String toString() {
         return "Emprestimo{" + "id=" + id + ", dataDoEmprestimo=" + dataDoEmprestimo + ", dataPrevistaParaDevolucao=" + dataPrevistaParaDevolucao + ", dataDaDevolucao=" + dataDaDevolucao + ", usuario=" + usuario + ", livro=" + livro + '}';
     }
+
+    
+    
     
     
     

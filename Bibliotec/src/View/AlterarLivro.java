@@ -390,7 +390,8 @@ public class AlterarLivro extends javax.swing.JFrame {
         int aux = 0;
         livro.setNomeLivro(jTFNome.getText());
         autor.getLivros().add(livro);
-        livro.setQuantidade(Integer.parseInt(jTFQuantidade.getText()));         
+        livro.setQuantidade(Integer.parseInt(jTFQuantidade.getText())); 
+        livro.setQuantidadeDisponivel(livro.getQuantidade());
         livro.getEditoras().add(editora);
         livro.setIsbn(jTFIsbn.getText());
         genero.setGenero(jCBGenero.getSelectedItem().toString());
