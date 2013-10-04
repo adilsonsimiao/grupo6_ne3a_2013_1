@@ -276,10 +276,10 @@ public class ConsultaAutor extends javax.swing.JFrame {
 
 
         int row = jTAreaDadosConsulta.getSelectedRow();
-        if (row <= 0) {
-            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um autor na tabela");
+        if (row < 0) {
+            System.out.println("row "+row);
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um autor na tabela ou apenas selecione um autor");
         } else {
-
             String sa = tableModel.getValueAt(row, 0).toString();
             int ValorRowColum = Integer.parseInt(sa);
             try {
@@ -287,10 +287,10 @@ public class ConsultaAutor extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (jTFCampoConsulta.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
-
-            } else {
+//            if (row <= 0) {
+//                JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
+//
+//            } else {
                 try {
                     if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == autor.getId()) {
                         new HibernateDao().delete(autor);
@@ -300,14 +300,14 @@ public class ConsultaAutor extends javax.swing.JFrame {
                     }
                 } catch (Exception e) {
                 }
-            }
+//            }
         }
 
     }//GEN-LAST:event_jBExcluirActionPerformed
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         int row = jTAreaDadosConsulta.getSelectedRow();
-        if (row <= 0) {
+        if (row < 0) {
             JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um autor na tabela");
         } else {
             String sa = tableModel.getValueAt(row, 0).toString();

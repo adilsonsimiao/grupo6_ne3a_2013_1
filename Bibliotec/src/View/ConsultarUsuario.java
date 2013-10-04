@@ -170,7 +170,6 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                 for (Usuario u : listaUsuario) {
                     tableModel.addRow(new Object[]{
                         u.getId(), u.getEmail(), u.getNome(), u.getCpf(), u.getRg(), u.getTelefone()});
-                    this.usuario.setId(u.getId());
                 }
             } else {
 
@@ -217,7 +216,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         int row = jTAreaDadosConsulta.getSelectedRow();
-        if (row <= 0) {
+        if (row < 0) {
             JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um usuário na tabela");
         } else {
             String sa = tableModel.getValueAt(row, 0).toString();
@@ -234,8 +233,8 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
     private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
         int row = jTAreaDadosConsulta.getSelectedRow();
-        if (row <= 0) {
-            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um usuario na tabela");
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um usuário na tabela ou apenas selecione um usuário");
         } else {
             String sa = tableModel.getValueAt(row, 0).toString();
             int ValorRowColum = Integer.parseInt(sa);
@@ -244,10 +243,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (jTFCampoConsulta.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
-
-            } else {
+            
                 try {
                     if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == usuario.getId()) {
                         new HibernateDao().delete(usuario);
@@ -257,7 +253,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
                     }
                 } catch (Exception e) {
                 }
-            }
+            
         }
     }//GEN-LAST:event_jBExcluirActionPerformed
 

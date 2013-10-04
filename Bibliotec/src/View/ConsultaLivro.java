@@ -251,8 +251,8 @@ public class ConsultaLivro extends javax.swing.JFrame {
 
     private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
         int row = jTAreaDadosConsulta.getSelectedRow();
-        if (row <= 0) {
-            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um livro na tabela");
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um livro na tabela ou apenas selecione um livro");
         } else {
             String sa = tableModel.getValueAt(row, 0).toString();
             int ValorRowColum = Integer.parseInt(sa);
@@ -261,10 +261,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (jTFCampoConsulta.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
-
-            } else {
+         
                 try {
                     if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == livro.getId()) {
                         new HibernateDao().delete(livro);
@@ -274,7 +271,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
                     }
                 } catch (Exception e) {
                 }
-            }
+            
         }
     }//GEN-LAST:event_jBExcluirActionPerformed
 
