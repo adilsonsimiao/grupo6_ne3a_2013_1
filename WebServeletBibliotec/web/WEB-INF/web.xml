@@ -4,9 +4,17 @@
         <servlet-name>ConsultarLivroServelet</servlet-name>
         <servlet-class>servelet.ConsultarLivroServelet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConsultaLivrosServelet</servlet-name>
+        <servlet-class>servelet.ConsultaLivrosServelet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConsultarLivroServelet</servlet-name>
         <url-pattern>/ConsultarLivroServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultaLivrosServelet</servlet-name>
+        <url-pattern>/ConsultaLivrosServelet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
