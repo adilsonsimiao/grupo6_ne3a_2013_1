@@ -18,11 +18,11 @@ import java.util.List;
 public class DaoLivro  {
 
   
-    public List<Livro> listarTodosLivros() {
+    public List<Livro> listarLivros(String nomeLivro) {
         List<Livro> livros = new ArrayList<Livro>();
         PreparedStatement ps = null;
         try {
-            ps = BDConnection.prepareStatement("SELECT * FROM Livro");
+            ps = BDConnection.prepareStatement("SELECT * FROM Livro WHERE nomeLivro LIKE %"+nomeLivro+"%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Livro l = new Livro();

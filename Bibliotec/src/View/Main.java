@@ -2,6 +2,7 @@ package View;
 
 import Dao.DBConnection;
 import Dao.Dao;
+import Dao.DaoLivro;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -12,11 +13,14 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import relatorio.GerarRelatorio;
 
 /**
  *
@@ -707,11 +711,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMDevoluçãoMouseExited
 
     private void jBRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRelatorioActionPerformed
+        GerarRelatorio gr = new GerarRelatorio();
         try {
-            relatorioPronto();
+            gr.relatorioEmJFrame();
         } catch (JRException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
+
     }//GEN-LAST:event_jBRelatorioActionPerformed
 
     private void jBEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEmprestarActionPerformed
@@ -779,29 +787,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 
-    private void relatorioPronto() throws JRException {
-        try {
-            // obtem o arquivo de relatorio compilado
-            URL arquivo = getClass().getResource("relatorioUsuario.jasper");
-
-            // carrega o relatorio
-            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(arquivo);
-
-            // preenche o relatorio com os dados do BD
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), DBConnection.getConnection());
-
-            // cria visualizador de relatorio
-            JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
-
-            // adicionar visualizador ao frame
-            JFrameReport frame = new JFrameReport();
-            // adicionamos o visualizador a um JPanel dentro do JFrame
-            frame.getjPanelReport().add(jrviewer.getContentPane());
-            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            frame.setVisible(true);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERRO: " + e);
-        }
-    }
+    
+         
+            
+    
+    
 }

@@ -225,12 +225,13 @@ public class DevolverLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_jBOkActionPerformed
 
     private void jBDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDevolverActionPerformed
-        int multa = 0;
-        try {
-            int row = jTAreaDadosConsulta.getSelectedRow();
-            if (row <= 0) {
-                JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um empréstimo na tabela");
-            } else {
+        int multa;
+        int row = jTAreaDadosConsulta.getSelectedRow();
+        if (row < 0) {
+            System.out.println("row " + row);
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um empréstimo na tabela");
+        } else {
+            try {
                 String sa = tableModel.getValueAt(row, 0).toString();
                 int ValorRowColum = Integer.parseInt(sa);
                 emprestimo = new HibernateDao<Emprestimo>().retrieve(ValorRowColum);
@@ -245,24 +246,27 @@ public class DevolverLivro extends javax.swing.JFrame {
                     new HibernateDao<Livro>().persist(livro);
                     new HibernateDao<Emprestimo>().delete(emprestimo);
                     JOptionPane.showMessageDialog(null, "Livro devolvido com sucesso");
+                    jTAreaDadosConsulta.setModel(tableModel);
+
                 } else {
                     multa = intervaloDias(dataPrevDevolucao, dataDevDoLivro);
-                    int opcao = JOptionPane.showConfirmDialog(null, "Pendência de R$" + (multa * 1) + " de multa por atraso na devolução, deseja paga?");
+                    int opcao = JOptionPane.showConfirmDialog(null, "Pendência de R$" + (multa * 1.00) + " de multa por atraso na devolução, deseja paga?");
                     System.out.println("def " + JOptionPane.INFORMATION_MESSAGE);
                     if (opcao == JOptionPane.YES_OPTION) {
                         livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() + 1);
                         new HibernateDao<Livro>().persist(livro);
                         new HibernateDao<Emprestimo>().delete(emprestimo);
                         JOptionPane.showMessageDialog(null, "Livro devolvido com sucesso");
+                        jTAreaDadosConsulta.setModel(tableModel);
+
                     } else if (opcao == JOptionPane.NO_OPTION) {
                         JOptionPane.showMessageDialog(null, "Resolva a pendência de multa para que possa devolver o livro");
                     }
 
-
                 }
+            } catch (Exception ex) {
+                Logger.getLogger(DevolverLivro.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (Exception ex) {
-            Logger.getLogger(DevolverLivro.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jBDevolverActionPerformed
