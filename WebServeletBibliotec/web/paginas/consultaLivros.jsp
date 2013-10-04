@@ -25,34 +25,33 @@
                 <li><a href="mapaDoSite.jsp">Mapa do Site</a></li>
             </ul>
         </div>
-        <h1>Lista de livros</h1>
-            <hr>
+        <h1>Listar livros</h1>
+        <hr>
+        <form method="GET" action="imc.do">  
+            Nome do Livro:<input type="text" name="nomeLivro" size="100"/>  
+            <input type="submit" value="Pesquisar"/>  <br>
+        </form>
+
+        <table>
+            <tr>
+                <th class="esquerda">Nome do Livro</th>
+                <th>Isbn</th>
+                <th>Quantidade Disponivel</th>
+            </tr>
+            <tr>
             <%
-                List<Livro> listaLivros = (List<Livro>) session.getAttribute("listaLivro");
-                if (listaLivros == null || listaLivros.isEmpty()) {
+                List<Livro> listaLivros = (List<Livro>) session.getAttribute("nomeLivro");
+                for (Livro l : listaLivros) {
             %>
-            Não há Livros!
-            <% } else {
-            %>
-            <table>
-                <tr>
-                    <th class="esquerda">Nome do Livro</th>
-                    <th>Isbn</th>
-                    <th>Quantidade Disponivel</th>
-                </tr>
-                <%
-                    for (Livro l : listaLivros) {
-                        out.println("<tr>");
-                        out.println("<td>" + l.getNomeLivro() + "</td>");
-                        out.println("<td>" + l.getIsbn() + "</td>");
-                        out.println("<td>" + l.getQuantidadeDisponivel() + "</td>");
-                        out.println("</tr>");
-                    }
-                %>
-            </table>
-            <%
+            <td><%=l.getNomeLivro()%> </td>  
+            <td><%=l.getIsbn()%> </td>  
+            <td><%=l.getQuantidadeDisponivel()%> </td> 
+            
+        </tr> 
+        <%
                 }
-            %>
-       
-    </body>
+        %>
+    </table>
+
+</body>
 </html>

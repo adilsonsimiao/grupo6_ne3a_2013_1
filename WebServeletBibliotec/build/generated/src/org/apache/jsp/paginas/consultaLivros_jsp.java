@@ -60,7 +60,6 @@ public final class consultaLivros_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <a href=\"paginas/contatos.jsp\"></a>\n");
       out.write("        <div>\n");
       out.write("            <h1><a href=\"../index.jsp\"><img class=\"bibliotec\" src=\"../imagens/bibliotec.png\" alt=\"bibliotec\" /></a></h1>\n");
       out.write("        </div>\n");
@@ -73,44 +72,45 @@ public final class consultaLivros_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                <li><a href=\"mapaDoSite.jsp\">Mapa do Site</a></li>\n");
       out.write("            </ul>\n");
       out.write("        </div>\n");
-      out.write("        <h1>Lista de livros</h1>\n");
-      out.write("            <hr>\n");
+      out.write("        <h1>Listar livros</h1>\n");
+      out.write("        <hr>\n");
+      out.write("        <form method=\"GET\" action=\"imc.do\">  \n");
+      out.write("            Nome do Livro:<input type=\"text\" name=\"nomeLivro\" size=\"100\"/>  \n");
+      out.write("            <input type=\"submit\" value=\"Pesquisar\"/>  <br>\n");
+      out.write("        </form>\n");
+      out.write("\n");
+      out.write("        <table>\n");
+      out.write("            <tr>\n");
+      out.write("                <th class=\"esquerda\">Nome do Livro</th>\n");
+      out.write("                <th>Isbn</th>\n");
+      out.write("                <th>Quantidade Disponivel</th>\n");
+      out.write("            </tr>\n");
+      out.write("            <tr>\n");
       out.write("            ");
 
-                List<Livro> listaLivros = (List<Livro>) session.getAttribute("listaLivro");
-                if (listaLivros == null || listaLivros.isEmpty()) {
+                List<Livro> listaLivros = (List<Livro>) session.getAttribute("nomeLivro");
+                for (Livro l : listaLivros) {
             
       out.write("\n");
-      out.write("            Não há Livros!\n");
-      out.write("            ");
- } else {
-            
-      out.write("\n");
-      out.write("            <table>\n");
-      out.write("                <tr>\n");
-      out.write("                    <th class=\"esquerda\">Nome do Livro</th>\n");
-      out.write("                    <th>Isbn</th>\n");
-      out.write("                    <th>Quantidade Disponivel</th>\n");
-      out.write("                </tr>\n");
-      out.write("                ");
-
-                    for (Livro l : listaLivros) {
-                        out.println("<tr>");
-                        out.println("<td>" + l.getNomeLivro() + "</td>");
-                        out.println("<td>" + l.getIsbn() + "</td>");
-                        out.println("<td>" + l.getQuantidadeDisponivel() + "</td>");
-                        out.println("</tr>");
-                    }
-                
-      out.write("\n");
-      out.write("            </table>\n");
-      out.write("            ");
+      out.write("            <td>");
+      out.print(l.getNomeLivro());
+      out.write(" </td>  \n");
+      out.write("            <td>");
+      out.print(l.getIsbn());
+      out.write(" </td>  \n");
+      out.write("            <td>");
+      out.print(l.getQuantidadeDisponivel());
+      out.write(" </td> \n");
+      out.write("            \n");
+      out.write("        </tr> \n");
+      out.write("        ");
 
                 }
-            
+        
       out.write("\n");
-      out.write("       \n");
-      out.write("    </body>\n");
+      out.write("    </table>\n");
+      out.write("\n");
+      out.write("</body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

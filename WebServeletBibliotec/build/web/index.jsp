@@ -30,7 +30,7 @@
                     %>
             <ul class = "navlist">
                 <li><a href="index.jsp">Inicio</a></li>
-                <li><a href="ConsultarLivroServelet">Consultar Livros</a></li>
+                <li><a href="paginas/consultaLivros.jsp">Consultar Livros</a></li>
                 <li><a href="paginas/contatos.jsp">Contato</a></li>
                 <li><a href="paginas/ajuda.jsp">Ajuda</a></li>
                 <li><a href="paginas/mapaDoSite.jsp">Mapa do Site</a></li>
