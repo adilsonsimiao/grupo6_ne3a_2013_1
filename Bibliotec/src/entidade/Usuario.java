@@ -22,7 +22,9 @@ import javax.persistence.OneToOne;
     @NamedQuery(name = "retrieveByNome",
             query = "SELECT u FROM Usuario u WHERE u.nome Like :nome"),
     @NamedQuery(name = "retrieveByCpf",
-            query = "SELECT u FROM Usuario u WHERE u.cpf Like :cpf")
+            query = "SELECT u FROM Usuario u WHERE u.cpf Like :cpf"),
+         @NamedQuery(name = "retrieveListaTodosOsUsuarios",
+            query = "SELECT u FROM Usuario u")
 })
 public class Usuario {
 

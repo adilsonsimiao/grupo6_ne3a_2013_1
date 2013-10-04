@@ -165,7 +165,13 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         if (jRBNome.isSelected()) {
 
             if (jTFCampoConsulta.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
+                listaUsuario = new DaoUsuario().retrieveByNomeTodosUsuarios();
+
+                for (Usuario u : listaUsuario) {
+                    tableModel.addRow(new Object[]{
+                        u.getId(), u.getEmail(), u.getNome(), u.getCpf(), u.getRg(), u.getTelefone()});
+                    this.usuario.setId(u.getId());
+                }
             } else {
 
                 try {
@@ -211,38 +217,46 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         int row = jTAreaDadosConsulta.getSelectedRow();
-        String sa = tableModel.getValueAt(row, 0).toString();
-        int ValorRowColum = Integer.parseInt(sa);
-        AlterarUsuario alterarUsuario = new AlterarUsuario();
-        try {
-            alterarUsuario.preencheTelaCadastro(ValorRowColum);
-            alterarUsuario.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        if (row <= 0) {
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um usuário na tabela");
+        } else {
+            String sa = tableModel.getValueAt(row, 0).toString();
+            int ValorRowColum = Integer.parseInt(sa);
+            AlterarUsuario alterarUsuario = new AlterarUsuario();
+            try {
+                alterarUsuario.preencheTelaCadastro(ValorRowColum);
+                alterarUsuario.setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
         int row = jTAreaDadosConsulta.getSelectedRow();
-        String sa = tableModel.getValueAt(row, 0).toString();
-        int ValorRowColum = Integer.parseInt(sa);
-        try {
-            usuario = new HibernateDao<Usuario>().retrieve(ValorRowColum);
-        } catch (Exception ex) {
-            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (jTFCampoConsulta.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
-
+        if (row <= 0) {
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um usuario na tabela");
         } else {
+            String sa = tableModel.getValueAt(row, 0).toString();
+            int ValorRowColum = Integer.parseInt(sa);
             try {
-                if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == usuario.getId()) {
-                    new HibernateDao().delete(usuario);
-                    tableModel.removeRow(row);
-                    JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
-                    jTAreaDadosConsulta.setModel(tableModel);
+                usuario = new HibernateDao<Usuario>().retrieve(ValorRowColum);
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (jTFCampoConsulta.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
+
+            } else {
+                try {
+                    if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == usuario.getId()) {
+                        new HibernateDao().delete(usuario);
+                        tableModel.removeRow(row);
+                        JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
+                        jTAreaDadosConsulta.setModel(tableModel);
+                    }
+                } catch (Exception e) {
                 }
-            } catch (Exception e) {
             }
         }
     }//GEN-LAST:event_jBExcluirActionPerformed
@@ -311,7 +325,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTFCampoConsulta;
     // End of variables declaration//GEN-END:variables
 
-   public int retornaID() {
+    public int retornaID() {
         int row = jTAreaDadosConsulta.getSelectedRow();
         String sa = tableModel.getValueAt(row, 0).toString();
         int idUsuario = Integer.parseInt(sa);

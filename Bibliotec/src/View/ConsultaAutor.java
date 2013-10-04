@@ -229,7 +229,13 @@ public class ConsultaAutor extends javax.swing.JFrame {
         if (jRBNome.isSelected()) {
 
             if (jTFCampoConsulta.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
+                listAutor = new DaoAutor().retrieveTodosAutores();
+
+                for (Autor a : listAutor) {
+                    tableModel.addRow(new Object[]{
+                        a.getId(), a.getNome()});
+                    this.autor.setId(a.getId());
+                }
             } else {
 
 
@@ -267,26 +273,33 @@ public class ConsultaAutor extends javax.swing.JFrame {
     }//GEN-LAST:event_jBFecharActionPerformed
 
     private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
-        int row = jTAreaDadosConsulta.getSelectedRow();
-        String sa = tableModel.getValueAt(row, 0).toString();
-        int ValorRowColum = Integer.parseInt(sa);
-        try {
-            autor = new HibernateDao<Autor>().retrieve(ValorRowColum);
-        } catch (Exception ex) {
-            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (jTFCampoConsulta.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
 
+
+        int row = jTAreaDadosConsulta.getSelectedRow();
+        if (row <= 0) {
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um autor na tabela");
         } else {
+
+            String sa = tableModel.getValueAt(row, 0).toString();
+            int ValorRowColum = Integer.parseInt(sa);
             try {
-                if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == autor.getId()) {
-                    new HibernateDao().delete(autor);
-                    tableModel.removeRow(row);
-                    JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
-                    jTAreaDadosConsulta.setModel(tableModel);
+                autor = new HibernateDao<Autor>().retrieve(ValorRowColum);
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (jTFCampoConsulta.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
+
+            } else {
+                try {
+                    if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == autor.getId()) {
+                        new HibernateDao().delete(autor);
+                        tableModel.removeRow(row);
+                        JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
+                        jTAreaDadosConsulta.setModel(tableModel);
+                    }
+                } catch (Exception e) {
                 }
-            } catch (Exception e) {
             }
         }
 
@@ -294,16 +307,19 @@ public class ConsultaAutor extends javax.swing.JFrame {
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         int row = jTAreaDadosConsulta.getSelectedRow();
-        String sa = tableModel.getValueAt(row, 0).toString();
-        int ValorRowColum = Integer.parseInt(sa);
-        AlterarAutor alterarAutor = new AlterarAutor();
-        try {
-            alterarAutor.preencheTelaCadastro(ValorRowColum);
-            alterarAutor.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        if (row <= 0) {
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um autor na tabela");
+        } else {
+            String sa = tableModel.getValueAt(row, 0).toString();
+            int ValorRowColum = Integer.parseInt(sa);
+            AlterarAutor alterarAutor = new AlterarAutor();
+            try {
+                alterarAutor.preencheTelaCadastro(ValorRowColum);
+                alterarAutor.setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jBSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSelecionarActionPerformed

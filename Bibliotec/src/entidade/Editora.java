@@ -24,7 +24,8 @@ import javax.persistence.OneToOne;
             query = "SELECT e.nome FROM Editora e"),
     @NamedQuery(name = "retrieveIdEditoras",
             query = "SELECT e FROM Editora e WHERE e.nome Like :nome"),
-    
+     @NamedQuery(name = "retrieveListaTodasEditoras",
+            query = "SELECT e FROM Editora e")
 })
 public class Editora {
     @Id

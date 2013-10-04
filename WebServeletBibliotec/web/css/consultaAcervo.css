@@ -1,0 +1,55 @@
+thead{background-color:	#282828 ; color:#B00000 }
+
+img{ float:right;}
+
+h1 { font-style: italic;}
+p { color: maroon; }
+a {color: black; font-variant: small-caps; font-size: 1.5em;}
+table { border-collapse:collapse; }
+table, th, td { border: 1px solid black; }
+th { background-color:green; color:yellow; }
+td { text-align: center; }
+td.esquerda { text-align: left; }
+ul.erro { color: red; }
+
+ul.navlist{ list-style-type: none; 
+            padding: 0;
+            margin: 0;
+            float: left;
+            width: 100%;
+            color: #fff;
+            background-color: #282828;
+
+} 
+ul.navlist li { display: inline; }
+ul.navlist li a{
+    float: left;
+    width: 16.3%;
+    
+    color: #0000FF ;
+    background-color: #282828 ;
+    padding: 0.2em 1em;
+    text-decoration: none;
+    border-right: 1px solid #282828;
+    text-align: center;
+}
+ul.navlist li a:hover{
+    background-color: white ;
+    color: black;
+}
+img.floatRight{ float: right; clear: right; width: 25%;
+                height: 250%;   margin:0px;
+                border:0px;}
+img.floatleft{ float: left; clear: left; width: 25%;
+               height: 250%;   margin:0px;
+               border:0px;}
+
+.bibliotec{ width: 100%;
+       height: 10%;
+       border: #0000FF;
+      
+}
+h1{
+   text-align: center;
+}
+

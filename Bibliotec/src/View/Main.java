@@ -49,6 +49,7 @@ public class Main extends javax.swing.JFrame {
         jBConsultas = new javax.swing.JButton();
         jBDevolucao = new javax.swing.JButton();
         jBRelatorio = new javax.swing.JButton();
+        jBEmprestar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMCadastros = new javax.swing.JMenu();
         jMUsuario = new javax.swing.JMenuItem();
@@ -116,7 +117,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(264, 264, 264)
                 .addComponent(jLabel1)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +169,7 @@ public class Main extends javax.swing.JFrame {
         jLayeredPane1.add(jBConsultas, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jBDevolucao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Books-icon.png"))); // NOI18N
-        jBDevolucao.setText("Devoluções");
+        jBDevolucao.setText("Devolver");
         jBDevolucao.setToolTipText("Botão para Devolução de Livro");
         jBDevolucao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -183,17 +184,46 @@ public class Main extends javax.swing.JFrame {
                 jBDevolucaoActionPerformed(evt);
             }
         });
-        jBDevolucao.setBounds(320, 20, 160, 50);
+        jBDevolucao.setBounds(490, 20, 160, 50);
         jLayeredPane1.add(jBDevolucao, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jBRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/1380866367_help-contents.png"))); // NOI18N
         jBRelatorio.setText("Relatório");
+        jBRelatorio.setToolTipText("Exibe um relatório com os usuários e os empréstimos de livros que eles fizeram");
+        jBRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBRelatorioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBRelatorioMouseExited(evt);
+            }
+        });
         jBRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBRelatorioActionPerformed(evt);
             }
         });
-        jBRelatorio.setBounds(490, 20, 180, 50);
+        jBRelatorio.setBounds(660, 20, 180, 50);
         jLayeredPane1.add(jBRelatorio, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jBEmprestar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/1380866622_address_book.png"))); // NOI18N
+        jBEmprestar.setText("Emprestar");
+        jBEmprestar.setToolTipText("Consulta um livro para realizar o empréstimo");
+        jBEmprestar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBEmprestarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBEmprestarMouseExited(evt);
+            }
+        });
+        jBEmprestar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEmprestarActionPerformed(evt);
+            }
+        });
+        jBEmprestar.setBounds(320, 20, 160, 50);
+        jLayeredPane1.add(jBEmprestar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jMenuBar1.setBackground(new java.awt.Color(0, 51, 153));
 
@@ -538,7 +568,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMDevoluçãoActionPerformed
 
     private void jMenuItemAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAjudaActionPerformed
-        // TODO add your handling code here:
+        Ajuda ajuda = new Ajuda();
+        ajuda.setVisible(true);
     }//GEN-LAST:event_jMenuItemAjudaActionPerformed
 
     private void jMenuItemAjudaOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAjudaOnlineActionPerformed
@@ -683,6 +714,28 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBRelatorioActionPerformed
 
+    private void jBEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEmprestarActionPerformed
+        ConsultaLivro emprestarLivro = new ConsultaLivro();
+        emprestarLivro.setVisible(true);
+    }//GEN-LAST:event_jBEmprestarActionPerformed
+
+    private void jBEmprestarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEmprestarMouseEntered
+        jLBarraStatus.setText(jBEmprestar.getToolTipText());
+    }//GEN-LAST:event_jBEmprestarMouseEntered
+
+    private void jBEmprestarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEmprestarMouseExited
+        jLBarraStatus.setText("");
+    }//GEN-LAST:event_jBEmprestarMouseExited
+
+    private void jBRelatorioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBRelatorioMouseExited
+        jLBarraStatus.setText("");
+
+    }//GEN-LAST:event_jBRelatorioMouseExited
+
+    private void jBRelatorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBRelatorioMouseEntered
+        jLBarraStatus.setText(jBRelatorio.getToolTipText());
+    }//GEN-LAST:event_jBRelatorioMouseEntered
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -696,6 +749,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jBCadastros;
     private javax.swing.JButton jBConsultas;
     private javax.swing.JButton jBDevolucao;
+    private javax.swing.JButton jBEmprestar;
     private javax.swing.JButton jBRelatorio;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLBarraStatus;
@@ -725,8 +779,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 
- private void relatorioPronto() throws JRException {
-         try {
+    private void relatorioPronto() throws JRException {
+        try {
             // obtem o arquivo de relatorio compilado
             URL arquivo = getClass().getResource("relatorioUsuario.jasper");
 
@@ -750,5 +804,4 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ERRO: " + e);
         }
     }
-
 }

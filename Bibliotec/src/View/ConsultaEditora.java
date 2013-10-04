@@ -231,7 +231,13 @@ public class ConsultaEditora extends javax.swing.JFrame {
         if (jRBNome.isSelected()) {
 
             if (jTFCampoConsulta.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
+                listEditora = new DaoEditora().retrieveListaDeNomes();
+
+                for (Editora e : listEditora) {
+                    tableModel.addRow(new Object[]{
+                        e.getId(), e.getNome()});
+                    this.editora.setId(e.getId());
+                }
             } else {
 
                 try {
@@ -273,41 +279,48 @@ public class ConsultaEditora extends javax.swing.JFrame {
 
     private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
         int row = jTAreaDadosConsulta.getSelectedRow();
-        String sa = tableModel.getValueAt(row, 0).toString();
-        int ValorRowColum = Integer.parseInt(sa);
-        try {
-            editora = new HibernateDao<Editora>().retrieve(ValorRowColum);
-        } catch (Exception ex) {
-            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (jTFCampoConsulta.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
-
+        if (row <= 0) {
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione uma editora na tabela");
         } else {
+            String sa = tableModel.getValueAt(row, 0).toString();
+            int ValorRowColum = Integer.parseInt(sa);
             try {
-                if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == editora.getId()) {
-                    new HibernateDao().delete(editora);
-                    tableModel.removeRow(row);
-                    JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
-                    jTAreaDadosConsulta.setModel(tableModel);
+                editora = new HibernateDao<Editora>().retrieve(ValorRowColum);
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (jTFCampoConsulta.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
+
+            } else {
+                try {
+                    if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == editora.getId()) {
+                        new HibernateDao().delete(editora);
+                        tableModel.removeRow(row);
+                        JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
+                        jTAreaDadosConsulta.setModel(tableModel);
+                    }
+                } catch (Exception e) {
                 }
-            } catch (Exception e) {
             }
         }
     }//GEN-LAST:event_jBExcluirActionPerformed
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         int row = jTAreaDadosConsulta.getSelectedRow();
-        String sa = tableModel.getValueAt(row, 0).toString();
-        int ValorRowColum = Integer.parseInt(sa);
-        AlterarEditora alterarEditora = new AlterarEditora();
-        try {
-            alterarEditora.preencheTelaCadastro(ValorRowColum);
-            alterarEditora.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        if (row <= 0) {
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione uma editora na tabela");
+        } else {
+            String sa = tableModel.getValueAt(row, 0).toString();
+            int ValorRowColum = Integer.parseInt(sa);
+            AlterarEditora alterarEditora = new AlterarEditora();
+            try {
+                alterarEditora.preencheTelaCadastro(ValorRowColum);
+                alterarEditora.setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jBSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSelecionarActionPerformed

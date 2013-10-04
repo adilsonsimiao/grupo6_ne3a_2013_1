@@ -22,4 +22,8 @@ public class DaoEmprestimo extends HibernateDao<Emprestimo>{
         return createNamedQuery("retrieveNomeLivroDeEmprestimo").setParameter("nome", "%"+nome+"%").getResultList();
         
     }
+
+    public List<Emprestimo> retrieveTodosEmprestimos() {
+        return createNamedQuery("retrieveListaTodosEmprestimos").getResultList();
+    }
 }

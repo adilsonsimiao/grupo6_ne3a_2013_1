@@ -21,7 +21,9 @@ import javax.persistence.Temporal;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "retrieveNomeLivroDeEmprestimo",
-            query = "SELECT e FROM Emprestimo e JOIN E.livro l WHERE l.nomeLivro Like :nome")
+            query = "SELECT e FROM Emprestimo e JOIN E.livro l WHERE l.nomeLivro Like :nome"),
+    @NamedQuery(name = "retrieveListaTodosEmprestimos",
+            query = "SELECT e FROM Emprestimo e")
 })
 public class Emprestimo {
     @Id

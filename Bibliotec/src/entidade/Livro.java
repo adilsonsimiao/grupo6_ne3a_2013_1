@@ -29,7 +29,8 @@ import javax.persistence.OneToOne;
             query = "SELECT l FROM Livro l INNER JOIN L.autores a WHERE a.nome Like :nome"),
     @NamedQuery(name = "retrieveByNomeLivros",
             query = "SELECT l FROM Livro l WHERE l.nomeLivro Like :nome"),
-   
+    @NamedQuery(name = "retrieveListaTodosLivros",
+            query = "SELECT l FROM Livro l")
 })
 public class Livro {
     @Id

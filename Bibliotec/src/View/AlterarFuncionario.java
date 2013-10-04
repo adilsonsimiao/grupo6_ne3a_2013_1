@@ -677,16 +677,18 @@ public class AlterarFuncionario extends javax.swing.JFrame {
         endereco.setComplemento(jTFComplemento.getText());
         endereco.setNumero(jFTFNumero.getText());
         endereco.setBairro(jTFBairro.getText());
-        endereco.setCep(jFTFCep.getText());
+        endereco.setCep(jFTFCep.getText().replace("-", ""));
+        endereco.setMunicipio(municipio);
         new HibernateDao().persist(endereco);
 
         funcionario.setNome(jTFNome.getText());
         funcionario.setEmail(jTFEmail.getText());
         funcionario.setPis(jTFCarteiraTrabalho.getText());
         funcionario.setFuncao(jTFuncao.getText());
-        funcionario.setCpf(jFTFCpf.getText());
-        funcionario.setRg(jFTFRg.getText());
+        funcionario.setCpf(jFTFCpf.getText().replace("-", ""));
+        funcionario.setRg(jFTFRg.getText().replace("-", ""));
         funcionario.setTelefone(jFTFTelefone.getText());
+        funcionario.setEndereco(endereco);
         new HibernateDao().persist(funcionario);
     }
 

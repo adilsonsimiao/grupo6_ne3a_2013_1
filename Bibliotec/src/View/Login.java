@@ -145,13 +145,13 @@ public class Login extends javax.swing.JFrame {
             if (jTLogin.getText().equals(log) && (jPassword.getText().equals(pass))) {
                 Main main = new Main();
                 main.setVisible(true);
+                dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Senha incorreta");
             }
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        dispose();
     }//GEN-LAST:event_jBLoginActionPerformed
 
     private void jBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFecharActionPerformed

@@ -278,7 +278,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="264" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="138" max="32767" attributes="0"/>
+                  <EmptySpace pref="150" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -412,7 +412,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagens/Books-icon.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Devolu&#xe7;&#xf5;es"/>
+            <Property name="text" type="java.lang.String" value="Devolver"/>
             <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para Devolu&#xe7;&#xe3;o de Livro"/>
           </Properties>
           <Events>
@@ -422,20 +422,45 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
-              <JLayeredPaneConstraints x="320" y="20" width="160" height="50" layer="0" position="-1"/>
+              <JLayeredPaneConstraints x="490" y="20" width="160" height="50" layer="0" position="-1"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="jBRelatorio">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/1380866367_help-contents.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rio"/>
+            <Property name="toolTipText" type="java.lang.String" value="Exibe um relat&#xf3;rio com os usu&#xe1;rios e os empr&#xe9;stimos de livros que eles fizeram"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBRelatorioMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBRelatorioMouseExited"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBRelatorioActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
-              <JLayeredPaneConstraints x="490" y="20" width="180" height="50" layer="0" position="-1"/>
+              <JLayeredPaneConstraints x="660" y="20" width="180" height="50" layer="0" position="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBEmprestar">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/1380866622_address_book.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Emprestar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Consulta um livro para realizar o empr&#xe9;stimo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBEmprestarMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBEmprestarMouseExited"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBEmprestarActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
+              <JLayeredPaneConstraints x="320" y="20" width="160" height="50" layer="0" position="-1"/>
             </Constraint>
           </Constraints>
         </Component>

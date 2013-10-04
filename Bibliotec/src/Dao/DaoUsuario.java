@@ -25,4 +25,12 @@ public class DaoUsuario extends HibernateDao<Usuario>{
         return createNamedQuery("retrieveByCpf").setParameter("cpf", "%"+cpf+"%").getResultList();
         
     }
+
+    public List<Usuario> retrieveByNomeTodosUsuarios() {
+        return createNamedQuery("retrieveListaTodosOsUsuarios").getResultList();
+    }
+
+    public List<Usuario> retrieveNomesTodosUsuarios() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

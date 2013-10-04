@@ -451,10 +451,12 @@ public class AlterarEditora extends javax.swing.JFrame {
         endereco.setNumero(jTFNumero.getText());
         endereco.setBairro(jTFBairro.getText());
         endereco.setCep(jFTFCep.getText().replace("-", ""));
+        endereco.setMunicipio(municipio);
         new HibernateDao<Endereco>().persist(endereco);
 
         editora.setNome(jTNome.getText());
         editora.setEmail(jTFEmail.getText());
+        editora.setEndereco(endereco);
         editora.setEndereco(endereco);
         new HibernateDao<Editora>().persist(editora);
     }
@@ -470,7 +472,7 @@ public class AlterarEditora extends javax.swing.JFrame {
         }
     }
 
-   public void preencheTelaCadastro(int ValorRowColum) throws Exception {
+    public void preencheTelaCadastro(int ValorRowColum) throws Exception {
         editora = new HibernateDao<Editora>().retrieve(ValorRowColum);
         jTNome.setText(editora.getNome());
         jTFEmail.setText(editora.getEmail());

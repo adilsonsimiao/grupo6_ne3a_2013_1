@@ -26,4 +26,8 @@ public class DaoFucnionario extends HibernateDao<Funcionario> {
     public List<Funcionario> retrieveByCpf(String cpf) {
         return createNamedQuery("retrieveByCpfFuncionario").setParameter("cpf", "%" + cpf + "%").getResultList();
     }
+
+    public List<Funcionario> retrieveByNomeTodosFuncionarios() {
+        return createNamedQuery("retrieveListaTodosFuncionarios").getResultList();
+    }
 }

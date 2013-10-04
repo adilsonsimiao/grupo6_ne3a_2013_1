@@ -195,7 +195,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Endereço", jPanel3);
 
-        jLNome.setText("NOME*:");
+        jLNome.setText("Nome*:");
 
         jBuCadastro.setText("Cadastrar");
         jBuCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -212,12 +212,6 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         });
 
         jLPis.setText("PIS*:");
-
-        jTFCarteiraTrabalho.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTFCarteiraTrabalhoFocusLost(evt);
-            }
-        });
 
         jLFuncao.setText("Função*:");
 
@@ -388,7 +382,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/1376350673_Administrator.png"))); // NOI18N
-        jLabel1.setText("Funcionário");
+        jLabel1.setText("Cadastrar Funcionário");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -497,24 +491,6 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         } else {
         }
     }//GEN-LAST:event_jTFEmailFocusLost
-
-    private void jTFCarteiraTrabalhoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFCarteiraTrabalhoFocusLost
-         if (!jTFCarteiraTrabalho.getText().toString().trim().equals("")) {
-
-            boolean aux = validaPIS(jFTFCpf.getText().replace("-", "").toString());
-            if (aux == true) {
-                jLInfo.setText("Pis válido");
-                jLPis.setForeground(Color.BLACK);
-
-            } else if (aux == false) {
-                jLPis.setForeground(Color.red);
-                jLInfo.setText("Pis inválido");
-            }
-        } else {
-            jLInfo.setText("Pis é obrigatório");
-            jLcpf.setForeground(Color.red);
-         }
-    }//GEN-LAST:event_jTFCarteiraTrabalhoFocusLost
 
     private void jFTFTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTFTelefoneActionPerformed
         // TODO add your handling code here:
@@ -653,28 +629,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             jFTFCpf.setForeground(Color.BLACK);
         }
        
-        if (jTFCarteiraTrabalho.getText().length() < 11 || jTFCarteiraTrabalho.getText().length() > 11) {
-            if (!jFTFCpf.getText().replace("-", "").toString().trim().equals("")) {
-
-                boolean aux = validaPIS(jTFCarteiraTrabalho.getText().replace("-", "").toString());
-                if (aux == true) {
-                    jLInfo.setText("Pis válido");
-                    jLPis.setForeground(Color.BLACK);
-
-                } else if (aux == false) {
-                    jLPis.setForeground(Color.red);
-                    jLInfo.setText("Pis inválido");
-                    stringsBuilder.append("Pis é Obrigatório \n");
-                }
-            } else {
-                jLPis.setForeground(Color.red);
-                jLInfo.setText("Pis é obrigatório");
-                stringsBuilder.append("Pis é obrigatório \n");
-            }
-
-        } else {
-            jTFCarteiraTrabalho.setForeground(Color.BLACK);
-        }
+       
         
         if (jTFuncao.getText().length() < 3) {
             stringsBuilder.append("Função é obrigatório\n");
@@ -690,7 +645,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             jFTFCep.setForeground(Color.BLACK);
         }     
 
-        if (jFTFTelefone.getText().length() < 4 || jFTFTelefone.getText().length() >= 9) {
+        if (jFTFTelefone.getText().length() < 4 || jFTFTelefone.getText().length() >= 12) {
             stringsBuilder.append("telefone é obrigatório \n");
             jLTelefone.setForeground(Color.red);
         } else {
@@ -734,44 +689,20 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         endereco.setComplemento(jTFComplemento.getText());
         endereco.setNumero(jFTFNumero.getText());
         endereco.setBairro(jTFBairro.getText());
-        endereco.setCep(jFTFCep.getText());
+        endereco.setCep(jFTFCep.getText().replace("-", ""));
+        endereco.setMunicipio(municipio);
         new HibernateDao().persist(endereco);
 
         funcionario.setNome(jTFNome.getText());
         funcionario.setEmail(jTFEmail.getText());
         funcionario.setPis(jTFCarteiraTrabalho.getText());
         funcionario.setFuncao(jTFuncao.getText());
-        funcionario.setCpf(jFTFCpf.getText());
-        funcionario.setRg(jFTFRg.getText());
+        funcionario.setCpf(jFTFCpf.getText().replace("-", ""));
+        funcionario.setRg(jFTFRg.getText().replace("-", ""));
         funcionario.setTelefone(jFTFTelefone.getText());
+        funcionario.setEndereco(endereco);
         new HibernateDao().persist(funcionario);
     }
 
-    private boolean validaPIS(String strPIS) {
-        char i, j, somatorio = 0;
-        char chDigitoVerificador;
-        char chPISAux;
-
-        try {
-            for (i = 0, j = 4; j >= 2; i++, j--) {
-                somatorio += ((strPIS.charAt(i) - 0x30) * j);
-            }
-            for (j = 9; j >= 2; i++, j--) {
-                somatorio += ((strPIS.charAt(i) - 0x30) * j);
-            }
-            if ((somatorio % 11) < 2) {
-                chDigitoVerificador = 0;
-            } else {
-                chDigitoVerificador = (char) (11 - (somatorio % 11));
-            }
-            chPISAux = (char) (chDigitoVerificador + '0');
-            if (strPIS.charAt(11) == chPISAux) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            return false;
-        }
-    }
+    
 }

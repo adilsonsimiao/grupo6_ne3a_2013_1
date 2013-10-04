@@ -192,7 +192,15 @@ public class DevolverLivro extends javax.swing.JFrame {
         tableModel.setRowCount(0);
 
         if (jTFCampoConsulta.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
+            listaEmprestimo = new DaoEmprestimo().retrieveTodosEmprestimos();
+            for (Emprestimo E : listaEmprestimo) {
+                Date d = E.getDataPrevistaParaDevolucao().getTime();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                sdf.format(d);
+                tableModel.addRow(new Object[]{
+                    E.getId(), E.getUsuario().getNome(), E.getLivro().getNomeLivro(), sdf.format(d), E.getLivro().getId()});
+
+            }
         } else {
             listaEmprestimo = new DaoEmprestimo().retrieveNome(jTFCampoConsulta.getText());
             for (Emprestimo E : listaEmprestimo) {
@@ -217,39 +225,41 @@ public class DevolverLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_jBOkActionPerformed
 
     private void jBDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDevolverActionPerformed
-        jBDevolverActionPerformed(evt);
         int multa = 0;
         try {
             int row = jTAreaDadosConsulta.getSelectedRow();
-            String sa = tableModel.getValueAt(row, 0).toString();
-            int ValorRowColum = Integer.parseInt(sa);
-            emprestimo = new HibernateDao<Emprestimo>().retrieve(ValorRowColum);
-            livro = new DaoLivro().retrieve(emprestimo.getLivro().getId());
-            Date dataPrevDevolucao = emprestimo.getDataPrevistaParaDevolucao().getTime();
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-            emprestimo.setDataDaDevolucao(Calendar.getInstance());
-            emprestimo.getDataDaDevolucao().set(2013, 9, 10);
-            Date dataDevDoLivro = emprestimo.getDataDaDevolucao().getTime();
-            SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
-            if (emprestimo.getDataDaDevolucao().compareTo(emprestimo.getDataPrevistaParaDevolucao()) <= 0) {
-                livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() + 1);
-                new HibernateDao<Livro>().persist(livro);
-                new HibernateDao<Emprestimo>().delete(emprestimo);
-                JOptionPane.showMessageDialog(null, "Livro devolvido com sucesso");
+            if (row <= 0) {
+                JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um empréstimo na tabela");
             } else {
-                multa = intervaloDias(dataPrevDevolucao, dataDevDoLivro);
-                int opcao = JOptionPane.showConfirmDialog(null, "Pendência de R$" + (multa * 1) + " de multa por atraso na devolução, deseja paga?");
-                System.out.println("def "+JOptionPane.INFORMATION_MESSAGE);
-                if (opcao == JOptionPane.YES_OPTION) {
+                String sa = tableModel.getValueAt(row, 0).toString();
+                int ValorRowColum = Integer.parseInt(sa);
+                emprestimo = new HibernateDao<Emprestimo>().retrieve(ValorRowColum);
+                livro = new DaoLivro().retrieve(emprestimo.getLivro().getId());
+                Date dataPrevDevolucao = emprestimo.getDataPrevistaParaDevolucao().getTime();
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                emprestimo.setDataDaDevolucao(Calendar.getInstance());
+                Date dataDevDoLivro = emprestimo.getDataDaDevolucao().getTime();
+                SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+                if (emprestimo.getDataDaDevolucao().compareTo(emprestimo.getDataPrevistaParaDevolucao()) <= 0) {
                     livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() + 1);
                     new HibernateDao<Livro>().persist(livro);
                     new HibernateDao<Emprestimo>().delete(emprestimo);
                     JOptionPane.showMessageDialog(null, "Livro devolvido com sucesso");
-                } else if (opcao == JOptionPane.NO_OPTION){                   
-                    JOptionPane.showMessageDialog(null, "Resolva a pendência de multa para que possa devolver o livro");
+                } else {
+                    multa = intervaloDias(dataPrevDevolucao, dataDevDoLivro);
+                    int opcao = JOptionPane.showConfirmDialog(null, "Pendência de R$" + (multa * 1) + " de multa por atraso na devolução, deseja paga?");
+                    System.out.println("def " + JOptionPane.INFORMATION_MESSAGE);
+                    if (opcao == JOptionPane.YES_OPTION) {
+                        livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() + 1);
+                        new HibernateDao<Livro>().persist(livro);
+                        new HibernateDao<Emprestimo>().delete(emprestimo);
+                        JOptionPane.showMessageDialog(null, "Livro devolvido com sucesso");
+                    } else if (opcao == JOptionPane.NO_OPTION) {
+                        JOptionPane.showMessageDialog(null, "Resolva a pendência de multa para que possa devolver o livro");
+                    }
+
+
                 }
-
-
             }
         } catch (Exception ex) {
             Logger.getLogger(DevolverLivro.class.getName()).log(Level.SEVERE, null, ex);

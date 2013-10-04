@@ -25,4 +25,8 @@ public class DaoEditora extends HibernateDao<Editora>{
         return createNamedQuery("retrieveIdEditoras").setParameter("nome", "%"+nome+"%").getResultList();
         
     }
+
+    public List<Editora> retrieveListaDeNomes() {
+        return createNamedQuery("retrieveListaTodasEditoras").getResultList();
+    }
 }

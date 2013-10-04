@@ -211,7 +211,13 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
         if (jRBNome.isSelected()) {
 
             if (jTFCampoConsulta.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digite um nome para pesquisar" + jTFCampoConsulta.getText());
+                listaFucionario = new DaoFucnionario().retrieveByNomeTodosFuncionarios();
+
+                for (Funcionario f : listaFucionario) {
+                    tableModel.addRow(new Object[]{
+                        f.getId(), f.getEmail(), f.getNome(), f.getCpf(), f.getRg(), f.getTelefone()});
+                    this.funcionario.setId(f.getId());
+                }
             } else {
 
                 try {
@@ -254,25 +260,29 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
 
     private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
         int row = jTAreaDadosConsulta.getSelectedRow();
-        String sa = tableModel.getValueAt(row, 0).toString();
-        int ValorRowColum = Integer.parseInt(sa);
-        try {
-            funcionario = new HibernateDao<Funcionario>().retrieve(ValorRowColum);
-        } catch (Exception ex) {
-            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (jTFCampoConsulta.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
-
+        if (row <= 0) {
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um funcionário na tabela");
         } else {
+            String sa = tableModel.getValueAt(row, 0).toString();
+            int ValorRowColum = Integer.parseInt(sa);
             try {
-                if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == funcionario.getId()) {
-                    new HibernateDao().delete(funcionario);
-                    tableModel.removeRow(row);
-                    JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
-                    jTAreaDadosConsulta.setModel(tableModel);
+                funcionario = new HibernateDao<Funcionario>().retrieve(ValorRowColum);
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (jTFCampoConsulta.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
+
+            } else {
+                try {
+                    if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == funcionario.getId()) {
+                        new HibernateDao().delete(funcionario);
+                        tableModel.removeRow(row);
+                        JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
+                        jTAreaDadosConsulta.setModel(tableModel);
+                    }
+                } catch (Exception e) {
                 }
-            } catch (Exception e) {
             }
         }
 
@@ -280,16 +290,19 @@ public class ConsultaFuncionario extends javax.swing.JFrame {
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         int row = jTAreaDadosConsulta.getSelectedRow();
-        String sa = tableModel.getValueAt(row, 0).toString();
-        int ValorRowColum = Integer.parseInt(sa);
-        AlterarFuncionario alterarFuncionario = new AlterarFuncionario();
-        try {
-            alterarFuncionario.preencheTelaCadastro(ValorRowColum);
-            alterarFuncionario.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        if (row <= 0) {
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um funcionário na tabela");
+        } else {
+            String sa = tableModel.getValueAt(row, 0).toString();
+            int ValorRowColum = Integer.parseInt(sa);
+            AlterarFuncionario alterarFuncionario = new AlterarFuncionario();
+            try {
+                alterarFuncionario.preencheTelaCadastro(ValorRowColum);
+                alterarFuncionario.setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed

@@ -77,7 +77,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/1cadastro.png"))); // NOI18N
-        jLabel1.setText("Usuario");
+        jLabel1.setText("Cadastrar Usuario");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

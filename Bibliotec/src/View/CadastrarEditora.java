@@ -76,7 +76,7 @@ public class CadastrarEditora extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/woa_1_image_editor.png"))); // NOI18N
-        jLabel1.setText("Editora");
+        jLabel1.setText("Cadastrar Editora");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -480,10 +480,12 @@ public boolean validEmail(String email) {
         endereco.setNumero(jTFNumero.getText());
         endereco.setBairro(jTFBairro.getText());
         endereco.setCep(jFTFCep.getText().replace("-", ""));
+        endereco.setMunicipio(municipio);
         new HibernateDao<Endereco>().persist(endereco);
 
         editora.setNome(jTNome.getText());
         editora.setEmail(jTFEmail.getText());
+        editora.setEndereco(endereco);
         editora.setEndereco(endereco);
         new HibernateDao<Editora>().persist(editora);
     }

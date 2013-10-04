@@ -24,4 +24,10 @@ public class DaoLivro extends HibernateDao<Livro>{
         return createNamedQuery("retrieveByNomeAutores").setParameter("nome", "%"+nome+"%").getResultList();
         
     }
+
+    
+
+    public List<Livro> retrieveTodosOsNomesDeLivros() {
+        return createNamedQuery("retrieveListaTodosLivros").getResultList();
+    }
 }

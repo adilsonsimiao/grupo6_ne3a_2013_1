@@ -65,7 +65,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/1376350938_Books.png"))); // NOI18N
-        jLabel1.setText("Cadastrar Livro");
+        jLabel1.setText("Consultar Livro");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -214,7 +214,12 @@ public class ConsultaLivro extends javax.swing.JFrame {
         if (jRBNome.isSelected()) {
 
             if (jTFCampoConsulta.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digite  um nome para pesquisar" + jTFCampoConsulta.getText());
+                listaLivros = new DaoLivro().retrieveTodosOsNomesDeLivros();
+                for (Livro l : listaLivros) {
+                    tableModel.addRow(new Object[]{
+                        l.getId(), l.getNomeLivro(), l.getIsbn(), l.getQuantidade(), l.getQuantidadeDisponivel()});
+                    this.livro.setId(l.getId());
+                }
             } else {
                 listaLivros = new DaoLivro().retrieveNomeLivros(jTFCampoConsulta.getText());
                 for (Livro l : listaLivros) {
@@ -246,44 +251,49 @@ public class ConsultaLivro extends javax.swing.JFrame {
 
     private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
         int row = jTAreaDadosConsulta.getSelectedRow();
-        String sa = tableModel.getValueAt(row, 0).toString();
-        int ValorRowColum = Integer.parseInt(sa);
-        try {
-            livro = new HibernateDao<Livro>().retrieve(ValorRowColum);
-        } catch (Exception ex) {
-            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (jTFCampoConsulta.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
-
+        if (row <= 0) {
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um livro na tabela");
         } else {
+            String sa = tableModel.getValueAt(row, 0).toString();
+            int ValorRowColum = Integer.parseInt(sa);
             try {
-                if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == livro.getId()) {
-                    new HibernateDao().delete(livro);
-                    tableModel.removeRow(row);
-                    JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
-                    jTAreaDadosConsulta.setModel(tableModel);
+                livro = new HibernateDao<Livro>().retrieve(ValorRowColum);
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (jTFCampoConsulta.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Selecione um usuario para ser excluidos ");
+
+            } else {
+                try {
+                    if (((int) this.jTAreaDadosConsulta.getValueAt(row, 0)) == livro.getId()) {
+                        new HibernateDao().delete(livro);
+                        tableModel.removeRow(row);
+                        JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
+                        jTAreaDadosConsulta.setModel(tableModel);
+                    }
+                } catch (Exception e) {
                 }
-            } catch (Exception e) {
             }
         }
-
     }//GEN-LAST:event_jBExcluirActionPerformed
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
 
         int row = jTAreaDadosConsulta.getSelectedRow();
-
-        String sa = tableModel.getValueAt(row, 0).toString();
-        int ValorRowColum = Integer.parseInt(sa);
-        AlterarLivro alterarLivro = new AlterarLivro();
-        try {
-            alterarLivro.preencheTelaCadastro(ValorRowColum);
-            alterarLivro.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        if (row <= 0) {
+            JOptionPane.showMessageDialog(null, "Faça uma consulta e selecione um livro na tabela");
+        } else {
+            String sa = tableModel.getValueAt(row, 0).toString();
+            int ValorRowColum = Integer.parseInt(sa);
+            AlterarLivro alterarLivro = new AlterarLivro();
+            try {
+                alterarLivro.preencheTelaCadastro(ValorRowColum);
+                alterarLivro.setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jBOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOkActionPerformed
